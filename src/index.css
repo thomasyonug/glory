@@ -17,3 +17,6 @@
 :global .fleft{
   float: left;
 }
+:global li {
+  list-style: none;
+}

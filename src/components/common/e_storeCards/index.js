@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 
-export default class StoreCards extends Component {
+export default class E_storeCards extends Component {
     render(){
         const {
             cards
