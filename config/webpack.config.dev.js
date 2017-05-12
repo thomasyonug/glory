@@ -82,7 +82,8 @@ module.exports = {
       'react-native': 'react-native-web',
       'components': path.resolve(__dirname, '../src/components'),
       'pages': path.resolve(__dirname, '../src/pages'),
-      'reduxs': path.resolve(__dirname, '../src/reduxs')
+      'reduxs': path.resolve(__dirname, '../src/reduxs'),
+      'decorators': path.resolve(__dirname, '../src/decorators')
       // 'router': path.resolve(__dirname, '../src/router')
     }
   },
