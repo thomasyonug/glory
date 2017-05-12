@@ -7,6 +7,10 @@ import * as ac from 'reduxs/actions'
 
 
 
+
+
+
+
 export const operator = (Target) => {
     @connect(
         state => {
