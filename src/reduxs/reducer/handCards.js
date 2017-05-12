@@ -30,7 +30,9 @@ export default function HandCards(state = initState, action){
 
 
 function addHandle(state, action){
-    return state;
+    return {
+        cards: [...state.cards, action.content]
+    }
 }
 function deleteHandle(state, action){
     return state;
