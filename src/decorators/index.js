@@ -1,3 +1,1 @@
-export {
-    test
-} from './operator'
+export * from './operator'

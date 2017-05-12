@@ -7,7 +7,7 @@ import * as ac from 'reduxs/actions'
 
 
 
-export const test = (Component) => {
+export const operator = (Target) => {
     @connect(
         state => {
             return {
@@ -21,21 +21,18 @@ export const test = (Component) => {
             }
         }
     )
-    class Test extends Component{
-        constructor(){
-            super()
-        }
+    class Wrapper extends Component{
         render(){
             return (
-                <Component 
+                <Target 
                     {...this.props}
-                    getCard = {this.getCard}
-                ></Component>
+                    getCardToHandFromStore={this.getCardToHandFromStore}
+                ></Target>
             )
         }
 
 
-        getCard = () => {
+        getCardToHandFromStore = () => {
             const {
                 storeCards,
                 deleteStoreCards,
@@ -47,5 +44,5 @@ export const test = (Component) => {
             addHandCards(card)
         }
     }
-    return Test
+    return Wrapper
 }

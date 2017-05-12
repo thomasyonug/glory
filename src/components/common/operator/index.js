@@ -2,26 +2,10 @@ import React, {Component} from 'react'
 import Styles from './operator.css'
 import CSSModules from 'react-css-modules'
 import Meta from './meta'
-import {connect} from 'react-redux'
-
-import * as ac from 'reduxs/actions'
-import {test} from 'decorators'
+import {operator} from 'decorators'
 
 
-// @connect(
-//     state => {
-//         return {
-//             storeCards: state.storeCards
-//         }
-//     },
-//     dispatch => {
-//         return {
-//             deleteStoreCards: content => dispatch(ac.deleteStoreCardsActionCreator(content)),
-//             addHandCards: content => dispatch(ac.addHandCardsActionCreator(content))
-//         }
-//     }
-// )
-@test
+@operator
 @CSSModules(Styles,{allowMultiple: true})
 export default class Operator extends Component{
     constructor(){
@@ -38,7 +22,7 @@ export default class Operator extends Component{
             mini
         } = this.state
         const {
-            getCard
+            getCardToHandFromStore
         } = this.props
 
 
@@ -47,7 +31,7 @@ export default class Operator extends Component{
         return (
             <div styleName={`wrapper ${mini ? 'minify' : ''}`}>
                 <Meta minifyClick={minify}></Meta>
-                <div styleName='cube' onClick={getCard}>get card</div>
+                <div styleName='cube' onClick={getCardToHandFromStore}>get card</div>
                 <div styleName='cube'>finish round</div>
             </div>
         )
