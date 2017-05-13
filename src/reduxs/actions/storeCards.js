@@ -16,7 +16,7 @@ export function addStoreCardsActionCreator(content){
 export function deleteStoreCardsActionCreator(content){
     return {
         type: DELETE_STORECARDS,
-        content
+        ...content
     }
 }
 

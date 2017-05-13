@@ -21,16 +21,14 @@ import * as ac from 'reduxs/actions'
 @connect(
     state => {
         return {
-            storeCards: state.storeCards.cards,
-            e_storeCards: state.e_storeCards.cards,
-            handCards: state.handCards.cards,
-            e_handCards: state.e_handCards.cards
+            storeCards: state.storeCards,
+            e_storeCards: state.e_storeCards,
+            handCards: state.handCards,
+            e_handCards: state.e_handCards
         }
     },
     dispatch => {
         return {
-            addStoreCards: content => dispatch(ac.addStoreCardsActionCreator(content)),
-            deleteStoreCards: content => dispatch(ac.deleteStoreCardsActionCreator(content))
         }
     }
 )
@@ -48,10 +46,10 @@ export default class Start extends Component{
             <div styleName='wrapper'>
                 <div styleName='top-field'>
                    <div className='fleft' styleName='e-storeCard-field'>
-                     <EStoreCards cards={e_storeCards}></EStoreCards>
+                     <EStoreCards cards={e_storeCards.cards}></EStoreCards>
                    </div> 
                    <div className='fright' styleName='e-handCard-field'>
-                     <EHandCards cards={e_handCards}></EHandCards>
+                     <EHandCards cards={e_handCards.cards}></EHandCards>
                    </div> 
                 </div>
                 <div styleName='battle-field'>
@@ -59,10 +57,10 @@ export default class Start extends Component{
                 </div>
                 <div styleName='bottom-field'>
                    <div className='fleft' styleName='handCard-field'>
-                     <HandCards cards={handCards}></HandCards>
+                     <HandCards cards={handCards.cards}></HandCards>
                    </div> 
                    <div className='fright' styleName='storeCard-field'>
-                     <StoreCards cards={storeCards}></StoreCards>
+                     <StoreCards cards={storeCards.cards}></StoreCards>
                    </div> 
                 </div>
                 <Operator></Operator>

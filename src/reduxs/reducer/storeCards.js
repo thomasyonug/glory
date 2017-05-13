@@ -7,7 +7,7 @@ import {
 
 
 const initState = {
-    cards: new Array(40)
+    cards: new Array(40).fill(1)
 }
 
 
@@ -38,11 +38,9 @@ function addHandle (state, action) {
 function deleteHandle (state, action) {
     const {index, content} = action    
     const {cards} = state
-    index && cards.splice(index, 1)
+    if (index !== undefined) cards.splice(index, 1)
     content && cards.splice(cards.findIndex(item => item.id === content), 1)
-
     return {
-        ...state,
         cards: [...cards]
     }
 }

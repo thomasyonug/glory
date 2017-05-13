@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import Styles from './Meta.css'
 import CSSModules from 'react-css-modules'
 
-
 @CSSModules(Styles)
 export default class Meta extends Component {
+
     render () {
         const {
             minifyClick
