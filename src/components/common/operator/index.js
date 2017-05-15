@@ -39,7 +39,7 @@ export default class Operator extends Component{
 
 
     minify = () => {
-        fetch('/demo',{
+        fetch('/domian/list.json',{
             credentials: 'same-origin'
         }).then(res => {
             return res.text()

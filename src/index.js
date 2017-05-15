@@ -8,8 +8,10 @@ import {Provider} from 'react-redux'
 import reducer from 'reduxs/reducer'
 
 const store = createStore(reducer)
-
-
+//mock
+import fetchMock from 'fetch-mock'
+console.log(fetchMock)
+fetchMock.get('*', {hello: 'world'});
 
 
 
