@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
+import Styles from './storeCards.css'
+import CSSModules from 'react-css-modules'
 
-
+@CSSModules(Styles)
 export default class StoreCards extends Component {
     render(){
         const {
@@ -9,7 +11,7 @@ export default class StoreCards extends Component {
 
 
         return (
-            <div>
+            <div styleName={cards.length>20 ? 'storeCardStack' : 'storeCardStack_less'}>
                 {cards.length}
             </div>
         )
