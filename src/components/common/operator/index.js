@@ -39,8 +39,15 @@ export default class Operator extends Component{
 
 
     minify = () => {
+        fetch('/demo',{
+            credentials: 'same-origin'
+        }).then(res => {
+            return res.text()
+        }).then(body => {
+            console.log(body)
+        })
         this.setState({mini: !this.state.mini})
     }
-
+    
 
 }
