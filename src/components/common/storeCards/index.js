@@ -11,7 +11,7 @@ export default class StoreCards extends Component {
 
 
         return (
-            <div styleName={cards.length>20 ? 'storeCardStack' : 'storeCardStack_less'}>
+            <div styleName={cards.length>20 ? 'storeCardStack' : (cards.length>1 ? 'storeCardStack_less' : 'storeCardStack_single')}>
                 {cards.length}
             </div>
         )

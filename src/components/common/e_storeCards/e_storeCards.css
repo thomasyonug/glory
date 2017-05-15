@@ -1,3 +1,15 @@
+.e_storeCardStack_single {
+	border: 1px solid #fff;  
+    float: left;  
+    height: 100%; width: 100%;  
+  	background: green;
+    position: relative;  
+  
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+}
+
 .e_storeCardStack{
 	border: 1px solid #fff;  
     float: left;  
