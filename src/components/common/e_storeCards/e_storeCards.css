@@ -1,0 +1,96 @@
+.e_storeCardStack_single {
+	border: 1px solid #fff;  
+    float: left;  
+    height: 100%; width: 100%;  
+  	background: green;
+    position: relative;  
+  
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+}
+
+.e_storeCardStack{
+	border: 1px solid #fff;  
+    float: left;  
+    height: 100%; width: 100%;  
+  
+    position: relative;  
+  
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+}
+
+.e_storeCardStack:before {
+	content: "";  
+    height: 100%; width: 100%;  
+    background: #eff4de;  
+    border: 1px solid #fff;  
+       
+    position: absolute;  
+    z-index: -1;  
+    top: 5px;  
+    left: 0px;  
+       
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+       
+  
+}
+
+.e_storeCardStack:after {
+	content: "";  
+    height: 100%; width: 100%;  
+    background: lightblue;  
+    border: 1px solid #fff;  
+    position: absolute;  
+    z-index: -1;  
+    top: 1px;  
+    left: 0px;  
+
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+
+ /*   -webkit-transform: rotate(-5deg);  
+    -moz-transform: rotate(-5deg);  
+    -o-transform: rotate(-5deg);  
+    -ms-transform: rotate(-5deg);  
+    transform: rotate(-5deg);  */
+   
+}
+
+.e_storeCardStack_less{
+	border: 1px solid #fff;  
+    float: left;  
+    height: 100%; width: 100%;  
+   
+    position: relative;  
+  
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+}
+
+.e_storeCardStack_less:before {
+	content: "";  
+    height: 100%; width: 100%;  
+    background: #eff4de;  
+    border: 1px solid #fff;  
+       
+    position: absolute;  
+    z-index: -1;  
+    top: 5px;  
+    left: 0px;  
+       
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);  
+       
+  
+}
+
+
+
