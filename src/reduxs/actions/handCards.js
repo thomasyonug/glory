@@ -1,8 +1,7 @@
 import{
     ADD_HANDCARDS,
     DELETE_HANDCARDS,
-    UPDATE_HANDCARDS,
-    QUERY_HANDCARDS
+    UPDATE_HANDCARDS
 } from 'reduxs/constant'
 
 
