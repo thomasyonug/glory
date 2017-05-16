@@ -1,6 +1,12 @@
-export const user = {
-    url: '/api/demo',
-    data: {
-      name: '[@name](/user/name)()'
-    }
+/**
+ * @param {String} username
+ * @param {String} password
+ * @param {object} errcode
+ */
+export const login = {
+  url: '/api/login',
+  data: {
+    errcode: 0
+  },
+  method: 'post'
 }
