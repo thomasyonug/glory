@@ -8,11 +8,20 @@ import {Provider} from 'react-redux'
 import reducer from 'reduxs/reducer'
 
 const store = createStore(reducer)
-//mock
-import fetchMock from 'fetch-mock'
-console.log(fetchMock)
-fetchMock.get('*', {hello: 'world'});
 
+//mock
+if (process.env.NODE_ENV === 'development') {
+  const fetchMock = require('fetch-mock')
+  const templateData = require('./mock')
+  Object.keys(templateData).forEach(key => {
+    const {
+      method,
+      url,
+      data
+    } = templateData[key]
+    fetchMock[method](url, data)
+  })
+}
 
 
 ReactDOM.render(
