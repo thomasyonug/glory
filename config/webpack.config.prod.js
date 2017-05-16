@@ -7,6 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var paths = require('./paths');
+var path = require('path');
 var getClientEnvironment = require('./env');
 
 
@@ -82,7 +83,11 @@ module.exports = {
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      'components': path.resolve(__dirname, '../src/components'),
+      'pages': path.resolve(__dirname, '../src/pages'),
+      'reduxs': path.resolve(__dirname, '../src/reduxs'),
+      'decorators': path.resolve(__dirname, '../src/decorators')
     }
   },
   
@@ -142,7 +147,7 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
           'style',
-          'css?importLoaders=1!postcss',
+          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5pm]',
           extractTextPluginOptions
         )
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
