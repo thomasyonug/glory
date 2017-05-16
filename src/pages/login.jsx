@@ -7,53 +7,55 @@ import  'whatwg-fetch'
 @CSSModules(styles)
 export default class Login extends Component{
     constructor(props) {
-        super(props);
-        this.state = {username:'',password:''};
-    }
-    login = () => {
-        let username = this.state.username;
-        let password = this.state.password;
-        let data = { "username":username,"password":password };
-
-        fetch('/api/login', {
-          method: 'POST',
-          body: data
-        }).then(res => {
-            return res.text()
-        }).then(text => {
-            console.log(text);
-            window.location.href = "http://localhost:3000/#/game";
-        })
-    }
-    handleUserName = (e) => {
-        this.setState({username: e.target.value});
-    }
-    handlePassWord = (e) => {
-        this.setState({password: e.target.value});
+        super(props)
+        this.state = {username:'',password:''}
     }
 
     render(){
-       
-        return (
-            // <div styleName=''>
-            //     <div>
-            //         <Link to={`/start`}>start</Link>
-            //     </div>
-                
-            // </div>
+        const {
+            handleUserName,
+            handlePassWord,
+            login
+        } = this
 
+        return (
             <div styleName="login_content">
                 <div>
                     <label >用户名:</label>
-                    <input  name="username" onChange={this.handleUserName} />
+                    <input  name="username" onChange={handleUserName} />
                 </div>
                 <div>
                     <label >密码:</label>
-                    <input  name="password" type="password" onChange={this.handlePassWord} />
+                    <input  name="password" type="password" onChange={handlePassWord} />
                 </div>
-                <button styleName="login_btn" onClick={this.login}>登陆</button>
+                <button styleName="login_btn" onClick={login}>登陆</button>
             </div>
             
         )
     }
+
+    login = () => {
+        const {
+            username,
+            password
+        } = this.state
+
+        fetch('/api/login', {
+          method: 'POST',
+          body: {username, password}
+        }).then(res => {
+            return res.text()
+        }).then(json => {
+           console.log(json) 
+        })
+    }
+
+    handleUserName = (e) => {
+        this.setState({username: e.target.value})
+    }
+
+    handlePassWord = (e) => {
+        this.setState({password: e.target.value})
+    }
+
 }
