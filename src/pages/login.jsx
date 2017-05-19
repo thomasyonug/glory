@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
-import {Link} from 'react-router-dom'
 import styles from './login.css'
-import  'whatwg-fetch'
+import {http} from 'decorators'
 
+@http
 @CSSModules(styles)
 export default class Login extends Component{
     constructor(props) {
@@ -39,13 +39,12 @@ export default class Login extends Component{
             username,
             password
         } = this.state
-
-        fetch('/api/login', {
-          method: 'POST',
-          body: {username, password}
-        }).then(res => {
-            return res.text()
-        }).then(json => {
+        const body = {
+            username,
+            password
+        }
+        
+        this.props.$http.post('/api/login', JSON.stringify(body)).then(json => {
            console.log(json) 
         })
     }
