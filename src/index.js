@@ -9,21 +9,21 @@ import reducer from 'reduxs/reducer'
 const store = createStore(reducer)
 
 //mock
-if (process.env.NODE_ENV === 'development') {
-  Promise.all([
-    import('fetch-mock'),
-    import('./mock')
-  ]).then(([fetchMock, templateData]) => {
-    Object.keys(templateData).forEach(key => {
-      const {
-        method,
-        url,
-        data
-      } = templateData[key]
-      fetchMock[method](url, data)
-    })
-  })
-}
+// if (process.env.NODE_ENV === 'development') {
+//   Promise.all([
+//     import('fetch-mock'),
+//     import('./mock')
+//   ]).then(([fetchMock, templateData]) => {
+//     Object.keys(templateData).forEach(key => {
+//       const {
+//         method,
+//         url,
+//         data
+//       } = templateData[key]
+//       fetchMock[method](url, data)
+//     })
+//   })
+// }
 
 
 ReactDOM.render(
