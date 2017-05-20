@@ -83,7 +83,9 @@ module.exports = {
       'components': path.resolve(__dirname, '../src/components'),
       'pages': path.resolve(__dirname, '../src/pages'),
       'reduxs': path.resolve(__dirname, '../src/reduxs'),
-      'decorators': path.resolve(__dirname, '../src/decorators')
+      'decorators': path.resolve(__dirname, '../src/decorators'),
+      'plugin': path.resolve(__dirname, '../src/plugin'),
+      'util': path.resolve(__dirname, '../src/util')
       // 'router': path.resolve(__dirname, '../src/router')
     }
   },
