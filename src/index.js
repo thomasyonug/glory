@@ -6,7 +6,17 @@ import './index.css';
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import reducer from 'reduxs/reducer'
+import {Component} from 'react'
+import * as plugins from 'plugin/index'
+
+
+Object.keys(plugins).forEach(key => {
+  Component.prototype[key] = plugins[key]
+})
+
 const store = createStore(reducer)
+
+
 
 //mock
 // if (process.env.NODE_ENV === 'development') {
