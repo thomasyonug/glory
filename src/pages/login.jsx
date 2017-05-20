@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './login.css'
-import {http} from 'decorators'
 
-@http
 @CSSModules(styles)
 export default class Login extends Component{
     constructor(props) {
@@ -39,12 +37,8 @@ export default class Login extends Component{
             username,
             password
         } = this.state
-        const body = {
-            username,
-            password
-        }
-        
-        this.props.$http.post('/api/login', JSON.stringify(body)).then(json => {
+        console.log(this)
+        this.$http.post('/api/login', JSON.stringify({username, password})).then(json => {
            console.log(json) 
         })
     }
