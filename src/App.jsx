@@ -24,7 +24,7 @@ export default class App extends Component {
             {routers.map(route => (
               <Route path={`/${route.path}`} component={route.component.default} key={route.path} />
             ))}
-            <Redirect from="/*" to="/game"></Redirect>
+            <Redirect from="/*" to="/login"></Redirect>
         </Switch>
       </Router>
     );
