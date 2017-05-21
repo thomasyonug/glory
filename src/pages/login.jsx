@@ -1,7 +1,21 @@
 import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './login.css'
+import {connect} from 'react-redux'
+import * as ac from 'reduxs/actions'
 
+
+
+@connect(
+    state => {
+        return {}
+    },
+    dispatch => {
+        return {
+            modifyLoginStatus: content => dispatch(ac.modifyLoginStatusActionCreator(content))
+        }
+    }
+)
 @CSSModules(styles)
 export default class Login extends Component{
     constructor(props) {
@@ -38,7 +52,9 @@ export default class Login extends Component{
             password
         } = this.state
         this.$http.post('/public/login', {username, password}).then(json => {
-            window.location = '#/start'
+            console.log(this)
+            this.props.modifyLoginStatus(true)
+            window.location = '#/search'
         })
     }
 
