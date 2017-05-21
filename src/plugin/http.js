@@ -1,3 +1,13 @@
+function statusHandle (status) {
+    switch(status){
+        case 401:
+            window.location = '#/login'
+    }
+}
+
+
+
+
 export const $http = {
    async post (url, body) {
         const res = await fetch(url, {
@@ -5,10 +15,20 @@ export const $http = {
             headers: {
               'Content-Type': 'application/json'
             },
-            body
+            body: JSON.stringify(body),
+            credentials: 'same-origin'
         })
-        const data = await res.text()
-        return data
+
+        statusHandle(res.status)
+
+        const data = await res.json()
+
+        if (data.errcode === 0) { 
+            return data 
+        } else {
+            throw new Error(data)
+        }
+        
     }
 } 
 
