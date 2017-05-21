@@ -2,6 +2,9 @@ function statusHandle (status) {
     switch(status){
         case 401:
             window.location = '#/login'
+        break;
+        default:
+        break;
     }
 }
 
