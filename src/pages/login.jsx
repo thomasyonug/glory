@@ -37,9 +37,8 @@ export default class Login extends Component{
             username,
             password
         } = this.state
-        console.log(this)
-        this.$http.post('/api/login', JSON.stringify({username, password})).then(json => {
-           console.log(json) 
+        this.$http.post('/public/login', {username, password}).then(json => {
+            window.location = '#/start'
         })
     }
 

@@ -39,12 +39,7 @@ export default class Operator extends Component{
 
 
     minify = () => {
-        fetch('/api/login',{
-            credentials: 'same-origin',
-            method: 'post'
-        }).then(res => {
-            return res.text()
-        }).then(body => {
+        this.$http.post('/api/test').then(body => {
             console.log(body)
         })
         this.setState({mini: !this.state.mini})
