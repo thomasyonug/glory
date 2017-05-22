@@ -13,8 +13,8 @@ param
 
 | field          | comment          | require  |
 | ------------- |:-------------:| -------:|
-|username| username | true |
-|password| password | true |
+|username| / | true |
+|password| / | true |
 
 return
 
