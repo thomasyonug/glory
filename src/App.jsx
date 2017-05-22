@@ -22,7 +22,11 @@ export default class App extends Component {
       <Router>
         <Switch>
             {routers.map(route => (
-              <Route path={`/${route.path}`} component={route.component.default} key={route.path} />
+              <Route 
+                path={`/${route.path}`} 
+                component={route.component.default} 
+                key={route.path} 
+                />
             ))}
             <Redirect from="/*" to="/login"></Redirect>
         </Switch>

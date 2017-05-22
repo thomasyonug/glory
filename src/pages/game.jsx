@@ -3,11 +3,12 @@ import CSSModules from 'react-css-modules'
 import {Link} from 'react-router-dom'
 import styles from './game.css'
 
+import { routeHook } from 'decorators'
 
 
 
 
-
+@routeHook
 @CSSModules(styles)
 export default class Game extends Component{
     render(){
