@@ -42,7 +42,6 @@ export default class Login extends Component{
                 </div>
                 <button styleName="login_btn" onClick={login}>登陆</button>
             </div>
-            
         )
     }
 
@@ -52,7 +51,6 @@ export default class Login extends Component{
             password
         } = this.state
         this.$http.post('/public/login', {username, password}).then(json => {
-            console.log(this)
             this.props.modifyLoginStatus(true)
             window.location = '#/search'
         })

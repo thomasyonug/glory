@@ -94,5 +94,5 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://localhost:8888"
+  "proxy": "http://articleyoung.cn:8888"
 }
