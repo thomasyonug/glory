@@ -1,11 +1,11 @@
-import {combineReducers} from 'redux'
-import storeCards        from './storeCards'
-import e_storeCards      from './e_storeCards'
-import handCards         from './handCards'
-import e_handCards       from './e_handCards'
-import god               from './god'
-import user              from './user'
-
+import { combineReducers } from 'redux'
+import storeCards          from './storeCards'
+import e_storeCards        from './e_storeCards'
+import handCards           from './handCards'
+import e_handCards         from './e_handCards'
+import god                 from './god'
+import user                from './user'
+import room                from './room'
 
 
 export default combineReducers({
@@ -14,7 +14,8 @@ export default combineReducers({
     handCards,
     e_handCards,
     god,
-    user
+    user,
+    room
 })
 
 

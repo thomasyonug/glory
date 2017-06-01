@@ -85,7 +85,9 @@ module.exports = {
       'reduxs': path.resolve(__dirname, '../src/reduxs'),
       'decorators': path.resolve(__dirname, '../src/decorators'),
       'plugin': path.resolve(__dirname, '../src/plugin'),
-      'util': path.resolve(__dirname, '../src/util')
+      'util': path.resolve(__dirname, '../src/util'),
+      'ws': path.resolve(__dirname, '../src/ws'),
+      'middleware': path.resolve(__dirname, '../src/middleware')
       // 'router': path.resolve(__dirname, '../src/router')
     }
   },
