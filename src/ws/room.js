@@ -16,10 +16,11 @@ export const joinRoom$ = Rx.Observable.create(observer => {
     })
 })
 
-export const createRoom$ = Rx.Observable.create(observer => {
-    rootSocket.emit('createRoom', (msg) => {
+export const createRoomFn = msg => Rx.Observable.create(observer => {
+    rootSocket.emit('createRoom', msg,(msg) => {
         observer.next(msg)
         rootSocket.emit('getRooms')
+        observer.complete()
     })
 })
 
