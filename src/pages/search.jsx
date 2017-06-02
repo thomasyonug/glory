@@ -4,16 +4,16 @@ import styles from './search.css'
 
 import { routeHook } from 'decorators'
 
-import {getRooms$, createRoom$} from 'ws'
+import {getRooms$, createRoomFn} from 'ws'
 import {connect} from 'react-redux'
-import {getRoomsActionCreator} from 'reduxs/actions'
+import {setRoomsActionCreator} from 'reduxs/actions'
 
 @connect(
     state => ({
-        rooms: state.rooms
+        rooms: state.room.rooms
     }),
     dispatch => ({
-        getRoom: content => dispatch(getRoomsActionCreator(content))
+        setRooms: content => dispatch(setRoomsActionCreator(content))
     })
 )
 @routeHook
@@ -22,42 +22,51 @@ export default class Search extends Component{
     constructor(props) {
         super()
         this.state = {
-            rooms: {}
         }
     }
     componentDidMount () {
         getRooms$.subscribe(data => {
-            this.props.getRoom(data)
+            this.props.setRooms(data)
         })
     }
 
 
 
     render () {
-
-
-
+        const {
+            rooms
+        } = this.props
 
 
         const roomRender = room => (
             <div 
                 styleName="roomWrapper"
                 key={room.host}>
-                {room.name}
+                <div>
+                    {room.name}
+                </div>
+                <div>
+                    host: {room.host}
+                </div>
+                <div>
+                    guest: {room.guest.map(item => <span>{item}</span>)}
+                </div>
             </div>
         )
 
 
         return (
             <div>
-                {Object.keys(this.state.rooms).map(key => this.state.rooms[key]).map(roomRender)}
+                {Object.keys(rooms).map(roomName => roomRender(rooms[roomName]))}
                 <button onClick={this.createRoom}>create a room</button>
             </div>
         )
     }
 
     createRoom = () => {
-        
+        createRoomFn({
+            name: 'fuck'
+        }).subscribe()
     }
 
 

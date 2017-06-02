@@ -1,5 +1,7 @@
 .roomWrapper{
-    width: 100px;
+    width: 33%;
     height: 100px;
-    background: red;
+    display: inline-block;
+    border: 1px solid #e1e1e1;
+    overflow: hidden;
 }
