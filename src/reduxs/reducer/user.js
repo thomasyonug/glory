@@ -19,7 +19,6 @@ export default function User(state = initState, action) {
                 logined: action.content
             }
         default:
-        break;
+        return state
     }
-    return action
 }

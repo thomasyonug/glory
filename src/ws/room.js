@@ -10,20 +10,30 @@ export const getRooms$ = Rx.Observable.create(observer => {
     rootSocket.emit('getRooms')
 })
 
-export const joinRoom$ = Rx.Observable.create(observer => {
-    rootSocket.emit('joinRoom', (msg) => {
-        observer.next(msg)
-    })
+export const joinRoomFn = msg => Rx.Observable.create(observer => {
+    rootSocket.emit('joinRoom', msg)
+    observer.complete()
 })
 
 export const createRoomFn = msg => Rx.Observable.create(observer => {
     rootSocket.emit('createRoom', msg,(msg) => {
         observer.next(msg)
-        rootSocket.emit('getRooms')
         observer.complete()
     })
 })
 
+export const joinRoom$ = Rx.Observable.create(observer => {
+    rootSocket.on('joinRoom', data => {
+        observer.next(data)
+        // observer.complete()
+    })
+})
+
+
+export const leaveRoomFn = Rx.Observable.create(observer => {
+    rootSocket.emit('leaveRoom')
+    observer.complete()
+})
 // export const getRooms$ = (() => {
 //     const subject = new Rx.Subject()
 //     rootSocket.on('getRooms', data => {

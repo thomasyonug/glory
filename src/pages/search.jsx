@@ -4,16 +4,22 @@ import styles from './search.css'
 
 import { routeHook } from 'decorators'
 
-import {getRooms$, createRoomFn} from 'ws'
+import {getRooms$, createRoomFn, joinRoom$, joinRoomFn} from 'ws'
 import {connect} from 'react-redux'
-import {setRoomsActionCreator} from 'reduxs/actions'
+import {setRoomsActionCreator, joinRoomActionCreator} from 'reduxs/actions'
+
+
+
+
+
 
 @connect(
     state => ({
         rooms: state.room.rooms
     }),
     dispatch => ({
-        setRooms: content => dispatch(setRoomsActionCreator(content))
+        setRooms: content => dispatch(setRoomsActionCreator(content)),
+        joinRoom: content => dispatch(joinRoomActionCreator(content))
     })
 )
 @routeHook
@@ -21,13 +27,19 @@ import {setRoomsActionCreator} from 'reduxs/actions'
 export default class Search extends Component{
     constructor(props) {
         super()
-        this.state = {
-        }
+        this.state = {}
+        this.eventStore = []
     }
     componentDidMount () {
-        getRooms$.subscribe(data => {
-            this.props.setRooms(data)
-        })
+        this.eventStore.push(
+            getRooms$.subscribe(data => {
+                this.props.setRooms(data)
+            }),
+            joinRoom$.subscribe(data => {
+                this.props.joinRoom(data)
+                window.location = '#/room'
+            })
+        )
     }
 
 
@@ -49,7 +61,10 @@ export default class Search extends Component{
                     host: {room.host}
                 </div>
                 <div>
-                    guest: {room.guest.map(item => <span>{item}</span>)}
+                    guest: {room.guests.map((item, index) => <span key={index}>{item}</span>) || 'none'}
+                </div>
+                <div>
+                    <button onClick={event => this.joinRoom(room)}>加入</button>
                 </div>
             </div>
         )
@@ -57,10 +72,19 @@ export default class Search extends Component{
 
         return (
             <div>
-                {Object.keys(rooms).map(roomName => roomRender(rooms[roomName]))}
+                {rooms.map(room => roomRender(room))}
                 <button onClick={this.createRoom}>create a room</button>
+                <button onClick={this.leaveRoom}>leave a room</button>
             </div>
         )
+    }
+
+
+
+    componentWillUnmount() {
+        this.eventStore.forEach(subscrition => {
+            subscrition.unsubscribe()
+        })
     }
 
     createRoom = () => {
@@ -69,8 +93,10 @@ export default class Search extends Component{
         }).subscribe()
     }
 
-
-    componentWillUnmount() {
+    joinRoom = (room) => {
+        joinRoomFn({
+            roomID: room.id
+        }).subscribe()
     }
 
 }
