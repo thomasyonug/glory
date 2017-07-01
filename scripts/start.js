@@ -217,6 +217,9 @@ function addMiddleware(devServer) {
   // Finally, by now we have certainly resolved the URL.
   // It may be /index.html, so let the dev server try serving it again.
   devServer.use(devServer.middleware);
+  devServer.use(function(){
+    console.log(123)
+  })
 }
 
 function runDevServer(host, port, protocol) {

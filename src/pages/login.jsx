@@ -4,8 +4,6 @@ import styles from './login.css'
 import {connect} from 'react-redux'
 import * as ac from 'reduxs/actions'
 
-
-
 @connect(
     state => {
         return {}
@@ -45,15 +43,15 @@ export default class Login extends Component{
         )
     }
 
-    login = () => {
+    login = async () => {
         const {
             username,
             password
         } = this.state
-        this.$http.post('/public/login', {username, password}).then(json => {
-            this.props.modifyLoginStatus(true)
-            window.location = '#/search'
-        })
+        const json = await this.$http.post('/public/login', {username, password})
+        this.props.modifyLoginStatus(true)
+        this.initSocket()
+        window.location = '#/search'
     }
 
     handleUserName = (e) => {
@@ -62,6 +60,12 @@ export default class Login extends Component{
 
     handlePassWord = (e) => {
         this.setState({password: e.target.value})
+    }
+    
+
+    initSocket () {
+        this.$ws.handShake()
+        this.$ws.startListen()
     }
 
 }

@@ -1,21 +1,26 @@
-import wsConfig from './config'
+import wsConfig from '../config'
 import io from 'socket.io-client'
 
-              
-export default class RootSocket {
+
+
+export default class Entity {
     io;
     wsConfig;
     coreSocket;
+    path;
 
-    constructor () {
+    constructor (path) {
         Object.assign(this, {
             io,
-            wsConfig
+            wsConfig,
+            path
         })
     }
 
     handShake () {
-        this.coreSocket = io(wsConfig.wsUrl)
+        this.coreSocket = io(`${wsConfig.wsUrl}${this.path}`, {
+            forceNew: true
+        })
         this.decorateEmit()
     }
 

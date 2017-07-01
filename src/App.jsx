@@ -17,6 +17,8 @@ const routers = contexts.keys().reduce((routers, key) => {
 }, [])
 
 export default class App extends Component {
+
+
   render() {
     return (
       <Router>

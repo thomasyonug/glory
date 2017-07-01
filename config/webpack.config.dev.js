@@ -87,7 +87,8 @@ module.exports = {
       'plugin': path.resolve(__dirname, '../src/plugin'),
       'util': path.resolve(__dirname, '../src/util'),
       'ws': path.resolve(__dirname, '../src/ws'),
-      'middleware': path.resolve(__dirname, '../src/middleware')
+      'middleware': path.resolve(__dirname, '../src/middleware'),
+      '@': path.resolve(__dirname, '../src')
       // 'router': path.resolve(__dirname, '../src/router')
     }
   },

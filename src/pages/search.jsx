@@ -4,9 +4,10 @@ import styles from './search.css'
 
 import { routeHook } from 'decorators'
 
-import {getRooms$, createRoomFn, joinRoom$, joinRoomFn} from 'ws'
 import {connect} from 'react-redux'
 import {setRoomsActionCreator, joinRoomActionCreator} from 'reduxs/actions'
+
+
 
 
 
@@ -31,15 +32,15 @@ export default class Search extends Component{
         this.eventStore = []
     }
     componentDidMount () {
-        this.eventStore.push(
-            getRooms$.subscribe(data => {
-                this.props.setRooms(data)
-            }),
-            joinRoom$.subscribe(data => {
-                this.props.joinRoom(data)
-                window.location = '#/room'
-            })
-        )
+        // this.eventStore.push(
+        //     getRooms$.subscribe(data => {
+        //         this.props.setRooms(data)
+        //     }),
+        //     joinRoom$.subscribe(data => {
+        //         this.props.joinRoom(data)
+        //         window.location = '#/room'
+        //     })
+        // )
     }
 
 
@@ -82,21 +83,18 @@ export default class Search extends Component{
 
 
     componentWillUnmount() {
-        this.eventStore.forEach(subscrition => {
-            subscrition.unsubscribe()
-        })
+        // this.eventStore.forEach(subscrition => {
+        //     subscrition.unsubscribe()
+        // })
     }
 
     createRoom = () => {
-        createRoomFn({
-            name: 'fuck'
-        }).subscribe()
+        this.$ws.roomApi.createRoom({
+            roomNme: 'fucking room name'
+        })
     }
 
     joinRoom = (room) => {
-        joinRoomFn({
-            roomID: room.id
-        }).subscribe()
     }
 
 }
