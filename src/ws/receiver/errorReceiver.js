@@ -5,9 +5,14 @@ export class ErrorReceiver extends Entity{
     socket;
 
 
-    constructor (rootSocket) {
+    constructor (errorSocket) {
         super()
-        this.socket = rootSocket
+        this.socket = errorSocket
     }
     
+
+    startListen () {
+        this.socket.coreSocket.$on('err', msg => {
+        })
+    }
 }

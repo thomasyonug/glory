@@ -9,7 +9,7 @@ import {
     ErrorReceiver
 } from './receiver'
 
-import RoomApi from './room'
+import {RoomApi} from './api'
 
 
 
@@ -41,7 +41,7 @@ export default class Ws {
 
     startListen () {
         // this.roomReceiver.startListen()
-        // this.errorReceiver.startListen()
+        this.errorReceiver.startListen()
     }
 
 }

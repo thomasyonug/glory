@@ -1,10 +1,10 @@
 
 
-export default class RoomApi {
+export class RoomApi {
     socket;
 
-    constructor (rootSocket) {
-        this.socket = rootSocket
+    constructor (roomSocket) {
+        this.socket = roomSocket
     }
 
 
