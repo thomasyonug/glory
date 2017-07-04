@@ -32,6 +32,7 @@ export default class Search extends Component{
         this.eventStore = []
     }
     componentDidMount () {
+        this.$ws.roomApi.roomList()
     }
 
 
@@ -45,9 +46,9 @@ export default class Search extends Component{
         const roomRender = room => (
             <div 
                 styleName="roomWrapper"
-                key={room.host}>
+                key={room.roomId}>
                 <div>
-                    {room.name}
+                    {room.roomName}
                 </div>
                 <div>
                     host: {room.host}
@@ -85,7 +86,8 @@ export default class Search extends Component{
         })
     }
 
-    joinRoom = (room) => {
+    joinRoom = room => {
+        this.$ws.roomApi.joinRoom(room)
     }
 
 }

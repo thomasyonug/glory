@@ -14,6 +14,20 @@ export class RoomApi {
             content: msg
         })
     }
+
+    roomList = () => {
+        this.socket.coreSocket.$emit('room', {
+            type: 'roomList'
+        })
+    }
+
+    joinRoom = room => {
+        this.socket.coreSocket.$emit('room', {
+            type: 'join',
+            content: room
+        })
+    }
+
 }
 
 

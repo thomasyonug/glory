@@ -13,7 +13,7 @@ export default combineReducers({
     e_storeCards,
     handCards,
     e_handCards,
-    god,
+    // god,
     user,
     room
 })

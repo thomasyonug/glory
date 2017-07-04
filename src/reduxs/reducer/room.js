@@ -1,5 +1,5 @@
 import {
-    GET_ROOMS, 
+    // GET_ROOMS, 
     CREATE_ROOM,
     JOIN_ROOM, 
     QUIT_ROOM,

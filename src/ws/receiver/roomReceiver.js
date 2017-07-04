@@ -4,18 +4,16 @@ import {store} from '@/index'
 
 
 export class RoomReceiver {
-    store;
     socket;
 
     constructor (rootSocket) {
-        this.store = store
         this.socket = rootSocket
     }
 
     
     startListen () {
         this.socket.coreSocket.$on('room', msg => {
-            this[msg.type](msg)
+            this[msg.type].call(this, msg)
         })
     }
 
@@ -23,5 +21,11 @@ export class RoomReceiver {
         window.location = '#/room'
     }
 
+    roomList (msg) {
+        store.dispatch({
+            type: 'SET_ROOMS',
+            content: msg.content
+        })
+    }
 
 }

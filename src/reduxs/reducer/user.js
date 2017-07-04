@@ -20,16 +20,14 @@ export default function User(state = initState, action) {
                 ...state,
                 logined: action.content
             }
-        break;
 
         case SAVE_LOGIN_TOKEN:
             return {
                 ...state,
                 token: action.content
             }
-        break;
 
         default:
-        return state
+            return state
     }
 }
