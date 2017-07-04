@@ -14,10 +14,14 @@ export class RoomReceiver {
 
     
     startListen () {
-        this.socket.coreSocket.on('room', msg => {
-            console.log(msg)
-            // this.store.dispatch()
+        this.socket.coreSocket.$on('room', msg => {
+            this[msg.type](msg)
         })
     }
+
+    joinRoom (roomInfo) {
+        window.location = '#/room'
+    }
+
 
 }

@@ -40,7 +40,7 @@ export default class Ws {
     }
 
     startListen () {
-        // this.roomReceiver.startListen()
+        this.roomReceiver.startListen()
         this.errorReceiver.startListen()
     }
 

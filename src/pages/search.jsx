@@ -81,7 +81,7 @@ export default class Search extends Component{
 
     createRoom = () => {
         this.$ws.roomApi.createRoom({
-            roomNme: 'fucking room name'
+            roomName: 'fucking room name'
         })
     }
 
