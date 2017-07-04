@@ -10,7 +10,8 @@ import * as ac from 'reduxs/actions'
     },
     dispatch => {
         return {
-            modifyLoginStatus: content => dispatch(ac.modifyLoginStatusActionCreator(content))
+            modifyLoginStatus: content => dispatch(ac.modifyLoginStatusActionCreator(content)),
+            saveLoginToken: content => dispatch(ac.saveLoginTokenActionCreator(content))
         }
     }
 )
@@ -18,7 +19,7 @@ import * as ac from 'reduxs/actions'
 export default class Login extends Component{
     constructor(props) {
         super(props)
-        this.state = {username:'',password:''}
+        this.state = {username:'', password:''}
     }
 
     render(){
@@ -50,6 +51,7 @@ export default class Login extends Component{
         } = this.state
         const json = await this.$http.post('/public/login', {username, password})
         this.props.modifyLoginStatus(true)
+        this.props.saveLoginToken(json.token)
         this.initSocket()
         window.location = '#/search'
     }

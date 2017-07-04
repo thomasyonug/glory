@@ -1,19 +1,23 @@
 import io from 'socket.io-client'
 import wsConfig from '../config'
+import {store} from '@/index'
+
 
 let socket = null;
 export function getSocket () {
     if (!socket) {
-        socket = io(wsConfig.wsUrl)
-        decorate(socket)
+        socket = io(wsConfig.wsUrl, {
+            query: {
+                token: store.getState().user.token
+            }
+        })
+        middleware(socket)
     }
-
-
     return socket
 }
 
 
-function decorate (socket) {
+function middleware (socket) {
     $emitFn(socket)
     $onFn(socket)
 }

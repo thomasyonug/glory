@@ -32,15 +32,6 @@ export default class Search extends Component{
         this.eventStore = []
     }
     componentDidMount () {
-        // this.eventStore.push(
-        //     getRooms$.subscribe(data => {
-        //         this.props.setRooms(data)
-        //     }),
-        //     joinRoom$.subscribe(data => {
-        //         this.props.joinRoom(data)
-        //         window.location = '#/room'
-        //     })
-        // )
     }
 
 
