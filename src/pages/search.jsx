@@ -29,7 +29,6 @@ export default class Search extends Component{
     constructor(props) {
         super()
         this.state = {}
-        this.eventStore = []
     }
     componentDidMount () {
         this.$ws.roomApi.roomList()
@@ -79,9 +78,6 @@ export default class Search extends Component{
 
 
     componentWillUnmount() {
-        // this.eventStore.forEach(subscrition => {
-        //     subscrition.unsubscribe()
-        // })
     }
 
     createRoom = () => {

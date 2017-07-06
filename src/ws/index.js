@@ -22,13 +22,13 @@ export default class Ws {
     roomReceiver;
 
     constructor () {
-        this.roomSocket = new RoomSocket()
-        this.errorSocket = new ErrorSocket()
-        this.gameSocket = new GameSocket()
+        this.roomSocket    = new RoomSocket()
+        this.errorSocket   = new ErrorSocket()
+        this.gameSocket    = new GameSocket()
 
 
-        this.roomApi    = new RoomApi(this.roomSocket)
-        this.roomReceiver = new RoomReceiver(this.roomSocket)
+        this.roomApi       = new RoomApi(this.roomSocket)
+        this.roomReceiver  = new RoomReceiver(this.roomSocket)
         this.errorReceiver = new ErrorReceiver(this.errorSocket)
     }
 
