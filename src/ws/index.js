@@ -6,7 +6,8 @@ import {
 
 import {
     RoomReceiver,
-    ErrorReceiver
+    ErrorReceiver,
+    MetaReceiver
 } from './receiver'
 
 import {RoomApi} from './api'
@@ -20,6 +21,8 @@ export default class Ws {
 
     roomApi;
     roomReceiver;
+    errorReceiver;
+    metaReceiver;
 
     constructor () {
         this.roomSocket    = new RoomSocket()
@@ -30,6 +33,7 @@ export default class Ws {
         this.roomApi       = new RoomApi(this.roomSocket)
         this.roomReceiver  = new RoomReceiver(this.roomSocket)
         this.errorReceiver = new ErrorReceiver(this.errorSocket)
+        this.metaReceiver  = new MetaReceiver(this.roomSocket)
     }
 
 
@@ -42,6 +46,7 @@ export default class Ws {
     startListen () {
         this.roomReceiver.startListen()
         this.errorReceiver.startListen()
+        this.metaReceiver.startListen()
     }
 
 }

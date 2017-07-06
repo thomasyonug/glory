@@ -53,7 +53,6 @@ export default class Login extends Component{
         this.props.modifyLoginStatus(true)
         this.props.saveLoginToken(json.token)
         this.initSocket()
-        window.location = '#/search'
     }
 
     handleUserName = (e) => {
