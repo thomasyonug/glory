@@ -65,7 +65,11 @@ export default class Search extends Component{
 
         return (
             <div>
-                {rooms.map(room => roomRender(room))}
+                {rooms.map((room, index) => 
+                    <div key={index}>
+                        {roomRender(room)}
+                    </div>)}
+
                 <button onClick={this.createRoom}>create a room</button>
                 <button onClick={this.leaveRoom}>leave a room</button>
             </div>
@@ -84,10 +88,12 @@ export default class Search extends Component{
         this.$ws.roomApi.createRoom({
             roomName: 'fucking room name'
         })
+        window.location = '#/room'
     }
 
     joinRoom = room => {
         this.$ws.roomApi.joinRoom(room)
+        window.location = '#/room'
     }
 
 }

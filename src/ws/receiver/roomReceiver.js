@@ -17,13 +17,20 @@ export class RoomReceiver {
         })
     }
 
-    joinRoom (roomInfo) {
-        window.location = '#/room'
-    }
+    // joinRoom (roomInfo) {
+    //     window.location = '#/room'
+    // }
 
     roomList (msg) {
         store.dispatch({
             type: 'SET_ROOMS',
+            content: msg.content
+        })
+    }
+
+    roomInfo (msg) {
+        store.dispatch({
+            type: 'SET_ROOM',
             content: msg.content
         })
     }

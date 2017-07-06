@@ -15,6 +15,7 @@ import { routeHook } from 'decorators'
 @connect(
     state => {
         return {
+            roomInfo: state.room.currentRoom
         }
     },
     dispatch => {
@@ -28,19 +29,30 @@ export default class Room extends Component{
 
     constructor(props) {
         super(props)
-        console.log('room build')
     }
 
     componentDidMount () {
+        this.$ws.roomApi.roomInfo()
     }
 
     render () {
+        const roomInfo = this.props.roomInfo
+        if (Object.keys(roomInfo).length !== 0) {
+            return (
+                <div>
+                    <h1>roomName: {roomInfo.roomName}</h1>
+                    <h2>host: {roomInfo.host}</h2>
+                    {roomInfo.guests.map((guest,index) => {
+                        return <div key={index}>guest{index}: {guest}</div>
+                    })}
+                </div>
+            )
+        } else {
+            return (
+                <div>加载中</div>
+            )
+        }
 
-
-
-        return (
-            <div>room</div>
-        )
     }
 
     componentWillUnmount() {
