@@ -13,7 +13,12 @@ export default class SendCore extends Component {
     }
 
     render () {
-
+        const {
+            enterHandle,
+            changeHandle,
+            send,
+            state
+        } = this
 
         return (
             <div styleName="wrapper">
@@ -22,12 +27,12 @@ export default class SendCore extends Component {
                         type="text" 
                         placeholder="msg here" 
                         styleName="input" 
-                        value={this.state.msg}
-                        onKeyDown={this.enterHandle}
-                        onChange={this.changeHandle}/>
+                        value={state.msg}
+                        onKeyDown={enterHandle}
+                        onChange={changeHandle}/>
                 </div>
                 <div styleName="per20">
-                    <button onClick={this.send}>发送</button>
+                    <button onClick={send}>发送</button>
                 </div>
             </div>
         )
