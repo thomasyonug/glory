@@ -1,3 +1,3 @@
 export * from './http'
 export * from './ws'
-export * from './dialog'
+export * from './dialog/index'

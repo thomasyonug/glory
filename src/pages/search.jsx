@@ -28,7 +28,8 @@ import {setRoomsActionCreator, joinRoomActionCreator} from 'reduxs/actions'
 export default class Search extends Component{
     constructor(props) {
         super()
-        this.state = {}
+        this.state = {
+        }
     }
     componentDidMount () {
         this.$ws.roomApi.roomList()
@@ -81,10 +82,23 @@ export default class Search extends Component{
     }
 
     createRoom = () => {
-        this.$ws.roomApi.createRoom({
-            roomName: 'fucking room name'
+        
+        const dialogContentRender = (dialogContext) => {
+            return (
+                <input 
+                    type="text" 
+                    placeholder="room name" 
+                    value={dialogContext.state.roomName || ""}
+                    onChange={(e) => dialogContext.setState({roomName: e.target.value})}
+                />
+            )
+        } 
+        this.$dialog(dialogContentRender).then(state => {
+            this.$ws.roomApi.createRoom({
+                roomName: state.roomName
+            })
+            window.location = '#/room'
         })
-        window.location = '#/room'
     }
 
     joinRoom = room => {
