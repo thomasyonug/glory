@@ -1,0 +1,19 @@
+.currentRoom {
+	width: 900px;
+	height: 400px;
+	border: 1px solid blue;
+}
+
+.hostRoom {
+	float: left;
+	width: 200px;
+	height: 200px;
+	border: 1px solid blue;
+}
+
+.guestRoom {
+	float: right;
+	width: 200px;
+	height: 200px;
+	border: 1px solid blue;
+}
