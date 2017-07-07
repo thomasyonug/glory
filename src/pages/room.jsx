@@ -21,6 +21,7 @@ import { routeHook } from 'decorators'
     },
     dispatch => {
         return {
+            clearMsgs: () => dispatch({type: 'CLEAR_MSGS'})
         }
     }
 )
@@ -62,10 +63,10 @@ export default class Room extends Component{
 
     }
 
-    componentWillUnmount() {
-    }
-
     quitRoom = (roomID) => {
         this.$ws.roomApi.quitRoom(roomID)
+    }
+    componentWillUnmount () {
+        this.props.clearMsgs()    
     }
 }

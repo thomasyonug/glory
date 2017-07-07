@@ -23,6 +23,7 @@ export default class SendCore extends Component {
                         placeholder="msg here" 
                         styleName="input" 
                         value={this.state.msg}
+                        onKeyDown={this.enterHandle}
                         onChange={this.changeHandle}/>
                 </div>
                 <div styleName="per20">
@@ -47,5 +48,11 @@ export default class SendCore extends Component {
         this.setState({
             msg: ''
         })
+    }
+
+    enterHandle = e => {
+        if (e.keyCode === 13) {
+            this.send()
+        }
     }
 }

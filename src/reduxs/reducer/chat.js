@@ -1,5 +1,6 @@
 import {
-    PUSH_INFO
+    PUSH_INFO,
+    CLEAR_MSGS
 } from 'reduxs/constant'
 
 
@@ -18,7 +19,10 @@ export default function chat(state = initState, action) {
                     action.content.content
                 ]
             }
-
+        case CLEAR_MSGS:
+            return {
+                msgs: []
+            }
 
         default:
         return state;
