@@ -6,6 +6,7 @@ import e_handCards         from './e_handCards'
 // import god                 from './god'
 import user                from './user'
 import room                from './room'
+import chat                from './chat'
 
 
 export default combineReducers({
@@ -15,7 +16,8 @@ export default combineReducers({
     e_handCards,
     // god,
     user,
-    room
+    room,
+    chat
 })
 
 

@@ -1,0 +1,1 @@
+export { RoomChatCore as RoomChat } from './roomChatCore'

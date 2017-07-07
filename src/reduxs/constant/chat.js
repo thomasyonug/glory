@@ -1,0 +1,1 @@
+export const PUSH_INFO = 'PUSH_INFO'

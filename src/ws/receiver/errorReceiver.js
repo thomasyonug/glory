@@ -10,9 +10,4 @@ export class ErrorReceiver extends Entity{
         this.socket = errorSocket
     }
     
-
-    startListen () {
-        this.socket.coreSocket.$on('err', msg => {
-        })
-    }
 }

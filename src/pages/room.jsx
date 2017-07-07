@@ -3,7 +3,7 @@ import CSSModules from 'react-css-modules'
 import styles from './room.css'
 import {connect} from 'react-redux'
 // import * as ac from 'reduxs/actions'
-
+import {RoomChat} from 'components/common/chats/roomChat'
 
 import { routeHook } from 'decorators'
 
@@ -15,7 +15,8 @@ import { routeHook } from 'decorators'
 @connect(
     state => {
         return {
-            roomInfo: state.room.currentRoom
+            roomInfo: state.room.currentRoom,
+            msgs: state.chat.msgs
         }
     },
     dispatch => {
@@ -36,7 +37,11 @@ export default class Room extends Component{
     }
 
     render () {
-        const roomInfo = this.props.roomInfo
+        const {
+            roomInfo,
+            msgs
+        } = this.props
+
         if (Object.keys(roomInfo).length !== 0) {
             return (
                 <div>
@@ -46,6 +51,7 @@ export default class Room extends Component{
                         return <div key={index}>guest{index}: {guest}</div>
                     })}
                     <button onClick={() => this.quitRoom(roomInfo.roomID)}>quit room</button>
+                    <RoomChat msgs={msgs}></RoomChat>
                 </div>
             )
         } else {

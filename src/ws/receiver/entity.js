@@ -1,6 +1,11 @@
-import {store} from '@/index'
 
 export default class Entity {
-    store = store;
+
+
+    startListen (channel) {
+        this.socket.coreSocket.$on(channel, msg => {
+            this[msg.type].call(this, msg)
+        })
+    }
 
 }

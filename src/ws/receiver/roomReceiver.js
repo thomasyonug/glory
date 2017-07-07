@@ -1,21 +1,17 @@
 import {store} from '@/index'
+import Entity from './entity'
 
 
 
 
-export class RoomReceiver {
+export class RoomReceiver extends Entity{
     socket;
 
     constructor (rootSocket) {
+        super()
         this.socket = rootSocket
     }
 
-    
-    startListen () {
-        this.socket.coreSocket.$on('room', msg => {
-            this[msg.type].call(this, msg)
-        })
-    }
 
     roomList (msg) {
         store.dispatch({
@@ -31,6 +27,6 @@ export class RoomReceiver {
         })
     }
 
-    
+
 
 }

@@ -1,21 +1,17 @@
 import {store} from '@/index'
+import Entity from './entity'
 
 
 
-
-export class MetaReceiver {
+export class MetaReceiver extends Entity{
     socket;
 
     constructor (rootSocket) {
+        super()
         this.socket = rootSocket
     }
 
     
-    startListen () {
-        this.socket.coreSocket.$on('meta', msg => {
-            this[msg.type].call(this, msg)
-        })
-    }
 
 
     connectSuccess (msg) {
