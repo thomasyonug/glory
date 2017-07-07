@@ -22,4 +22,8 @@ export class MetaReceiver {
         window.location = '#/search'
     }
 
+    quitRoomSuccess (msg) {
+        window.location = '#/search'
+    }
+
 }

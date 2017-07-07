@@ -70,7 +70,7 @@ export default class Search extends Component{
                     </div>)}
 
                 <button onClick={this.createRoom}>create a room</button>
-                <button onClick={this.leaveRoom}>leave a room</button>
+                {/*<button onClick={this.leaveRoom}>leave a room</button>*/}
             </div>
         )
     }

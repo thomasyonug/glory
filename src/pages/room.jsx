@@ -45,6 +45,7 @@ export default class Room extends Component{
                     {roomInfo.guests.map((guest,index) => {
                         return <div key={index}>guest{index}: {guest}</div>
                     })}
+                    <button onClick={() => this.quitRoom(roomInfo.roomID)}>quit room</button>
                 </div>
             )
         } else {
@@ -56,5 +57,9 @@ export default class Room extends Component{
     }
 
     componentWillUnmount() {
+    }
+
+    quitRoom = (roomID) => {
+        this.$ws.roomApi.quitRoom(roomID)
     }
 }

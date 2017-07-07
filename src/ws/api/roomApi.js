@@ -34,6 +34,14 @@ export class RoomApi {
         })
     }
 
+    quitRoom = (roomID) => {
+        this.socket.coreSocket.$emit('room', {
+            type: 'quit',
+            content: {
+                roomID
+            }
+        })
+    }
 }
 
 
