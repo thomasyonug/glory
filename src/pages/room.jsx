@@ -48,9 +48,11 @@ export default class Room extends Component{
                 <div styleName="currentRoom">
                     <h1>roomName: {roomInfo.roomName}</h1>
                     <div styleName="hostRoom">
-                    <div>头像</div>
-                    <div>{roomInfo.host}</div>
-                    <div>房主</div>
+                        <div styleName="gameImg">头像</div>
+                        <div styleName="countInfo">
+                            <div styleName="gameName">{roomInfo.host}</div>
+                            <div styleName="hostSign">房主</div>
+                        </div>
                     </div>
                     {roomInfo.guests.map((guest,index) => {
                         return <div key={index} styleName="guestRoom">guest{index}: {guest}</div>
