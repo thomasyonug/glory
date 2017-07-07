@@ -5,3 +5,26 @@
     z-index: 9999;
     top: 0;
 }
+@keyframes show {
+    0% {
+        transform: translateY(0);
+    }
+    80% {
+        transform: translateY(60%);
+    }
+    100% {
+        transform: translateY(50%);
+    }
+}
+
+.layout {
+    width: 80%;
+    height: 50%;
+    margin: 0 auto;
+    text-align: center;
+    animation-name: show;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
