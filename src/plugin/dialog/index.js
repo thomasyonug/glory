@@ -12,7 +12,7 @@ const curryFn = method => result => {
     method(result) 
 }
 
-export const $dialog = (renderFn = () => <div></div>) => 
+export const $dialog = (renderFn = () => <div></div>, cb = () => {}) => 
     new Promise((resolve, rej) => {
 
 
@@ -22,7 +22,8 @@ export const $dialog = (renderFn = () => <div></div>) =>
                 rej={curryFn(rej)}
                 renderFn={renderFn}
              />,
-            mount
+            mount,
+            cb
         )
     })
 

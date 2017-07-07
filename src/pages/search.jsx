@@ -89,11 +89,12 @@ export default class Search extends Component{
                     type="text" 
                     placeholder="room name" 
                     value={dialogContext.state.roomName || ""}
+                    ref={input => dialogContext.input = input}
                     onChange={(e) => dialogContext.setState({roomName: e.target.value})}
                 />
             )
         } 
-        this.$dialog(dialogContentRender).then(state => {
+        this.$dialog(dialogContentRender, function(){this.input.focus()}).then(state => {
             this.$ws.roomApi.createRoom({
                 roomName: state.roomName
             })

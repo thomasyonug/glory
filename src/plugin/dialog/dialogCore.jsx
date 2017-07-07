@@ -19,10 +19,12 @@ export default class DialogCore extends Component {
 
         return (
             <div styleName="dialogWrapper">
-                {renderFn(this)}
-                <div>
-                    <button onClick={() => resolve(this.state)}>confirm</button>
-                    <button onClick={() => rej(this.state)}>cancel</button>
+                <div styleName="layout">
+                    {renderFn(this)}
+                    <div>
+                        <button onClick={() => resolve(this.state)}>confirm</button>
+                        <button onClick={() => rej(this.state)}>cancel</button>
+                    </div>
                 </div>
             </div>
         )
