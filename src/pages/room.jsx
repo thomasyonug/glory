@@ -39,11 +39,15 @@ export default class Room extends Component{
         const roomInfo = this.props.roomInfo
         if (Object.keys(roomInfo).length !== 0) {
             return (
-                <div>
+                <div styleName="currentRoom">
                     <h1>roomName: {roomInfo.roomName}</h1>
-                    <h2>host: {roomInfo.host}</h2>
+                    <div styleName="hostRoom">
+                    <div>头像</div>
+                    <div>{roomInfo.host}</div>
+                    <div>房主</div>
+                    </div>
                     {roomInfo.guests.map((guest,index) => {
-                        return <div key={index}>guest{index}: {guest}</div>
+                        return <div key={index} styleName="guestRoom">guest{index}: {guest}</div>
                     })}
                 </div>
             )
