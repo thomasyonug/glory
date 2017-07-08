@@ -9,12 +9,14 @@ import {
     RoomReceiver,
     ErrorReceiver,
     MetaReceiver,
-    ChatReceiver
+    ChatReceiver,
+    GameReceiver
 } from './receiver'
 
 import {
     RoomApi,
-    ChatApi
+    ChatApi,
+    GameApi
 } from './api'
 
 
@@ -40,12 +42,13 @@ export default class Ws {
         //api
         this.roomApi       = new RoomApi(this.roomSocket)
         this.chatApi       = new ChatApi(this.chatSocket)
-
+        this.gameApi       = new GameApi(this.gameSocket)
         //receiver
         this.roomReceiver  = new RoomReceiver(this.roomSocket)
         this.errorReceiver = new ErrorReceiver(this.errorSocket)
         this.metaReceiver  = new MetaReceiver(this.roomSocket)
         this.chatReceiver  = new ChatReceiver(this.chatSocket)
+        this.gameReceiver  = new GameReceiver(this.gameSocket)
     }
 
 
@@ -61,6 +64,7 @@ export default class Ws {
         this.errorReceiver.startListen('err')
         this.metaReceiver.startListen('meta')
         this.chatReceiver.startListen('chat')
+        this.gameReceiver.startListen('game')
     }
 
 }

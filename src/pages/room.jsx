@@ -31,6 +31,7 @@ export default class Room extends Component{
 
     constructor(props) {
         super(props)
+        Object.assign(this, {})
     }
 
     componentDidMount () {
@@ -58,6 +59,7 @@ export default class Room extends Component{
                         return <div key={index} styleName="guestRoom">guest{index}: {guest}</div>
                     })}
                     <button onClick={() => this.quitRoom(roomInfo.roomID)}>quit room</button>
+                    <button onClick={() => this.startGame()}>start game</button>
                     <RoomChat msgs={msgs}></RoomChat>
                 </div>
             )
@@ -71,6 +73,9 @@ export default class Room extends Component{
 
     quitRoom = (roomID) => {
         this.$ws.roomApi.quitRoom(roomID)
+    }
+    startGame = () => {
+        this.$ws.gameApi.startGame()
     }
     componentWillUnmount () {
         this.props.clearMsgs()    

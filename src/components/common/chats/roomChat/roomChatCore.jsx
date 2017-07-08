@@ -8,6 +8,7 @@ export class RoomChatCore extends Component {
 
     constructor (props) {
         super(props)
+        Object.assign(this, {})
     }
 
     render () {

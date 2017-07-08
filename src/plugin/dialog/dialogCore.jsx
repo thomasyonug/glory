@@ -29,4 +29,12 @@ export default class DialogCore extends Component {
             </div>
         )
     }
+
+
+
+    enterHandle = e => {
+        if (e.keyCode === 13) {
+            this.props.resolve(this.state)
+        }
+    }
 }
