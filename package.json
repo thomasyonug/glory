@@ -11,7 +11,8 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "rxjs": "^5.0.0",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",
@@ -98,5 +99,5 @@
     "extends": "react-app"
   },
   "whatfuck": "http://123.206.180.56:80",
-  "proxy": "http://123.206.180.56:80"
+  "proxy": "http://localhost:8888"
 }

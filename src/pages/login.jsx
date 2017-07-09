@@ -6,7 +6,8 @@ import * as ac from 'reduxs/actions'
 
 @connect(
     state => {
-        return {}
+        return {
+        }
     },
     dispatch => {
         return {

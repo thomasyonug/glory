@@ -15,5 +15,8 @@ const initState = {
 
 
 export default function God(state = initState, action) {
-    return action
+    switch (action.type) {
+        default:
+            return state
+    }
 }

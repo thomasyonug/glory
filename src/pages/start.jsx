@@ -32,6 +32,12 @@ import { routeHook } from 'decorators'
 @routeHook
 @CSSModules(Styles)
 export default class Start extends Component{
+
+
+
+
+
+
     render(){
         const {
             storeCards,
