@@ -1,0 +1,8 @@
+.rightBar {
+    position: fixed;
+    width: 100px;
+    height: 80%;
+    right: 0;
+    top: 10%;
+    background: greenyellow;
+}

@@ -8,7 +8,7 @@ import StoreCards from 'components/common/storeCards'
 import EStoreCards from 'components/common/e_storeCards'
 import HandCards from 'components/common/handCards'
 import EHandCards from 'components/common/e_handCards'
-import Operator  from 'components/common/operator'
+// import Operator  from 'components/common/operator'
 import { routeHook } from 'decorators'
 
 
@@ -67,7 +67,7 @@ export default class Start extends Component{
                      <StoreCards cards={storeCards.cards}></StoreCards>
                    </div> 
                 </div>
-                <Operator></Operator>
+                {/*<Operator></Operator>*/}
             </div>
         )
     }

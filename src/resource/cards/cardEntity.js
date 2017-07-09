@@ -11,17 +11,16 @@ export class CardEntity {
         Object.assign(this, {
             instanceID: uuid()
         })
-
-
         //field check
         setTimeout(() => {
             [
-                this.name, 
-                this.describe, 
+                this.name,
+                this.describe,
                 this.type
             ].forEach(item => {
                 if (item) { return }
-                throw new Error(`the ${new.target} field not found`)
+                // throw new Error(`the ${new.target} field not found`)
+                throw new Error(`the card ${this.constructor.name} field not found`)
             })
         }, 0)
 

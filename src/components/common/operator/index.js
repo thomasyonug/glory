@@ -30,9 +30,9 @@ export default class Operator extends Component{
 
         return (
             <div styleName={`wrapper ${mini ? 'minify' : ''}`}>
-                <Meta minifyClick={minify}></Meta>
+                {/*<Meta minifyClick={minify}></Meta>
                 <div styleName='cube' onClick={getCardToHandFromStore}>get card</div>
-                <div styleName='cube'>finish round</div>
+                <div styleName='cube'>finish round</div>*/}
             </div>
         )
     }

@@ -6,6 +6,8 @@ import {
 
 import {cardClasses} from 'resource'
 
+
+
 const initState = {
     cards: new Array(40).fill(1).map(() => new (cardClasses.MonsterCardMap.get('TestMonster'))())
 }
