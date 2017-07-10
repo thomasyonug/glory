@@ -12,6 +12,15 @@ export class GameApi {
         })
     }
 
+    arrengement_addCardGroup ({groupName}) {
+        this.socket.coreSocket.$emit('game', {
+            type: 'arrengement_addCardGroup',
+            content: {
+                groupName
+            }
+        })
+    }
+
 
 }
 

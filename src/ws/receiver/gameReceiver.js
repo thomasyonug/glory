@@ -14,5 +14,9 @@ export class GameReceiver extends Entity{
     start (msg) {
         window.location = '#/start'
     }
+
+    arrengement_addCardGroup_success (msg) {
+        console.log(msg, 'succcccc')
+    }
     
 }

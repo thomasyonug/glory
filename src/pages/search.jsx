@@ -71,7 +71,7 @@ export default class Search extends Component{
                     </div>)}
 
                 <button onClick={this.createRoom}>create a room</button>
-                {/*<button onClick={this.leaveRoom}>leave a room</button>*/}
+                <button onClick={this.arrengement}>go to arrenge card group</button>
             </div>
         )
     }
@@ -108,6 +108,10 @@ export default class Search extends Component{
     joinRoom = room => {
         this.$ws.roomApi.joinRoom(room)
         window.location = '#/room'
+    }
+
+    arrengement = () => {
+        window.location = '#/arrengement'
     }
 
 }

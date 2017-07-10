@@ -35,6 +35,9 @@ export default class Arrengement extends Component{
                     {choosedCards.map((choosedCard, index) => 
                         <div key={index}>{choosedCard.name}</div> 
                     )}
+                    <div styleName="buttonArea">
+                        <button onClick={this.saveHandle}>save</button>
+                    </div>
                 </div>
 
                 {
@@ -61,8 +64,7 @@ export default class Arrengement extends Component{
     }
 
     chooseHandle = cardClass => {
-        if (this.state.choosedCards.includes(cardClass)) return 
-
+        if (this.state.choosedCards.filter(item => cardClass).length >= 3) return
         this.setState({
             choosedCards: [
                 ...this.state.choosedCards,
@@ -73,7 +75,13 @@ export default class Arrengement extends Component{
 
     unchooseHandle = cardClass => {
         this.setState({
-            choosedCards: this.state.choosedCards.$deleteByItem(item => item === cardClass)
+            choosedCards: this.state.choosedCards.$delete(item => item === cardClass)
+        })
+    }
+
+    saveHandle = () => {
+        this.$ws.gameApi.arrengement_addCardGroup({
+            groupName: 'testName'
         })
     }
 
