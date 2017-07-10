@@ -22,6 +22,12 @@ export class GameApi {
     }
 
 
+    arrengement_getCardGroups () {
+        this.socket.coreSocket.$emit('game', {
+            type: 'arrengement_getCardGroups'
+        })
+    }
+
 }
 
 

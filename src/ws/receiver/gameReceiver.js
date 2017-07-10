@@ -1,5 +1,5 @@
 import Entity from './entity'
-
+import {store} from '@/index'
 
 export class GameReceiver extends Entity{
     socket;
@@ -17,6 +17,13 @@ export class GameReceiver extends Entity{
 
     arrengement_addCardGroup_success (msg) {
         console.log(msg, 'succcccc')
+    }
+
+    arrengement_getCardGroups (msg) {
+        store.dispatch({
+            type: 'SET_CARDGROUPS',
+            content: msg.content
+        })
     }
     
 }

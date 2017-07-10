@@ -3,10 +3,15 @@ import CSSModules from 'react-css-modules'
 import styles from './arrengement.css'
 import {connect} from 'react-redux'
 import {cardClasses} from 'resource'
+import { routeHook } from 'decorators'
+
+
+
 
 @connect(
     state => {
         return {
+            cardGroups: state.arrengement.cardGroups
         }
     },
     dispatch => {
@@ -14,6 +19,7 @@ import {cardClasses} from 'resource'
         }
     }
 )
+@routeHook
 @CSSModules(styles)
 export default class Arrengement extends Component{
     constructor(props) {
@@ -23,11 +29,14 @@ export default class Arrengement extends Component{
         }
     }
 
+    componentWillMount () {
+        this.$ws.gameApi.arrengement_getCardGroups()
+    }
+
     render(){
         const {
             choosedCards
         } = this.state
-
 
         return (
             <div>
@@ -37,6 +46,7 @@ export default class Arrengement extends Component{
                     )}
                     <div styleName="buttonArea">
                         <button onClick={this.saveHandle}>save</button>
+                        <button onClick={this.createCardGroupHandle}>新建</button>
                     </div>
                 </div>
 
@@ -58,7 +68,16 @@ export default class Arrengement extends Component{
                         )
                     })
                 }
-
+                <div styleName="bottomBar">
+                    {
+                        this.props.cardGroups.map(cardGroup => 
+                            <div styleName="cardGroup" key={cardGroup._id}>
+                                <h3>{cardGroup.groupName}</h3>
+                                <div>something here</div>
+                            </div> 
+                        )
+                    }
+                </div>
             </div>
         )
     }
@@ -80,9 +99,29 @@ export default class Arrengement extends Component{
     }
 
     saveHandle = () => {
-        this.$ws.gameApi.arrengement_addCardGroup({
-            groupName: 'testName'
+    }
+
+    createCardGroupHandle = () => {
+        const dialogContentRender = (dialogContext) => {
+            return (
+                <input 
+                    type="text" 
+                    placeholder="group Name"
+                    onKeyDown={dialogContext.enterHandle}
+                    value={dialogContext.state.groupName || ""}
+                    ref={input => dialogContext.input = input}
+                    onChange={(e) => dialogContext.setState({groupName: e.target.value})}
+                />
+            )
+        } 
+        this.$dialog(dialogContentRender, function(){this.input.focus()})
+        .then(state => {
+            this.$ws.gameApi.arrengement_addCardGroup({
+                groupName: state.groupName
+            })
         })
+        .catch(err => {}) 
+
     }
 
 }

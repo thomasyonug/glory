@@ -7,6 +7,7 @@ import god                 from './god'
 import user                from './user'
 import room                from './room'
 import chat                from './chat'
+import arrengement         from './arrengement'
 
 
 export default combineReducers({
@@ -17,7 +18,8 @@ export default combineReducers({
     god,
     user,
     room,
-    chat
+    chat,
+    arrengement
 })
 
 
