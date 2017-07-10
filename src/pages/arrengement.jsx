@@ -37,6 +37,9 @@ export default class Arrengement extends Component{
         const {
             choosedCards
         } = this.state
+        const {
+            cardGroups
+        } = this.props
 
         return (
             <div>
@@ -69,13 +72,18 @@ export default class Arrengement extends Component{
                     })
                 }
                 <div styleName="bottomBar">
-                    {
-                        this.props.cardGroups.map(cardGroup => 
+                    {   cardGroups.length > 0 ?
+                        cardGroups.map(cardGroup => 
                             <div styleName="cardGroup" key={cardGroup._id}>
                                 <h3>{cardGroup.groupName}</h3>
                                 <div>something here</div>
+                                <div>
+                                    <button onClick={() => this.deleteHandle(cardGroup)}>delete</button>
+                                </div>
                             </div> 
-                        )
+                        ) 
+                        :
+                        <div>loading</div>
                     }
                 </div>
             </div>
@@ -104,7 +112,7 @@ export default class Arrengement extends Component{
     createCardGroupHandle = () => {
         const dialogContentRender = (dialogContext) => {
             return (
-                <input 
+                <input
                     type="text" 
                     placeholder="group Name"
                     onKeyDown={dialogContext.enterHandle}
@@ -121,6 +129,15 @@ export default class Arrengement extends Component{
             })
         })
         .catch(err => {}) 
+    }
+
+    deleteHandle = cardGroup => {
+        this.$dialogConfirm(<div>确认删除此卡组？</div>)
+        .then(() => {
+            this.$ws.gameApi.arrengement_deleteCardGroup(cardGroup)
+        })
+        .catch(() => {
+        })
 
     }
 

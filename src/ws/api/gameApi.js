@@ -27,6 +27,12 @@ export class GameApi {
             type: 'arrengement_getCardGroups'
         })
     }
+    arrengement_deleteCardGroup (cardGroup) {
+        this.socket.coreSocket.$emit('game', {
+            type: 'arrengement_deleteCardGroup',
+            content: cardGroup
+        })
+    }
 
 }
 

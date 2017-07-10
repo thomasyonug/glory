@@ -29,4 +29,10 @@ export const $dialog = (renderFn = () => <div></div>, cb = () => {}) =>
 
 
 
+export const $dialogConfirm = (content) => 
+        $dialog(() => (
+            <div>
+                {content}
+            </div>
+        ))
 
