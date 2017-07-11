@@ -6,11 +6,11 @@ import {
   Switch
 } from 'react-router-dom'
 
-const contexts = require.context('pages', true, /([a-zA-Z\-0-9]+)\.jsx$/)
+const contexts = require.context('pages', true, /@index\.js$/)
 const routers = contexts.keys().reduce((routers, key) => {
-  const fileName = key.match(/([a-zA-Z\-0-9]+)\.jsx$/i)[1]
+  const routeName = key.match(/([a-zA-Z\-0-9]+)\/@index.js$/i)[1]
   routers.push({
-    path: fileName,
+    path: routeName,
     component: contexts(key)
   })
   return routers
