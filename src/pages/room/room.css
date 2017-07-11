@@ -1,21 +1,35 @@
+
 .currentRoom {
-	width: 802px;
-	height: 400px;
+	width: 510px;
+	height: 370px;
+	position: relative;
+	border-radius: 5px;
+	background-color: #014998;
+	padding: 2px;
 }
+
+.guestRoom {
+	float: left;
+	margin-right:5px;
+	margin-top:5px;
+
+}
+
 .gameImg {
-	width: 100%;
-	height: 70%;
-	background-color: #00CCFF;
-	border-radius: 10%;
+	width: 120px;
+	height: 120px;
+	background-color: #0bbeff;
+	border-radius: 5px;
+	border: 1px solid #02448f;
+	box-shadow: 1px 1px 1px #0bbeff;
 }
 
 .countInfo {
 	width: 100%;
 	height: 25%;
-	margin-top: 2px;
-	border: 2px solid #00CCFF;
+	margin-top: 4px;
+	border: 2px solid #3489d5;
 	border-radius: 5px;
-	background-color: #00CCFF;
 }
 
 .gameName {
@@ -23,14 +37,9 @@
 	height: 47%;
 	text-align: center;
 	color:white;
-	background-color: #003366;
+	background-color: #0d72d2;
 	border-radius: 5px;
 	
-}
-.hostRoom {
-	float: left;
-	width: 200px;
-	height: 200px;
 }
 .hostSign {
 	width: 100%;
@@ -38,13 +47,21 @@
 	text-align: center;
 	color:white;
 	margin-top:2px;
-	background-color: #000033;
+	background-color: #04345f;
 	border-radius: 5px;
 
 }
-
-.guestRoom {
-	float: left;
-	width: 200px;
-	height: 200px;
+.roomBtn {
+	position: absolute;
+	top: -40px; right: -60px;
+}
+.roomBtn button {
+	width: 100px;
+	height: 30px;
+	margin-right:10px;
+	border-radius: 10px;
+	box-shadow: 3px 3px 1px #888888;
+	color:white;
+	border-color:#FF88C2;
+	background-color: #FF44AA;
 }
