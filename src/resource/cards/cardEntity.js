@@ -16,9 +16,10 @@ export class CardEntity {
             [
                 this.name,
                 this.describe,
-                this.type
+                this.type,
+                this.constructor.cardCode
             ].forEach(item => {
-                if (item) { return }
+                if (item !== undefined) { return }
                 // throw new Error(`the ${new.target} field not found`)
                 throw new Error(`the card ${this.constructor.name} field not found`)
             })
