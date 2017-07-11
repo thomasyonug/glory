@@ -11,7 +11,7 @@ import { routeHook } from 'decorators'
 @connect(
     state => {
         return {
-            cardGroups: state.arrengement.cardGroups
+            cardGroups: state.arrengement.cardGroups || 'loading'
         }
     },
     dispatch => {
@@ -81,9 +81,9 @@ export default class Arrengement extends Component{
                                     <button onClick={() => this.deleteHandle(cardGroup)}>delete</button>
                                 </div>
                             </div> 
-                        ) 
+                        )
                         :
-                        <div>loading</div>
+                        'loading'
                     }
                 </div>
             </div>
