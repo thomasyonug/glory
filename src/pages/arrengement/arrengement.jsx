@@ -5,8 +5,8 @@ import {connect} from 'react-redux'
 import {cardClasses} from 'resource'
 import { routeHook } from 'decorators'
 
-
-
+import BottomBar from './bottomBar'
+import RightBar  from './rightBar'
 
 @connect(
     state => {
@@ -25,7 +25,7 @@ export default class Arrengement extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            choosedCards: []
+            choosedCardGroupIndex: null
         }
     }
 
@@ -35,24 +35,27 @@ export default class Arrengement extends Component{
 
     render(){
         const {
-            choosedCards
+            choosedCardGroupIndex
         } = this.state
+
         const {
             cardGroups
         } = this.props
 
+        const {
+            changeHandle,
+            chooseHandle,
+            unchooseHandle,
+            saveHandle
+        } = this
+
         return (
             <div>
-                <div styleName="rightBar">
-                    {choosedCards.map((choosedCard, index) => 
-                        <div key={index}>{choosedCard.name}</div> 
-                    )}
-                    <div styleName="buttonArea">
-                        <button onClick={this.saveHandle}>save</button>
-                        <button onClick={this.createCardGroupHandle}>新建</button>
-                    </div>
-                </div>
-
+                <RightBar
+                    ref={(ref) => this.rightBar = ref}
+                    cardGroup={cardGroups[choosedCardGroupIndex]}
+                    onSave={saveHandle}
+                ></RightBar>
                 {
                     [...cardClasses.MonsterCardMap.values()].map(cardClass => {
                         const instance = new cardClass()
@@ -64,81 +67,37 @@ export default class Arrengement extends Component{
                                     <span>{instance.defence}</span>
                                 </div>
                                 <div>
-                                    <button onClick={() => this.chooseHandle(cardClass)}>choose</button>
-                                    <button onClick={() => this.unchooseHandle(cardClass)}>unchoose</button>
+                                    <button onClick={() => chooseHandle(cardClass)}>choose</button>
+                                    <button onClick={() => unchooseHandle(cardClass)}>unchoose</button>
                                 </div>
                             </div>
                         )
                     })
                 }
-                <div styleName="bottomBar">
-                    {   cardGroups.length > 0 ?
-                        cardGroups.map(cardGroup => 
-                            <div styleName="cardGroup" key={cardGroup._id}>
-                                <h3>{cardGroup.groupName}</h3>
-                                <div>something here</div>
-                                <div>
-                                    <button onClick={() => this.deleteHandle(cardGroup)}>delete</button>
-                                </div>
-                            </div> 
-                        )
-                        :
-                        'loading'
-                    }
-                </div>
+                <BottomBar 
+                    cardGroups={cardGroups}
+                    onChangeCardGroupIndex={changeHandle}
+                ></BottomBar>
             </div>
         )
     }
 
+
     chooseHandle = cardClass => {
-        if (this.state.choosedCards.filter(item => cardClass).length >= 3) return
+        this.rightBar.pushCard(cardClass) 
+    }
+
+
+    saveHandle = cardGroup => {
+        this.$ws.gameApi.arrengement_updateCardGroup(cardGroup)
+    }
+
+
+
+
+    changeHandle = index => {
         this.setState({
-            choosedCards: [
-                ...this.state.choosedCards,
-                cardClass
-            ]
+            choosedCardGroupIndex: index
         })
     }
-
-    unchooseHandle = cardClass => {
-        this.setState({
-            choosedCards: this.state.choosedCards.$delete(item => item === cardClass)
-        })
-    }
-
-    saveHandle = () => {
-    }
-
-    createCardGroupHandle = () => {
-        const dialogContentRender = (dialogContext) => {
-            return (
-                <input
-                    type="text" 
-                    placeholder="group Name"
-                    onKeyDown={dialogContext.enterHandle}
-                    value={dialogContext.state.groupName || ""}
-                    ref={input => dialogContext.input = input}
-                    onChange={(e) => dialogContext.setState({groupName: e.target.value})}
-                />
-            )
-        } 
-        this.$dialog(dialogContentRender, function(){this.input.focus()})
-        .then(state => {
-            this.$ws.gameApi.arrengement_addCardGroup({
-                groupName: state.groupName
-            })
-        })
-        .catch(err => {}) 
-    }
-
-    deleteHandle = cardGroup => {
-        this.$dialogConfirm(<div>确认删除此卡组？</div>)
-        .then(() => {
-            this.$ws.gameApi.arrengement_deleteCardGroup(cardGroup)
-        })
-        .catch(() => {
-        })
-
-    }
-
 }
