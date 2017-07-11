@@ -29,5 +29,14 @@
     display: inline-block;
     height: 100%;
     background: burlywood;
+    cursor: pointer;
+}
 
+.choosenCardGroup {
+    border: 1px solid red;
+    width: 200px;
+    display: inline-block;
+    height: 100%;
+    background: burlywood;
+    cursor: pointer;
 }
