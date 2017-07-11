@@ -4,6 +4,14 @@ import styles from './dialogCore.css'
 
 @CSSModules(styles)
 export default class DialogCore extends Component {
+    static propTypes = {
+        resolve: Function,
+        rej: Function,
+        renderFn: Function
+    }
+
+
+
     constructor (props) {
         super()
         this.state = {}
