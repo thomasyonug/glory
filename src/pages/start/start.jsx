@@ -50,10 +50,26 @@ export default class Start extends Component{
             <div styleName='wrapper'>
                 <div styleName='top-field'>
                    <div className='fleft' styleName='e-storeCard-field'>
-                     <EStoreCards cards={e_storeCards.cards}></EStoreCards>
+                     <EStoreCards 
+                        cards={e_storeCards.cards}
+                        env={{
+                            storeCards,
+                            e_storeCards,
+                            handCards,
+                            e_handCards
+                        }}
+                     ></EStoreCards>
                    </div> 
                    <div className='fright' styleName='e-handCard-field'>
-                     <EHandCards cards={e_handCards.cards}></EHandCards>
+                     <EHandCards 
+                        cards={e_handCards.cards}
+                        env={{
+                            storeCards,
+                            e_storeCards,
+                            handCards,
+                            e_handCards
+                        }}
+                     ></EHandCards>
                    </div> 
                 </div>
                 <div styleName='battle-field'>
@@ -61,10 +77,26 @@ export default class Start extends Component{
                 </div>
                 <div styleName='bottom-field'>
                    <div className='fleft' styleName='handCard-field'>
-                     <HandCards cards={handCards.cards}></HandCards>
+                     <HandCards 
+                        cards={handCards.cards}
+                        env={{
+                            storeCards,
+                            e_storeCards,
+                            handCards,
+                            e_handCards
+                        }}
+                     ></HandCards>
                    </div> 
                    <div className='fright' styleName='storeCard-field'>
-                     <StoreCards cards={storeCards.cards}></StoreCards>
+                     <StoreCards 
+                        cards={storeCards.cards}
+                        env={{
+                            storeCards,
+                            e_storeCards,
+                            handCards,
+                            e_handCards
+                        }}
+                     ></StoreCards>
                    </div> 
                 </div>
                 {/*<Operator></Operator>*/}
