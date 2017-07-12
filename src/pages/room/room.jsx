@@ -46,20 +46,30 @@ export default class Room extends Component{
 
         if (Object.keys(roomInfo).length !== 0) {
             return (
-                <div styleName="currentRoom">
+                <div>
                     <h1>roomName: {roomInfo.roomName}</h1>
-                    <div styleName="hostRoom">
-                        <div styleName="gameImg">头像</div>
-                        <div styleName="countInfo">
-                            <div styleName="gameName">{roomInfo.host}</div>
-                            <div styleName="hostSign">房主</div>
+                    <section styleName="currentRoom">
+                        <div styleName="guestRoom">
+                            <div styleName="gameImg">头像</div>
+                            <div styleName="countInfo">
+                                <div styleName="gameName">{roomInfo.host}</div>
+                                <div styleName="hostSign">房主</div>
+                            </div>
                         </div>
-                    </div>
-                    {roomInfo.guests.map((guest,index) => {
-                        return <div key={index} styleName="guestRoom">guest{index}: {guest}</div>
-                    })}
-                    <button onClick={() => this.quitRoom(roomInfo.roomID)}>quit room</button>
-                    <button onClick={() => this.startGame()}>start game</button>
+                        {roomInfo.guests.map((guest,index) => {
+                            return <div key={index} styleName="guestRoom">
+                                        <div styleName="gameImg">头像</div>
+                                        <div styleName="countInfo">
+                                            <div styleName="gameName">guest{index}: {guest}</div>
+                                            <div styleName="hostSign">游客</div>
+                                        </div>
+                                   </div>
+                        })}
+                        <div styleName="roomBtn">
+                            <button onClick={() => this.quitRoom(roomInfo.roomID)}>quit room</button>
+                            <button onClick={() => this.startGame()}>start game</button>
+                        </div>
+                    </section>
                     <RoomChat msgs={msgs}></RoomChat>
                 </div>
             )
