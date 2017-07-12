@@ -24,7 +24,7 @@ export const store = createStore(
       applyMiddleware(middlewares.thunk)
     )
 )
-
+window.store = store
 //mock
 // if (process.env.NODE_ENV === 'development') {
 //   Promise.all([

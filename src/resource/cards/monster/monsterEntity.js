@@ -1,23 +1,14 @@
 import {CardEntity} from '../cardEntity'
+import {propertiesCheck, prototype} from 'decorators'
 
-
-
-export class MonsterEntity extends CardEntity{
-    attack;
-    defence;
-    type = 'MONSTER';
-
-    constructor(arg){
-        super(arg)
-
-        const {
-            attack,
-            defence
-        } = arg
-
-        Object.assign(this, {
-            attack,
-            defence
-        })
+@propertiesCheck({
+    unStaticProperties: {
+        attack: Number,
+        defensive: Number
     }
+})
+@prototype({
+    type: 'MONSTER'
+})
+export class MonsterEntity extends CardEntity{
 }
