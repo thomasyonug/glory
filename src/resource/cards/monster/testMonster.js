@@ -4,10 +4,8 @@ import {MonsterEntity} from './monsterEntity'
 
 export class TestMonster extends MonsterEntity {
     static cardCode = 0;
-
-
-    describe = 'i am fucking describe';
-    name = 'i am fucking name';
+    static describe = 'i am fucking describe';
+    static cardName = 'i am fucking name';
 
     constructor(arg){
         super({

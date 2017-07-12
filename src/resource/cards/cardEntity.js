@@ -14,9 +14,9 @@ export class CardEntity {
         //field check
         setTimeout(() => {
             [
-                this.name,
-                this.describe,
-                this.type,
+                this.constructor.cardName,
+                this.constructor.describe,
+                this.constructor.type,
                 this.constructor.cardCode
             ].forEach(item => {
                 if (item !== undefined) { return }
