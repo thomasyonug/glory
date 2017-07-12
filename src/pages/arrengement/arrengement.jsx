@@ -60,7 +60,7 @@ export default class Arrengement extends Component{
                             <div key={cardClass}>
                                 <div>{instance.name}</div>
                                 <div>
-                                    <span>{instance.attack}</span>
+                                    <span>{instance.attack} ||  </span>
                                     <span>{instance.defence}</span>
                                 </div>
                                 <div>

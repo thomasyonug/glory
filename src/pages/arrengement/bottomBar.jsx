@@ -4,6 +4,12 @@ import styles from './arrengement.css'
 
 @CSSModules(styles)
 export default class BottomBar extends Component {
+    static PropTypes = {
+        resolve: Function,
+        rej: Function,
+        renderFn: Function
+    }
+
     constructor(props){
         super()
         this.state = {
