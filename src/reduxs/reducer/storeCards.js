@@ -2,19 +2,21 @@ import {
     ADD_STORECARDS,
     DELETE_STORECARDS,
     UPDATE_STORECARDS,
+    SET_STORECARDS
 } from 'reduxs/constant'
 
 
-import {cardClassMap} from 'resource'
 
 const initState = {
-    cards: new Array(40).fill(1).map(() => new (cardClassMap.get('2'))())
+    cards: []
 }
 
 
 
 export default function StoreCards(state = initState, action){
     switch(action.type){
+        case SET_STORECARDS:
+            return setHandle(state, action)
         case ADD_STORECARDS:
             return addHandle(state, action)
         case DELETE_STORECARDS:
@@ -26,7 +28,12 @@ export default function StoreCards(state = initState, action){
     }
 }
 
-
+function setHandle (state, action) {
+    return {
+        ...state,
+        cards: action.content
+    }
+}
 
 function addHandle (state, action) {
     return {

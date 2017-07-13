@@ -15,7 +15,6 @@ const curryFn = method => result => {
 export const $dialog = (renderFn = () => <div></div>, cb = () => {}) => 
     new Promise((resolve, rej) => {
 
-
         ReactDOM.render(
             <DialogCore 
                 resolve={curryFn(resolve)}

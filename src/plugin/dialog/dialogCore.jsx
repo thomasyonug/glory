@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules'
 import styles from './dialogCore.css'
+import {func} from 'prop-types';
+
+
 
 @CSSModules(styles)
 export default class DialogCore extends Component {
+
     static propTypes = {
-        resolve: Function,
-        rej: Function,
-        renderFn: Function
+        resolve: func,
+        rej: func,
+        renderFn: func
     }
 
 

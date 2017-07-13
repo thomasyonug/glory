@@ -7,6 +7,7 @@ import {propertiesCheck, prototype} from 'decorators'
 
 @propertiesCheck({
     unStaticProperties: {
+        effect: Function
     }
 })
 @prototype({
