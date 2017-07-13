@@ -1,14 +1,17 @@
 import {CardEntity} from '../cardEntity'
 import {propertiesCheck, prototype} from 'decorators'
 
+
+
+
+
 @propertiesCheck({
     unStaticProperties: {
-        attack: Number,
-        defensive: Number
     }
 })
 @prototype({
-    type: 'MONSTER'
+    type: 'MAGIC'
 })
-export class MonsterEntity extends CardEntity{
+export class MagicEntity extends CardEntity {
+
 }

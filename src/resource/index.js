@@ -1,5 +1,5 @@
-import * as cardClasses from './cards'
+import cardClassMap from './cards'
 
 export {
-    cardClasses
+    cardClassMap
 }
