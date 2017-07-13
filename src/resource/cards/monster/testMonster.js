@@ -8,7 +8,7 @@ import {prototype} from 'decorators'
     defensive: 100
 })
 export class TestMonster extends MonsterEntity {
-    static cardCode = '0';
+    static cardCode = '1';
     static cardName = 'TestMonster'
 }
 

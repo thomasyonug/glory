@@ -1,5 +1,2 @@
-import {TestMonster} from './testMonster'
+export * from './testMonster'
 
-export default new Map([
-    [TestMonster.cardCode, TestMonster]
-])

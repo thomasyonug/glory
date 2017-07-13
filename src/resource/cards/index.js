@@ -1,6 +1,19 @@
-import MonsterCardMap from './monster'
+import {TestMonster} from './monster'
+import {TestTrap}    from './trap'    
+import {TestMagic}   from './magic'   
 
-export {
-    MonsterCardMap
-}
+
+
+
+
+
+
+
+
+
+export default new Map([
+    [TestMonster.cardCode, TestMonster],
+    [TestTrap.cardCode, TestTrap],
+    [TestMagic.cardCode, TestMagic]
+])
 
