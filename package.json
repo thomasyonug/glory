@@ -106,5 +106,5 @@
     "extends": "react-app"
   },
   "whatfuck": "http://123.206.180.56:80",
-  "proxy": "http://localhost:8888"
+  "proxy": "http://123.206.180.56:80"
 }

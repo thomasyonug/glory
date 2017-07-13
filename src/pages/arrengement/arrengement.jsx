@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './arrengement.css'
 import {connect} from 'react-redux'
-import {cardClasses} from 'resource'
+import {cardClassMap} from 'resource'
 import { routeHook } from 'decorators'
 
 
@@ -54,7 +54,7 @@ export default class Arrengement extends Component{
                 </div>
 
                 {
-                    [...cardClasses.MonsterCardMap.values()].map(cardClass => {
+                    [...cardClassMap.values()].map(cardClass => {
                         const instance = new cardClass()
                         return (
                             <div key={cardClass}>
