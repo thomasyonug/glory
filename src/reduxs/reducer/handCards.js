@@ -6,7 +6,7 @@ import {
 } from 'reduxs/constant'
 
 const initState = {
-    cards: [1,2,3]
+    cards: []
 }
 
 

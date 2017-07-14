@@ -1,5 +1,8 @@
 import Entity from './entity'
 import {store} from '@/index'
+import {cardClassMap} from 'resource'
+
+
 
 export class GameReceiver extends Entity{
     socket;
@@ -23,6 +26,37 @@ export class GameReceiver extends Entity{
         store.dispatch({
             type: 'SET_CARDGROUPS',
             content: msg.content
+        })
+    }
+
+
+
+    glory_initStoreCards (msg) {
+        const {
+            hostCards,
+            guestCards,
+            role
+        } = msg.content
+
+        const storeCards = role === 'host' ? hostCards : guestCards
+        const e_storeCards = role === 'host' ? guestCards : hostCards
+
+
+        store.dispatch({
+            type: 'SET_STORECARDS',
+            content: storeCards.map(card => {
+                const cardClass = cardClassMap.get(card.cardCode)
+                return new cardClass()
+            })
+        })
+
+
+        store.dispatch({
+            type: 'SET_E_STORECARDS',
+            content: e_storeCards.map(card => {
+                const cardClass = cardClassMap.get(card.cardCode)
+                return new cardClass()
+            })
         })
     }
     
