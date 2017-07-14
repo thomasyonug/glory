@@ -25,7 +25,8 @@ export default class Arrengement extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            choosedCards: []
+            choosedCards: [],
+            choosedCardGroup: {}
         }
     }
 
@@ -45,7 +46,7 @@ export default class Arrengement extends Component{
             <div>
                 <div styleName="rightBar">
                     {choosedCards.map((choosedCard, index) => 
-                        <div key={index}>{choosedCard.name}</div> 
+                        <div key={index}>{choosedCard.cardName}</div> 
                     )}
                     <div styleName="buttonArea">
                         <button onClick={this.saveHandle}>save</button>
@@ -74,7 +75,7 @@ export default class Arrengement extends Component{
                 <div styleName="bottomBar">
                     {   cardGroups.length > 0 ?
                         cardGroups.map(cardGroup => 
-                            <div styleName="cardGroup" key={cardGroup._id}>
+                            <div styleName="cardGroup" key={cardGroup._id} onClick={() => this.chooseCardGroup(cardGroup)}>
                                 <h3>{cardGroup.groupName}</h3>
                                 <div>something here</div>
                                 <div>
@@ -92,10 +93,11 @@ export default class Arrengement extends Component{
 
     chooseHandle = cardClass => {
         if (this.state.choosedCards.filter(item => cardClass).length >= 3) return
+        let newcard = {"cardName":cardClass.cardName , "cardCode":cardClass.cardCode}
         this.setState({
             choosedCards: [
                 ...this.state.choosedCards,
-                cardClass
+                newcard 
             ]
         })
     }
@@ -106,7 +108,23 @@ export default class Arrengement extends Component{
         })
     }
 
+    chooseCardGroup = cardGroup => {
+        let cards = []
+        cardGroup.cards.forEach((item) => {
+            cards.push({
+                "cardName": cardClassMap.get(item.cardCode).cardName,
+                "cardCode": item.cardCode
+            })
+        })
+        this.setState({
+            choosedCards: cards,
+            chooseCardGroup: cardGroup
+        })
+    }
+
     saveHandle = () => {
+        this.state.chooseCardGroup.cards = this.state.choosedCards
+        this.$ws.gameApi.arrengement_updateCardGroup(this.state.chooseCardGroup)
     }
 
     createCardGroupHandle = () => {
