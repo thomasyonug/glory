@@ -18,7 +18,8 @@ export default class DialogCore extends Component {
 
     constructor (props) {
         super()
-        this.state = {}
+        this.state = {
+        }
     }
 
 
@@ -31,7 +32,10 @@ export default class DialogCore extends Component {
 
         return (
             <div styleName="dialogWrapper">
-                <div styleName="layout">
+                <div 
+                    styleName="layout"
+                    ref={layout => this.layout = layout} 
+                    >
                     {renderFn(this)}
                     <div>
                         <button onClick={() => resolve(this.state)}>confirm</button>
@@ -49,4 +53,5 @@ export default class DialogCore extends Component {
             this.props.resolve(this.state)
         }
     }
+
 }
