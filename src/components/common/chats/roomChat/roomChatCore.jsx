@@ -37,6 +37,5 @@ export class RoomChatCore extends Component {
 
     componentDidUpdate () {
         this.scrollWrapper.scrollTop = this.scrollWrapper.scrollHeight 
-        console.log(this.scrollWrapper.scrollTop)
     }
 }
