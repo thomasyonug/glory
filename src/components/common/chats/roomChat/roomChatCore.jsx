@@ -17,21 +17,26 @@ export class RoomChatCore extends Component {
         } = this.props
 
         return (
-            <div>
-
-                {
-                    msgs.map((msgItem,index) => 
-                        <div key={index}>
-                            <span>{msgItem.from}:</span>     
-                            <span>{msgItem.text}</span>     
-                        </div> 
-                    )
-                }
-
-                <div>
+            <div styleName="chatInfoShow">
+                <div styleName="chatInfoShowMain" ref={scrollWrapper => this.scrollWrapper = scrollWrapper} >
+                    {
+                        msgs.map((msgItem,index) => 
+                            <div key={index}>
+                                <span>{msgItem.from}:</span>     
+                                <span>{msgItem.text}</span>     
+                            </div> 
+                        )
+                    }
+                </div>
+                <div styleName="sendChatInfo">
                     <SendCore></SendCore>
                 </div>
             </div>
         )
+    }
+
+    componentDidUpdate () {
+        this.scrollWrapper.scrollTop = this.scrollWrapper.scrollHeight 
+        console.log(this.scrollWrapper.scrollTop)
     }
 }
