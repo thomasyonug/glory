@@ -93,7 +93,7 @@ export default class Arrengement extends Component{
 
     chooseHandle = cardClass => {
         if (this.state.choosedCards.filter(item => cardClass).length >= 3) return
-        let newcard = {"cardName":cardClass.cardName , "cardCode":cardClass.cardCode}
+        let newcard = {cardName:cardClass.cardName , cardCode:cardClass.cardCode}
         this.setState({
             choosedCards: [
                 ...this.state.choosedCards,
@@ -112,8 +112,8 @@ export default class Arrengement extends Component{
         let cards = []
         cardGroup.cards.forEach((item) => {
             cards.push({
-                "cardName": cardClassMap.get(item.cardCode).cardName,
-                "cardCode": item.cardCode
+                cardName: cardClassMap.get(item.cardCode).cardName,
+                cardCode: item.cardCode
             })
         })
         this.setState({
@@ -123,8 +123,15 @@ export default class Arrengement extends Component{
     }
 
     saveHandle = () => {
-        this.state.chooseCardGroup.cards = this.state.choosedCards
-        this.$ws.gameApi.arrengement_updateCardGroup(this.state.chooseCardGroup)
+        let cards = this.state.choosedCards 
+        this.setState({
+            chooseCardGroup: {
+                    ...this.state.chooseCardGroup,
+                    cards
+            }
+        }, () => {
+            this.$ws.gameApi.arrengement_updateCardGroup(this.state.chooseCardGroup)
+        })
     }
 
     createCardGroupHandle = () => {
