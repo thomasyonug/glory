@@ -17,13 +17,15 @@ const nextRoundStateMap = new Map([
 ])
 
 const nextRoundRoleMap = new Map([
-    ['e': 'my'],
-    ['my': 'e']
+    ['e', 'my'],
+    ['my', 'e']
 ])
 
 const initState = {
     roundState: ROUND_NAME_START,
+    e_roundState: ROUND_NAME_SILENT,
     roundRole: 'my'
+
 }
 
 
@@ -43,19 +45,36 @@ export default function God(state = initState, action) {
 function nextHandle(state, action) {
     const {
         roundState,
-        roundRole
+        roundRole,
+        e_roundState
     } = state
-
-    if (roundState === ROUND_NAME_END) {
-        return {
-            ...state,
-            roundState: nextRoundStateMap.get(roundState),
-            roundRole: nextRoundRoleMap.get(roundRole)
+    if (roundRole === 'my') {
+        if (roundState === ROUND_NAME_END) {
+            return {
+                ...state,
+                roundState: nextRoundStateMap.get(roundState),
+                roundRole: nextRoundRoleMap.get(roundRole),
+                e_roundState: nextRoundStateMap.get(e_roundState)
+            }
+        } else {
+            return {
+                ...state,
+                roundState: nextRoundStateMap.get(roundState)
+            }
         }
     } else {
-        return {
-            ...state,
-            roundState: nextRoundStateMap.get(roundState)
+        if (e_roundState === ROUND_NAME_END) {
+            return {
+                ...state,
+                e_roundState: nextRoundStateMap.get(e_roundState),
+                roundRole: nextRoundRoleMap.get(roundRole),
+                roundState: nextRoundStateMap.get(roundState)
+            }
+        } else {
+            return {
+                ...state,
+                e_roundState: nextRoundStateMap.get(e_roundState)
+            }
         }
     }
 }
