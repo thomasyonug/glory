@@ -47,7 +47,6 @@ export default class SendCore extends Component {
     send = () => {
         this.$ws.chatApi.common(this.state.msg)
         this.clearMsg()
-        this.props.handleSroll()
     }
 
     clearMsg () {

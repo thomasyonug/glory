@@ -18,7 +18,7 @@ export class RoomChatCore extends Component {
 
         return (
             <div styleName="chatInfoShow">
-                <div styleName="chatInfoShowMain" ref='messageShow' >
+                <div styleName="chatInfoShowMain" ref={scrollWrapper => this.scrollWrapper = scrollWrapper} >
                     {
                         msgs.map((msgItem,index) => 
                             <div key={index}>
@@ -33,5 +33,10 @@ export class RoomChatCore extends Component {
                 </div>
             </div>
         )
+    }
+
+    componentDidUpdate () {
+        this.scrollWrapper.scrollTop = this.scrollWrapper.scrollHeight 
+        console.log(this.scrollWrapper.scrollTop)
     }
 }
