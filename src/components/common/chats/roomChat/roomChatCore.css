@@ -1,0 +1,22 @@
+.chatInfoShow {
+	width: 510px;
+	height: 200px;
+	
+	border-radius: 5px;
+	background-color: #0d72d2;
+	border: solid 1px black;
+}
+
+.chatInfoShowMain {
+	width: 100%;
+	height: 175px;
+	overflow: scroll ;
+}
+
+.chatInfoShowMain span {
+	color: #B7BD3C;
+}
+
+.sendChatInfo {
+	width: 100%;
+}

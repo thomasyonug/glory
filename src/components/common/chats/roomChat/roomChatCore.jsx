@@ -17,18 +17,18 @@ export class RoomChatCore extends Component {
         } = this.props
 
         return (
-            <div>
-
-                {
-                    msgs.map((msgItem,index) => 
-                        <div key={index}>
-                            <span>{msgItem.from}:</span>     
-                            <span>{msgItem.text}</span>     
-                        </div> 
-                    )
-                }
-
-                <div>
+            <div styleName="chatInfoShow">
+                <div styleName="chatInfoShowMain" ref='messageShow' >
+                    {
+                        msgs.map((msgItem,index) => 
+                            <div key={index}>
+                                <span>{msgItem.from}:</span>     
+                                <span>{msgItem.text}</span>     
+                            </div> 
+                        )
+                    }
+                </div>
+                <div styleName="sendChatInfo">
                     <SendCore></SendCore>
                 </div>
             </div>
