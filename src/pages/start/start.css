@@ -10,10 +10,17 @@
     border: 1px solid black;
 }
 
-.battle-field{
+.battle-field-all{
     height: 60%;
     width: 100%;
     border: 1px solid black;
+}
+
+.battle-field-all .battle-field {
+
+}
+.battle-field-all .e-battle-field {
+
 }
 
 .bottom-field{    

@@ -50,10 +50,14 @@ export default class Login extends Component{
             username,
             password
         } = this.state
-        const json = await this.$http.post('/public/login', {username, password})
-        this.props.modifyLoginStatus(true)
-        this.props.saveLoginToken(json.token)
-        this.initSocket()
+        try {
+            const json = await this.$http.post('/public/login', {username, password})
+            this.props.modifyLoginStatus(true)
+            this.props.saveLoginToken(json.token)
+            this.initSocket()
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     handleUserName = (e) => {

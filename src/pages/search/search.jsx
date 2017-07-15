@@ -85,18 +85,23 @@ export default class Search extends Component{
         
         const dialogContentRender = (dialogContext) => {
             return (
-                <input 
-                    type="text" 
-                    placeholder="room name"
-                    onKeyDown={dialogContext.enterHandle}
-                    value={dialogContext.state.roomName || ""}
-                    ref={input => dialogContext.input = input}
-                    onChange={(e) => dialogContext.setState({roomName: e.target.value})}
-                />
+                <div onClick={dialogContext.warning}>
+                    <input
+                        type="text" 
+                        placeholder="room name"
+                        onKeyDown={dialogContext.enterHandle}
+                        value={dialogContext.state.roomName || ""}
+                        ref={input => dialogContext.input = input}
+                        onChange={(e) => dialogContext.setState({roomName: e.target.value})}
+                    />
+                </div>
             )
         } 
         this.$dialog(dialogContentRender, function(){this.input.focus()})
         .then(state => {
+            if (!state.roomName) {
+                return this.createRoom()
+            }
             this.$ws.roomApi.createRoom({
                 roomName: state.roomName
             })

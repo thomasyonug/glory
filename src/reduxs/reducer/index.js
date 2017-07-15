@@ -8,7 +8,8 @@ import user                from './user'
 import room                from './room'
 import chat                from './chat'
 import arrengement         from './arrengement'
-
+import battleField         from './battleField'
+import e_battleField       from './e_battleField'
 
 export default combineReducers({
     storeCards,
@@ -19,7 +20,9 @@ export default combineReducers({
     user,
     room,
     chat,
-    arrengement
+    arrengement,
+    battleField,
+    e_battleField
 })
 
 

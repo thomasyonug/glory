@@ -23,7 +23,9 @@ import { routeHook } from 'decorators'
             storeCards: state.storeCards,
             e_storeCards: state.e_storeCards,
             handCards: state.handCards,
-            e_handCards: state.e_handCards
+            e_handCards: state.e_handCards,
+            battleField: state.battleField,
+            e_battleField: state.e_battleField
         }
     },
     dispatch => {
@@ -45,7 +47,9 @@ export default class Start extends Component{
             storeCards,
             e_storeCards,
             handCards,
-            e_handCards
+            e_handCards,
+            battleField,
+            e_battleField
         } = this.props
 
         return (
@@ -62,9 +66,19 @@ export default class Start extends Component{
                      ></EHandCards>
                    </div> 
                 </div>
-                <div styleName='battle-field'>
-                    <BattleField>
-                    </BattleField>
+                <div styleName='battle-field-all'>
+                    <div styleName='e-battle-field'>
+                        <BattleField
+                            cards={battleField.firstAreaCards}
+                        >
+                        </BattleField>
+                    </div>
+                    <div styleName='battle-field'>
+                        <BattleField
+                            cards={e_battleField.firstAreaCards}
+                        >
+                        </BattleField>
+                    </div>
                 </div>
                 <div styleName='bottom-field'>
                    <div className='fleft' styleName='handCard-field'>
