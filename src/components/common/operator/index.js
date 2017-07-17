@@ -1,9 +1,20 @@
 import React, {Component} from 'react'
 import Styles from './operator.css'
 import CSSModules from 'react-css-modules'
+import {connect} from 'react-redux'
 import Meta from './meta'
 
-
+@connect(
+    state => {
+        return {
+            // currentRoundName: state.god.roundState
+        }
+    },
+    dispatch => {
+        return {
+        }
+    }
+)
 @CSSModules(Styles,{allowMultiple: true})
 export default class Operator extends Component{
     constructor(){
@@ -16,9 +27,14 @@ export default class Operator extends Component{
         const {
             minify
         } = this
+
         const {
             mini
         } = this.state
+
+        // const {
+        //     currentRoundName
+        // } = this.props
 
 
 
@@ -26,6 +42,7 @@ export default class Operator extends Component{
         return (
             <div styleName={`wrapper ${mini ? 'minify' : ''}`}>
                 <Meta minifyClick={minify}></Meta>
+                <button>next round</button>
             </div>
         )
     }
