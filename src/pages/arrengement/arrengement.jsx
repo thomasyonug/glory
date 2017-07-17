@@ -11,7 +11,8 @@ import { routeHook } from 'decorators'
 @connect(
     state => {
         return {
-            cardGroups: state.arrengement.cardGroups || 'loading'
+            cardGroups: state.arrengement.cardGroups || 'loading',
+            usingGroup: state.arrengement.arrengement  || 'loading'
         }
     },
     dispatch => {
@@ -39,7 +40,8 @@ export default class Arrengement extends Component{
             choosedCards
         } = this.state
         const {
-            cardGroups
+            cardGroups,
+            usingGroup
         } = this.props
 
         return (
@@ -53,6 +55,8 @@ export default class Arrengement extends Component{
                         <button onClick={this.createCardGroupHandle}>新建</button>
                     </div>
                 </div>
+
+                <div>now using cardGroup: {usingGroup}</div>
 
                 {
                     [...cardClassMap.values()].map(cardClass => {
