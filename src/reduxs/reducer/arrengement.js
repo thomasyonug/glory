@@ -1,26 +1,28 @@
 import {
-    SET_CARDGROUPS
+    SET_CARDGROUPS,
+    SET_USINGGROUP
 } from 'reduxs/constant'
 
-
 const initState = {
-    cardGroups: []
+  cardGroups: [],
+  usingGroup: {}
 }
 
+export default function arrengement (state = initState, action) {
+  switch (action.type) {
+    case SET_CARDGROUPS:
+      return {
+        ...state,
+        cardGroups: action.content
+      }
 
+    case SET_USINGGROUP:
+      return {
+        ...state,
+        usingGroup: action.content
+      }
 
-export default function arrengement(state = initState, action) {
-    
-    switch (action.type) {
-        case SET_CARDGROUPS:
-            return {
-                ...state,
-                cardGroups: action.content
-            }
-
-
-
-        default:
-            return state
-    }
+    default:
+      return state
+  }
 }

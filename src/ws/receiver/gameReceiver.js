@@ -29,6 +29,13 @@ export class GameReceiver extends Entity{
         })
     }
 
+    arrengement_getUsingGroup (msg) {
+        store.dispatch({
+            type: 'SET_USINGGROUP',
+            content: msg.content
+        })
+    }
+
 
 
     glory_initStoreCards (msg) {

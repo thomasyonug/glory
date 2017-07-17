@@ -42,6 +42,19 @@ export class GameApi {
         })
     }
 
+    arrengement_getUsingGroup () {
+        this.socket.coreSocket.$emit('game', {
+            type: 'arrengement_getUsingGroup'
+        })
+    }
+
+    arrengement_updateUsingGroup (usingGroup) {
+        this.socket.coreSocket.$emit('game', {
+            type: 'arrengement_updateUsingGroup',
+            content: usingGroup
+        })
+    }
+
 }
 
 

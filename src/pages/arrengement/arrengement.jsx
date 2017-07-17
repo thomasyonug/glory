@@ -12,7 +12,7 @@ import { routeHook } from 'decorators'
     state => {
         return {
             cardGroups: state.arrengement.cardGroups || 'loading',
-            usingGroup: state.arrengement.arrengement  || 'loading'
+            usingGroup: state.arrengement.usingGroup  || 'no choose'
         }
     },
     dispatch => {
@@ -27,12 +27,14 @@ export default class Arrengement extends Component{
         super(props)
         this.state = {
             choosedCards: [],
-            choosedCardGroup: {}
+            choosedCardGroup: {},
+            usingGroup: {}
         }
     }
 
     componentWillMount () {
         this.$ws.gameApi.arrengement_getCardGroups()
+        this.$ws.gameApi.arrengement_getUsingGroup()
     }
 
     render(){
@@ -56,7 +58,10 @@ export default class Arrengement extends Component{
                     </div>
                 </div>
 
-                <div>now using cardGroup: {usingGroup}</div>
+                <div>now using cardGroup: {usingGroup.groupName}</div>
+                <div>
+                    <button onClick={() => this.chooseUsingGroup()}>choose usingGroup</button>
+                </div>
 
                 {
                     [...cardClassMap.values()].map(cardClass => {
@@ -123,6 +128,14 @@ export default class Arrengement extends Component{
         this.setState({
             choosedCards: cards,
             chooseCardGroup: cardGroup
+        })
+    }
+
+    chooseUsingGroup = () => {
+        this.setState({
+            usingGroup: {groupName: this.state.chooseCardGroup.groupName}
+        }, () => {
+            this.$ws.gameApi.arrengement_updateUsingGroup(this.state.usingGroup)
         })
     }
 

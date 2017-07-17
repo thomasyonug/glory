@@ -1,1 +1,2 @@
 export const SET_CARDGROUPS = 'SET_CARDGROUPS'
+export const SET_USINGGROUP = 'SET_USINGGROUP'
