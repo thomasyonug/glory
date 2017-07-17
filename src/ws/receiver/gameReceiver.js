@@ -33,14 +33,9 @@ export class GameReceiver extends Entity{
 
     glory_initStoreCards (msg) {
         const {
-            hostCards,
-            guestCards,
-            role
+            storeCards,
+            e_storeCards,
         } = msg.content
-
-        const storeCards = role === 'host' ? hostCards : guestCards
-        const e_storeCards = role === 'host' ? guestCards : hostCards
-
 
         store.dispatch({
             type: 'SET_STORECARDS',
@@ -58,6 +53,22 @@ export class GameReceiver extends Entity{
                 return new cardClass()
             })
         })
+    }
+
+    glory_initGod(msg) {
+        store.dispatch({
+            type: 'INIT_GOD',
+            content: msg.content
+        })
+    }
+
+    glory_initAll (msg) {
+        const {
+            initStoreContent,
+            initGodContent
+        } = msg.content
+        this.glory_initStoreCards(initStoreContent)
+        this.glory_initGod(initGodContent)
     }
     
 }
