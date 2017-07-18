@@ -4,6 +4,12 @@ import CSSModules from 'react-css-modules'
 import {connect} from 'react-redux'
 import Meta from './meta'
 
+import {roundCtrl} from 'decorators'
+import {autobind} from 'core-decorators'
+import {
+    ROUND_NAME_SILENT
+} from 'reduxs/constant'
+
 @connect(
     state => {
         return {
@@ -11,7 +17,7 @@ import Meta from './meta'
     },
     dispatch => {
         return {
-            nextRound: content => dispatch(new window.Transer({type: 'NEXT_ROUND', content: ''}))
+            _nextRound: content => dispatch(new window.Transer({type: 'NEXT_ROUND', content: ''}))
         }
     }
 )
@@ -25,20 +31,16 @@ export default class Operator extends Component{
     }
     render () {
         const {
-            minify
+            minify,
+            nextRound
         } = this
 
         const {
             mini
         } = this.state
 
-        const {
-            nextRound
-        } = this.props
-        // const {
-        //     currentRoundName
-        // } = this.props
 
+        
 
 
 
@@ -50,10 +52,22 @@ export default class Operator extends Component{
         )
     }
 
-
     minify = () => {
         this.setState({mini: !this.state.mini})
     }
     
+
+
+
+
+    @autobind
+    @roundCtrl.methodCtrl({
+        unvalidateRound: [
+            ROUND_NAME_SILENT
+        ]
+    })
+    nextRound () {
+        this.props._nextRound()
+    } 
 
 }
