@@ -55,7 +55,7 @@ export class GameReceiver extends Entity{
         })
     }
 
-    glory_initGod(msg) {
+    glory_initGod (msg) {
         store.dispatch({
             type: 'INIT_GOD',
             content: msg.content
@@ -71,4 +71,8 @@ export class GameReceiver extends Entity{
         this.glory_initGod(initGodContent)
     }
     
+    glory_transfer (msg) {
+        store.dispatch(msg.content.action)
+    }
+
 }

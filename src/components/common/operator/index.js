@@ -7,11 +7,11 @@ import Meta from './meta'
 @connect(
     state => {
         return {
-            // currentRoundName: state.god.roundState
         }
     },
     dispatch => {
         return {
+            nextRound: content => dispatch(new window.Transer({type: 'NEXT_ROUND', content: ''}))
         }
     }
 )
@@ -32,6 +32,9 @@ export default class Operator extends Component{
             mini
         } = this.state
 
+        const {
+            nextRound
+        } = this.props
         // const {
         //     currentRoundName
         // } = this.props
@@ -42,7 +45,7 @@ export default class Operator extends Component{
         return (
             <div styleName={`wrapper ${mini ? 'minify' : ''}`}>
                 <Meta minifyClick={minify}></Meta>
-                <button>next round</button>
+                <button onClick={nextRound}>next round</button>
             </div>
         )
     }

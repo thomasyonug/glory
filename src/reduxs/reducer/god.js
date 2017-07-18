@@ -26,8 +26,7 @@ const initState = {
     roundState: null,
     e_roundState: null,
     roundRole: null,
-    gaming: false
-
+    gaming: false,
 }
 
 
