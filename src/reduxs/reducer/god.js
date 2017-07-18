@@ -4,7 +4,8 @@ import {
     ROUND_NAME_PLAY,
     ROUND_NAME_END,
     ROUND_NAME_SILENT,
-    NEXT_ROUND
+    NEXT_ROUND,
+    INIT_GOD
 } from 'reduxs/constant'
 
 
@@ -22,10 +23,10 @@ const nextRoundRoleMap = new Map([
 ])
 
 const initState = {
-    roundState: ROUND_NAME_START,
-    e_roundState: ROUND_NAME_SILENT,
-    roundRole: 'my'
-
+    roundState: null,
+    e_roundState: null,
+    roundRole: null,
+    gaming: false,
 }
 
 
@@ -34,6 +35,9 @@ export default function God(state = initState, action) {
     switch (action.type) {
         case NEXT_ROUND: 
             return nextHandle(state, action)
+
+        case INIT_GOD:
+            return initHandle(state, action)
         default:
             return state
     }
@@ -75,6 +79,26 @@ function nextHandle(state, action) {
                 ...state,
                 e_roundState: nextRoundStateMap.get(e_roundState)
             }
+        }
+    }
+}
+
+function initHandle(state, action){
+    if (action.content.index === 'first') {
+        return {
+            ...state,
+            roundState: ROUND_NAME_START,
+            e_roundState: ROUND_NAME_SILENT,
+            roundRole: 'my',
+            gaming: true
+        }
+    } else {
+        return {
+            ...state,
+            roundState: ROUND_NAME_SILENT,
+            e_roundState: ROUND_NAME_START,
+            roundRole: 'e',
+            gaming: true
         }
     }
 }

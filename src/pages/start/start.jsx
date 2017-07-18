@@ -10,7 +10,7 @@ import HandCards from 'components/common/handCards'
 import EHandCards from 'components/common/e_handCards'
 import Operator  from 'components/common/operator'
 import BattleField from 'components/common/battlefield'
-
+import Dashboard   from 'components/common/dashboard'
 import { routeHook } from 'decorators'
 
 
@@ -93,6 +93,7 @@ export default class Start extends Component{
                    </div> 
                 </div>
                 <Operator></Operator>
+                <Dashboard></Dashboard>
             </div>
         )
     }

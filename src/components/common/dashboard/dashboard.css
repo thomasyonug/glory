@@ -1,0 +1,23 @@
+
+.wrapper {
+    width: 500px;
+    height: 50%;
+    position: fixed;
+    top: 25%;
+    left: 0px;
+    border: 1px solid black;
+    background: #e1e1e1;
+    transition: 1s;
+
+}
+.tipWrapper {
+    width: 10px;
+    height: 100%;
+    background: blue;
+}
+
+.roundName {
+    width: 100%;
+    height: 20px;
+    text-align: center;
+}

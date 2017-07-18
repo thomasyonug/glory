@@ -88,6 +88,6 @@ export default class Room extends Component{
         this.$ws.gameApi.startGame()
     }
     componentWillUnmount () {
-        this.props.clearMsgs()    
+        this.props.clearMsgs()
     }
 }
