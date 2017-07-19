@@ -35,7 +35,14 @@ function addHandle(state, action){
     }
 }
 function deleteHandle(state, action){
-    return state;
+    const {
+        card,
+        index
+    } = action.content
+
+    return {
+        cards: state.cards.$delete(card ? card : index)
+    };
 }
 
 function updateHandle(state, action){

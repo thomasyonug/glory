@@ -17,10 +17,12 @@
 }
 
 .battle-field-all .battle-field {
+    height: 50%;
 
 }
 .battle-field-all .e-battle-field {
-
+    height: 50%;
+    
 }
 
 .bottom-field{    

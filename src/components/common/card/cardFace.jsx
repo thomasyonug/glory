@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import Styles from './cardCore.css'
 import CSSModules from 'react-css-modules'
-import {object} from 'prop-types'
+// import {connect}          from 'react-redux'
+// import {autobind} from 'core-decorators'
+
+
+
+import {object, func} from 'prop-types'
 
 
 
@@ -9,7 +14,8 @@ import {object} from 'prop-types'
 @CSSModules(Styles)
 export default class CardFace extends Component {
     static propTypes = {
-        card: object
+        card: object,
+        onClick: func
     }
 
 
@@ -21,13 +27,17 @@ export default class CardFace extends Component {
 
         return (
             <div styleName='cardFace'>
-                <h3 styleName="head">
+                 <h3 styleName="head">
                     {card.cardName}
                 </h3>
                 <div styleName="describe">
                     {card.describe}
                 </div>
+                <div>
+                </div> 
             </div>
         )
     }
+
+
 }
