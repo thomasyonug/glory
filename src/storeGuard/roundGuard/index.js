@@ -28,8 +28,12 @@ roundGuard.addWork(function get_card_when_round_start(store) {
     const currentRoundState = store.getState().god.roundState
 
     if (currentRoundState !== ROUND_NAME_GET_CARD_REGULAR) { return }
-        // store.dispatch({
-        //     type: 
-        // })
+
+    store.dispatch(new window.Transer({
+        glory: 'get_cards_from_store_to_hand',
+        content: {
+            start: -5
+        }
+    }))
 
 })

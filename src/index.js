@@ -21,7 +21,11 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(
     reducer,
     composeEnhancers(
-      applyMiddleware(middlewares.transer)
+      applyMiddleware(
+        middlewares.transer, 
+        middlewares.roundHook,
+        middlewares.glory
+      )
     )
 )
 window.store = store
