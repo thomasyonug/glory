@@ -32,7 +32,7 @@ roundGuard.addWork(function get_card_when_round_start(store) {
     store.dispatch(new window.Transer({
         glory: 'get_cards_from_store_to_hand',
         content: {
-            start: -5
+            start: -1
         }
     }))
 
