@@ -1,0 +1,19 @@
+.cardBack {
+    width: 100%;
+    height: 100%;
+    background: #e1e1e1;
+}
+
+.cardFace {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+}
+
+.head {
+
+}
+
+.describe {
+
+}

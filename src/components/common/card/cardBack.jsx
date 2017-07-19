@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Styles from './cardBack.css'
+import Styles from './cardCore.css'
 import CSSModules from 'react-css-modules'
 
 @CSSModules(Styles)

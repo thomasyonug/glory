@@ -3,14 +3,14 @@ import {prototype} from 'decorators'
 
 @prototype({
     describe: 'this is test trap',
-    cardName: 'TestTrap',
+    cardName: 'testTrap',
     effect () {
         console.log('trap effect dodododo')
     }
 })
 export class TestTrap extends TrapEntity {
     static cardCode = '3';
-    static cardName = 'TestTrap'
+    static cardName = 'testTrap'
 }
 
 
