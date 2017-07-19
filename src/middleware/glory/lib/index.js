@@ -1,7 +1,9 @@
 
 import {
     DELETE_STORECARDS,
-    ADD_HANDCARDS
+    ADD_HANDCARDS,
+    DELETE_E_STORECARDS,
+    ADD_E_HANDCARDS
 } from 'reduxs/constant'
 
 
@@ -31,5 +33,32 @@ export default {
                 } 
             })
         })
+    },
+
+    get_cards_from_e_store_to_e_hand (store, next, action) {
+        const {
+            start,
+            end
+        } = action.content
+
+
+        const cards = store.getState().e_storeCards.cards.slice(start, end)
+
+        cards.forEach(card => {
+            next({
+                type: DELETE_E_STORECARDS,
+                content: {
+                    card
+                }
+            })
+
+            next({
+                type: ADD_E_HANDCARDS,
+                content: {
+                    card
+                } 
+            })
+        })
+
     }
 }

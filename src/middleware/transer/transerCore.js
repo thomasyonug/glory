@@ -9,7 +9,7 @@ export default store => next => action => {
         gameSocket.coreSocket.$emit('game', {
             type: 'transfer',
             content: {
-                action
+                action: action.translate()
             }
         })
         
