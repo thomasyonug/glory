@@ -3,7 +3,7 @@ import {prototype} from 'decorators'
 
 @prototype({
     describe: 'i am fucking describe',
-    cardName: 'i am fucking name',
+    cardName: 'TestMonster',
     attack: 100,
     defensive: 100
 })
