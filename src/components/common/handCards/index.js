@@ -5,6 +5,14 @@ import {CardFace} from 'components/common/card'
 
 import {connect}          from 'react-redux'
 
+
+import {autobind} from 'core-decorators'
+
+import {roundCtrl} from 'decorators'
+import {
+    ROUND_NAME_PLAY
+} from 'reduxs/constant'
+
 @connect(
     state => {
         return {
@@ -12,7 +20,13 @@ import {connect}          from 'react-redux'
     },
     dispatch => {
         return {
-            _summon: () => dispatch({glory: 'get_card_from_hand_to_battle', content: {fromIndex: 0, toIndex: 1}})
+            _summon: index => dispatch(new window.Transer({
+                glory: 'get_card_from_hand_to_battle', 
+                content: {
+                    fromIndex: index, 
+                    toIndex: 1
+                }}
+            ))
         }
     }
 )
@@ -23,7 +37,7 @@ export default class HandCards extends Component {
             cards
         } = this.props
 
-
+        const cardFaceSlot = index => <button onClick={() => this.summon(index)}>summon</button>
 
         return (
             <ul styleName='cardsWrapper'>
@@ -32,6 +46,7 @@ export default class HandCards extends Component {
                         <li styleName='cardWrapper' key={index}>
                             <CardFace 
                                 card={card}
+                                slot={cardFaceSlot(index)}
                             >
                                 {index}
                             </CardFace>
@@ -42,8 +57,16 @@ export default class HandCards extends Component {
         )
     }
 
-
-    summon () {
-
+    @autobind
+    @roundCtrl.methodCtrl({
+        validateRound: [
+            ROUND_NAME_PLAY
+        ],
+        illegalHandler (round) {
+            return this.$dialogAuto(`in ${round} cant do this`)
+        }
+    })
+    summon (index) {
+        this.props._summon(index)
     }
 }
