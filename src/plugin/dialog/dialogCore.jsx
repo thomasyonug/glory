@@ -56,8 +56,8 @@ export default class DialogCore extends Component {
                     ref={layout => this.layout = layout} 
                     >
                     {renderFn(this)}
+                    {buttonRender()}
                 </div>
-                {buttonRender()}
             </div>
         )
     }
