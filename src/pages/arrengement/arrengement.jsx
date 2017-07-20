@@ -48,38 +48,45 @@ export default class Arrengement extends Component{
         return (
             <div>
                 <div styleName="rightBar">
-                    {choosedCards.map((choosedCard, index) => 
-                        <div key={index}>{choosedCard.cardName}</div> 
-                    )}
+                    <div styleName="cardsArea">
+                        {choosedCards.map((choosedCard, index) => 
+                            <div key={index}>{choosedCard.cardName}</div> 
+                        )}
+                    </div>
                     <div styleName="buttonArea">
-                        <button onClick={this.saveHandle}>save</button>
-                        <button onClick={this.createCardGroupHandle}>新建</button>
+                        <button onClick={() => this.saveHandle()}>save</button>
+                        <button onClick={() => this.createCardGroupHandle()}>新建</button>
                     </div>
                 </div>
 
-                <div>now using cardGroup: {usingGroup.groupName}</div>
+                <div>now using cardGroup:  { usingGroup.groupName}</div>
                 <div>
                     <button onClick={() => this.chooseUsingGroup()}>choose usingGroup</button>
                 </div>
 
-                {
-                    [...cardClassMap.values()].map(cardClass => {
-                        const instance = new cardClass()
-                        return (
-                            <div key={cardClass}>
-                                <div>{instance.name}</div>
-                                <div>
-                                    <span>{instance.attack} ||  </span>
-                                    <span>{instance.defence}</span>
+                <div styleName="chooseCards">
+                    {
+                        [...cardClassMap.values()].map(cardClass => {
+                            const instance = new cardClass()
+                            return (
+                                <div key={cardClass} styleName="chooseCard">
+                                    <div styleName="cardProty">
+                                        <span styleName="cardAttack">{instance.attack == null ? '' : `${instance.attack}`}</span>
+                                        <span styleName="cardDefence">{instance.defence == null ? '' : `${instance.defence}`}</span>
+                                    </div>
+                                    <div styleName="cardName">{instance.cardName}</div>
+                                    <div styleName="cardInstro">{instance.describe}</div>
+                                    
+                                    <div styleName="chooseBtn">
+                                        <button onClick={() => this.chooseHandle(cardClass)}>choose</button>
+                                        <button onClick={() => this.unchooseHandle(cardClass)}>unchoose</button>
+                                    </div>
                                 </div>
-                                <div>
-                                    <button onClick={() => this.chooseHandle(cardClass)}>choose</button>
-                                    <button onClick={() => this.unchooseHandle(cardClass)}>unchoose</button>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </div>
+
                 <div styleName="bottomBar">
                     {   cardGroups.length > 0 ?
                         cardGroups.map(cardGroup => 
@@ -101,7 +108,9 @@ export default class Arrengement extends Component{
 
     @autobind
     chooseHandle (cardClass) {
-        if (this.state.choosedCards.filter(item => cardClass).length >= 3) return
+        console.log(`choosedCards: ${JSON.stringify(this.state.choosedCards)}`)
+        console.log(`cardClass: ${cardClass.cardCode}`)
+        if (this.state.choosedCards.filter((item) => { return item.cardCode === cardClass.cardCode}).length >= 3) return
         let newcard = {cardName:cardClass.cardName , cardCode:cardClass.cardCode}
         this.setState({
             choosedCards: [
