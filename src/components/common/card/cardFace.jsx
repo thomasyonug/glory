@@ -6,7 +6,7 @@ import CSSModules from 'react-css-modules'
 
 
 
-import {object, func} from 'prop-types'
+import {object, func, node} from 'prop-types'
 
 
 
@@ -15,13 +15,15 @@ import {object, func} from 'prop-types'
 export default class CardFace extends Component {
     static propTypes = {
         card: object,
+        slot: node,
         onClick: func
     }
 
 
     render () {
         const {
-            card
+            card,
+            slot
         } = this.props
 
 
@@ -34,6 +36,7 @@ export default class CardFace extends Component {
                     {card.describe}
                 </div>
                 <div>
+                    {slot}
                 </div> 
             </div>
         )

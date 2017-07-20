@@ -26,7 +26,6 @@ export const roundGuard = new CoreGuard({
 
 roundGuard.addWork(function get_card_when_round_start(store) {
     const currentRoundState = store.getState().god.roundState
-
     if (currentRoundState !== ROUND_NAME_GET_CARD_REGULAR) { return }
 
     store.dispatch(new window.Transer({

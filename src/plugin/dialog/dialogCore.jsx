@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules'
 import styles from './dialogCore.css'
-import {func} from 'prop-types';
+import {func, bool} from 'prop-types';
 
 
 
@@ -11,7 +11,8 @@ export default class DialogCore extends Component {
     static propTypes = {
         resolve: func,
         rej: func,
-        renderFn: func
+        renderFn: func,
+        simple: bool
     }
 
 
@@ -27,8 +28,26 @@ export default class DialogCore extends Component {
         const {
             resolve,
             rej,
-            renderFn
+            renderFn,
+            simple
         } = this.props
+
+
+        const buttonRender = () => {
+            if (simple) {
+                return (
+                    <div></div>
+                )
+            } else {
+                return (
+                    <div>
+                        <button onClick={() => resolve(this.state)}>confirm</button>
+                        <button onClick={() => rej(this.state)}>cancel</button>
+                    </div>
+                )
+            }
+        }
+
 
         return (
             <div styleName="dialogWrapper">
@@ -37,11 +56,8 @@ export default class DialogCore extends Component {
                     ref={layout => this.layout = layout} 
                     >
                     {renderFn(this)}
-                    <div>
-                        <button onClick={() => resolve(this.state)}>confirm</button>
-                        <button onClick={() => rej(this.state)}>cancel</button>
-                    </div>
                 </div>
+                {buttonRender()}
             </div>
         )
     }
