@@ -48,9 +48,11 @@ export default class Arrengement extends Component{
         return (
             <div>
                 <div styleName="rightBar">
-                    {choosedCards.map((choosedCard, index) => 
-                        <div key={index}>{choosedCard.cardName}</div> 
-                    )}
+                    <div styleName="cardsArea">
+                        {choosedCards.map((choosedCard, index) => 
+                            <div key={index}>{choosedCard.cardName}</div> 
+                        )}
+                    </div>
                     <div styleName="buttonArea">
                         <button onClick={() => this.saveHandle()}>save</button>
                         <button onClick={() => this.createCardGroupHandle()}>新建</button>
@@ -106,7 +108,9 @@ export default class Arrengement extends Component{
 
     @autobind
     chooseHandle (cardClass) {
-        if (this.state.choosedCards.filter(item => cardClass).length >= 3) return
+        console.log(`choosedCards: ${JSON.stringify(this.state.choosedCards)}`)
+        console.log(`cardClass: ${cardClass.cardCode}`)
+        if (this.state.choosedCards.filter((item) => { return item.cardCode === cardClass.cardCode}).length >= 3) return
         let newcard = {cardName:cardClass.cardName , cardCode:cardClass.cardCode}
         this.setState({
             choosedCards: [
