@@ -4,8 +4,7 @@ import styles from './arrengement.css'
 import {connect} from 'react-redux'
 import {cardClassMap} from 'resource'
 import { routeHook } from 'decorators'
-
-
+import {autobind} from 'core-decorators'
 
 
 @connect(
@@ -100,7 +99,8 @@ export default class Arrengement extends Component{
         )
     }
 
-    chooseHandle = cardClass => {
+    @autobind
+    chooseHandle (cardClass) {
         if (this.state.choosedCards.filter(item => cardClass).length >= 3) return
         let newcard = {cardName:cardClass.cardName , cardCode:cardClass.cardCode}
         this.setState({
@@ -111,13 +111,13 @@ export default class Arrengement extends Component{
         })
     }
 
-    unchooseHandle = cardClass => {
+    unchooseHandle (cardClass) {
         this.setState({
             choosedCards: this.state.choosedCards.$delete(item => item === cardClass)
         })
     }
 
-    chooseCardGroup = cardGroup => {
+    chooseCardGroup (cardGroup) {
         let cards = []
         cardGroup.cards.forEach((item) => {
             cards.push({
@@ -131,7 +131,7 @@ export default class Arrengement extends Component{
         })
     }
 
-    chooseUsingGroup = () => {
+    chooseUsingGroup () {
         this.setState({
             usingGroup: {groupName: this.state.chooseCardGroup.groupName}
         }, () => {
@@ -139,7 +139,7 @@ export default class Arrengement extends Component{
         })
     }
 
-    saveHandle = () => {
+    saveHandle () {
         let cards = this.state.choosedCards 
         this.setState({
             chooseCardGroup: {
@@ -151,7 +151,7 @@ export default class Arrengement extends Component{
         })
     }
 
-    createCardGroupHandle = () => {
+    createCardGroupHandle () {
         const dialogContentRender = (dialogContext) => {
             return (
                 <input
@@ -173,7 +173,7 @@ export default class Arrengement extends Component{
         .catch(err => {}) 
     }
 
-    deleteHandle = cardGroup => {
+    deleteHandle (cardGroup) {
         this.$dialogConfirm(<div>确认删除此卡组？</div>)
         .then(() => {
             this.$ws.gameApi.arrengement_deleteCardGroup(cardGroup)

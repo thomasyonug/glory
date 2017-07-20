@@ -6,7 +6,7 @@
     "amdefine": "^1.0.1",
     "core-decorators": "^0.19.0",
     "es2015": "0.0.0",
-    "npm": "^5.1.0",
+    "npm": "^5.3.0",
     "react": "^15.5.4",
     "react-css-modules": "^4.0.5",
     "react-dom": "^15.5.4",
@@ -107,5 +107,5 @@
     "extends": "react-app"
   },
   "whatfuck": "http://123.206.180.56:80",
-  "proxy": "http://localhost:8888"
+  "proxy": "http://123.206.180.56:80"
 }
