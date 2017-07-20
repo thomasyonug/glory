@@ -12,7 +12,7 @@ const curryFn = method => result => {
     method(result) 
 }
 
-export const $dialog = (renderFn = () => <div></div>, cb = () => {}) => 
+export const $dialog = (renderFn = () => <div></div>, cb = () => {}, props = {}) => 
     new Promise((resolve, rej) => {
 
         ReactDOM.render(
@@ -20,6 +20,7 @@ export const $dialog = (renderFn = () => <div></div>, cb = () => {}) =>
                 resolve={curryFn(resolve)}
                 rej={curryFn(rej)}
                 renderFn={renderFn}
+                {...props}
              />,
             mount,
             cb
@@ -35,3 +36,17 @@ export const $dialogConfirm = (content) =>
             </div>
         ))
 
+
+export const $dialogAuto = content => 
+        $dialog((dialogContext) => {
+
+            setTimeout(() => {
+                dialogContext.props.resolve()
+            }, 2000)
+
+            return (
+                <div>
+                    {content}
+                </div>
+            )
+        }, () => {}, {simple: true})

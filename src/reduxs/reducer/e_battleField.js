@@ -28,11 +28,14 @@ function throwHandle (state, action) {
         index,
         card
     } = action.content
+    if (state.firstAreaCards[index]) { return }     
 
     const newArr = [
         ...state.firstAreaCards
     ]
+
     newArr[index] = card
+
     return {
         ...state,
         firstAreaCards: newArr
