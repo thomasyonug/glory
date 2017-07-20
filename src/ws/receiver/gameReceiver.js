@@ -61,6 +61,20 @@ export class GameReceiver extends Entity{
             })
         })
     }
+    glory_initHandCards () {
+        store.dispatch({
+            glory: 'get_cards_from_store_to_hand',
+            content: {
+                start: -5
+            }
+        })
+        store.dispatch({
+            glory: 'get_cards_from_e_store_to_e_hand',
+            content: {
+                start: -5
+            }
+        })
+    }
 
     glory_initGod (msg) {
         store.dispatch({
@@ -75,6 +89,7 @@ export class GameReceiver extends Entity{
             initGodContent
         } = msg.content
         this.glory_initStoreCards(initStoreContent)
+        this.glory_initHandCards()
         this.glory_initGod(initGodContent)
     }
     

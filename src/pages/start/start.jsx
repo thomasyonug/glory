@@ -1,16 +1,17 @@
 import React, {Component} from 'react'
-import CSSModules from 'react-css-modules'
-import {connect} from 'react-redux'
-import Styles from './start.css'
+import CSSModules         from 'react-css-modules'
+import {connect}          from 'react-redux'
+import Styles             from './start.css'
 
 
-import StoreCards from 'components/common/storeCards'
-import EStoreCards from 'components/common/e_storeCards'
-import HandCards from 'components/common/handCards'
-import EHandCards from 'components/common/e_handCards'
-import Operator  from 'components/common/operator'
-import BattleField from 'components/common/battlefield'
-import Dashboard   from 'components/common/dashboard'
+import StoreCards   from 'components/common/storeCards'
+import EStoreCards  from 'components/common/e_storeCards'
+import HandCards    from 'components/common/handCards'
+import EHandCards   from 'components/common/e_handCards'
+import Operator     from 'components/common/operator'
+import BattleField  from 'components/common/battlefield'
+import EBattleField from 'components/common/e_battlefield'
+import Dashboard    from 'components/common/dashboard'
 
 
 
@@ -77,14 +78,16 @@ export default class Start extends Component{
                 </div>
                 <div styleName='battle-field-all'>
                     <div styleName='e-battle-field'>
-                        <BattleField
-                            cards={battleField.firstAreaCards}
+                        <EBattleField
+                            firstArea={e_battleField.firstAreaCards}
+                            secondArea={123}
                         >
-                        </BattleField>
+                        </EBattleField>
                     </div>
                     <div styleName='battle-field'>
                         <BattleField
-                            cards={e_battleField.firstAreaCards}
+                            firstArea={battleField.firstAreaCards}
+                            secondArea={123}
                         >
                         </BattleField>
                     </div>

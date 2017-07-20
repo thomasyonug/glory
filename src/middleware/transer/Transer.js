@@ -1,23 +1,23 @@
-import {propertiesCheck} from 'decorators'
+import translator from './translator'
+import {autobind} from 'core-decorators'
+
+
+
 
 
 
 window.Transer = 
-
-    @propertiesCheck({
-        unStaticProperties: {
-            type: String,
-            content: String
-        }
-    })
     class Transer {
-        type    = null;
-        content = null;
+        constructor (arg) {
+            Object.assign(this, arg)
+        }
 
-        constructor ({type, content}) {
-            Object.assign(this, {
-                type,
-                content
-            })
+        @autobind
+        translate () {
+            return {
+                ...this,
+                type: translator.get(this.type),
+                glory: translator.get(this.glory)
+            }
         }
     }

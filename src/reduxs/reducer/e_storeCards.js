@@ -46,14 +46,27 @@ function addHandle (state, action) {
 
 
 function deleteHandle (state, action) {
-    const {index, content} = action    
-    const {cards} = state
-    index && cards.splice(index, 1)
-    content && cards.splice(cards.findIndex(item => item.id === content), 1)
+    const {
+        start,
+        number,
+        card
+    } = action.content
 
-    return {
-        ...state,
-        cards: [...cards]
+    
+    if (card) {
+        return {
+            cards: state.cards.$delete(card)
+        }
+    } 
+
+    if (start && number) {
+
+        const cards = [...state.cards]
+
+        cards.splice(start, number)
+        return {
+            cards
+        }
     }
 }
 

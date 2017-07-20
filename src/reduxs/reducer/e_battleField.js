@@ -5,7 +5,8 @@ import {
 
 
 const initState = {
-    firstAreaCards: []
+    firstAreaCards: new Array(5).fill(null),
+    secondAreaCards: new Array(5).fill(null)
 }
 
 

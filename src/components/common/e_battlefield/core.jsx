@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {CardFace} from 'components/common/card'
 
 @CSSModules(Styles)
-export default class BattleField extends Component {
+export default class EBattleField extends Component {
     static propTypes = {
         firstArea: PropTypes.array
     }

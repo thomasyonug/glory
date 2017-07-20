@@ -31,11 +31,18 @@ export default function HandCards(state = initState, action){
 
 function addHandle(state, action){
     return {
-        cards: [...state.cards, action.content]
+        cards: [...state.cards, action.content.card]
     }
 }
 function deleteHandle(state, action){
-    return state;
+    const {
+        card,
+        index
+    } = action.content
+
+    return {
+        cards: state.cards.$delete(card ? card : index)
+    };
 }
 
 function updateHandle(state, action){
