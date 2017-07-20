@@ -10,6 +10,12 @@ import chat                from './chat'
 import arrengement         from './arrengement'
 import battleField         from './battleField'
 import e_battleField       from './e_battleField'
+import test                from './test'
+
+
+
+
+
 
 export default combineReducers({
     storeCards,
@@ -22,7 +28,8 @@ export default combineReducers({
     chat,
     arrengement,
     battleField,
-    e_battleField
+    e_battleField,
+    test
 })
 
 

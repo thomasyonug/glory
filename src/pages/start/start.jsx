@@ -16,10 +16,6 @@ import Dashboard    from 'components/common/dashboard'
 
 
 
-import {
-    roundGuard
-} from 'storeGuard'
-
 import { routeHook } from 'decorators'
 
 
@@ -49,7 +45,6 @@ export default class Start extends Component{
 
 
     componentWillMount () {
-        roundGuard.guard()
     }
 
     render(){
@@ -111,6 +106,5 @@ export default class Start extends Component{
     }
 
     componentWillUnmount () {
-        roundGuard.unguard()
     }
 }
