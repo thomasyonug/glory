@@ -2,7 +2,9 @@ import {
     THROW_MONSTER_CARDS_TO_BATTLEFIELD,
     DELETE_HANDCARDS,
     DELETE_E_HANDCARDS,
-    THROW_MONSTER_CARDS_TO_E_BATTLEFIELD
+    THROW_MONSTER_CARDS_TO_E_BATTLEFIELD,
+    ACTIVE_HANDCARD,
+    // UNACTIVE_HANDCARD
 } from 'reduxs/constant'
 
 
@@ -62,10 +64,23 @@ function get_card_from_e_hand_to_e_battle (store, next, action) {
             card
         }
     })
+}
 
+
+function CLICK_HAND_CARD (store, next, action) {
+    store.dispatch({
+        type: ACTIVE_HANDCARD,
+        content: action.content
+    })
+
+    return next({
+        ...action,
+        type: action.glory
+    })
 }
 
 export default {
     get_card_from_hand_to_battle,
-    get_card_from_e_hand_to_e_battle
+    get_card_from_e_hand_to_e_battle,
+    CLICK_HAND_CARD
 }

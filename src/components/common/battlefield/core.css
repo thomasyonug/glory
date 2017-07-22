@@ -10,3 +10,17 @@
     flex: 1;
     margin: 0 5px;
 }
+
+.item:hover {
+    border: 1px solid blue;    
+}
+
+.itemActive {
+    flex: 1;
+    margin: 0 5px;
+    border: 1px solid red;
+}
+
+.itemActive:hover {
+    border: 1px solid blue;
+}

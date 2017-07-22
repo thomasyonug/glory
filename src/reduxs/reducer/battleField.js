@@ -1,12 +1,15 @@
 import {
     THROW_MONSTER_CARDS_TO_BATTLEFIELD,
-    DROP_MONSTER_CARDS_FROM_BATTLEFIELD
+    DROP_MONSTER_CARDS_FROM_BATTLEFIELD,
+    SUMMONABLE_BATTLEFIELD,
+    SUMMONENABLE_BATTLEFIELD
 } from 'reduxs/constant'
 
 
 const initState = {
     firstAreaCards: new Array(5).fill(null),
-    secondAreaCards: new Array(5).fill(null)
+    secondAreaCards: new Array(5).fill(null),
+    summonAble: false
 }
 
 
@@ -17,6 +20,10 @@ export default function battleField (state = initState, action) {
             return throwHandle(state, action)
         case DROP_MONSTER_CARDS_FROM_BATTLEFIELD:
             return dropHandle(state, action)
+        case SUMMONABLE_BATTLEFIELD:
+            return summonableHandle(state, action)
+        case SUMMONENABLE_BATTLEFIELD:
+            return summonEnableHandle(state, action)
         default: 
             return state
     }
@@ -53,5 +60,19 @@ function dropHandle (state, action) {
     return {
         ...state,
         firstAreaCards: newArr
+    }
+}
+
+function summonableHandle (state, action) {
+    return {
+        ...state,
+        summonAble: true
+    }
+}
+
+function summonEnableHandle (state, action) {
+    return {
+        ...state,
+        summonAble: false
     }
 }
