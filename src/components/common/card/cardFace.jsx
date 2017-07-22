@@ -23,12 +23,13 @@ export default class CardFace extends Component {
     render () {
         const {
             card,
-            slot
+            slot,
+            onClick
         } = this.props
 
 
         return (
-            <div styleName='cardFace'>
+            <div styleName='cardFace' onClick={onClick}>
                  <h3 styleName="head">
                     {card.cardName}
                 </h3>

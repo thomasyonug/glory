@@ -3,6 +3,11 @@ import Styles             from './roomChatCore.css'
 import CSSModules         from 'react-css-modules'
 import SendCore           from '../sendCore'
 
+
+
+
+
+
 @CSSModules(Styles)
 export class RoomChatCore extends Component {
 
