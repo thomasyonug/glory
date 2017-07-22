@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
-import styles from './arrengement.css'
+import styles from './arrengement.scss'
 import {connect} from 'react-redux'
 import {cardClassMap} from 'resource'
 import { routeHook } from 'decorators'
@@ -48,7 +48,7 @@ export default class Arrengement extends Component{
         return (
             <div>
                 <div styleName="rightBar">
-                    <div styleName="cardsArea">
+                    <div>
                         {choosedCards.map((choosedCard, index) => 
                             <div key={index}>{choosedCard.cardName}</div> 
                         )}
