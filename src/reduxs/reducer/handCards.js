@@ -2,11 +2,16 @@ import {
     ADD_HANDCARDS,
     DELETE_HANDCARDS,
     UPDATE_HANDCARDS,
-    QUERY_HANDCARDS
+    QUERY_HANDCARDS,
+    
+    ACTIVE_HANDCARD,
+    UNACTIVE_HANDCARD
 } from 'reduxs/constant'
 
 const initState = {
-    cards: []
+    cards: [],
+    active: false,
+    activeCard: null
 }
 
 
@@ -21,6 +26,10 @@ export default function HandCards(state = initState, action){
             return updateHandle(state, action);
         case QUERY_HANDCARDS:
             return queryHandle(state, action);
+        case ACTIVE_HANDCARD:
+            return activeHandle(state, action);
+        case UNACTIVE_HANDCARD:
+            return unactiveHandle(state, action);
         default:
             return state
     }
@@ -50,4 +59,17 @@ function updateHandle(state, action){
 }
 function queryHandle(state, action){
     return state;
+}
+function activeHandle(state, action){
+    return {
+        ...state,
+        active: true,
+        activeCard: action.content.card
+    }
+}
+function unactiveHandle(state, action){
+    return {
+        ...state,
+        active: false
+    }
 }

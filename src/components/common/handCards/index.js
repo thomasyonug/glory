@@ -3,7 +3,7 @@ import Styles from './handCards.css'
 import CSSModules from 'react-css-modules'
 import {CardFace} from 'components/common/card'
 
-import {connect}          from 'react-redux'
+import {connect}  from 'react-redux'
 
 
 import {autobind} from 'core-decorators'
@@ -16,6 +16,8 @@ import {
 @connect(
     state => {
         return {
+            active: state.handCards.active,
+            activeCard: state.handCards.activeCard
         }
     },
     dispatch => {
@@ -26,7 +28,14 @@ import {
                     fromIndex: index, 
                     toIndex: 1
                 }}
-            ))
+            )),
+
+            _clickHandcard: card => dispatch({
+                glory: 'CLICK_HAND_CARD',
+                content: {
+                    card
+                }
+            })
         }
     }
 )
@@ -34,7 +43,9 @@ import {
 export default class HandCards extends Component {
     render () {
         const {
-            cards
+            cards,
+            active,
+            activeCard
         } = this.props
 
         const cardFaceSlot = index => <button onClick={() => this.summon(index)}>summon</button>
@@ -44,12 +55,17 @@ export default class HandCards extends Component {
                 {cards.map((card, index) => {
                     return (
                         <li styleName='cardWrapper' key={index}>
-                            <CardFace 
-                                card={card}
-                                slot={cardFaceSlot(index)}
-                            >
-                                {index}
-                            </CardFace>
+                            <div style={{
+                                border: (activeCard === card && active) ? '1px solid green' : ''
+                            }}>
+                                <CardFace 
+                                    onClick={() => this.click(card)}
+                                    card={card}
+                                    slot={cardFaceSlot(index)}
+                                >
+                                    {index}
+                                </CardFace>
+                            </div>
                         </li>
                     )
                 })}
@@ -68,5 +84,10 @@ export default class HandCards extends Component {
     })
     summon (index) {
         this.props._summon(index)
+    }
+
+    @autobind
+    click (card) {
+        this.props._clickHandcard(card)
     }
 }

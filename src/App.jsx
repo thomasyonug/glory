@@ -6,6 +6,9 @@ import {
   Switch
 } from 'react-router-dom'
 
+import {connect}  from 'react-redux'
+import Rx from 'rxjs'
+
 const contexts = require.context('pages', true, /@index\.js$/)
 const routers = contexts.keys().reduce((routers, key) => {
   const routeName = key.match(/([a-zA-Z\-0-9]+)\/@index.js$/i)[1]
@@ -16,6 +19,19 @@ const routers = contexts.keys().reduce((routers, key) => {
   return routers
 }, [])
 
+@connect(
+    state => {
+        return {
+        }
+    },
+    dispatch => {
+        return {
+          cancelActiveAll: () => dispatch({
+            glory: 'CLICK_RIGHT_DOCUMENT'
+          })
+        }
+    }
+)
 export default class App extends Component {
 
 
@@ -35,6 +51,16 @@ export default class App extends Component {
       </Router>
     );
   }
+
+  componentDidMount () {
+      document.oncontextmenu = function(){return false};
+      Rx.Observable.fromEvent(document, 'mouseup')
+      .filter(e => e.button === 2)
+      .subscribe(e => {
+        this.props.cancelActiveAll()
+      })
+  }
+
 }
 
 

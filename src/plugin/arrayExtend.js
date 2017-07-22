@@ -18,5 +18,15 @@ Object.assign(Array.prototype, {
         }
         tempArr.splice(index, 1)
         return tempArr
+    },
+
+    $lastOne () {
+        const index = this.length - 1
+
+        return this[index]
+    },
+
+    $firstOne () {
+        return this[0]
     }
 })
