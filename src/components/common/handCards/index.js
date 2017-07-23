@@ -75,6 +75,7 @@ export default class HandCards extends Component {
         }
     })
     click (index) {
+        if (this.props.cards[index].type !== 'MONSTER') {return 0}
         this.props._clickHandcard(index)
     }
 }

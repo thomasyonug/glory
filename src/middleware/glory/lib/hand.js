@@ -23,6 +23,7 @@ function get_card_from_hand_to_battle (store, next, action) {
 
     const card = cards[fromIndex]
 
+
     next({
         type: DELETE_HANDCARDS,
         content: {
