@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
-import styles from './room.css'
+import styles from './room.scss'
 import {connect} from 'react-redux'
 // import * as ac from 'reduxs/actions'
 import {RoomChat} from 'components/common/chats/roomChat'
@@ -46,7 +46,7 @@ export default class Room extends Component{
 
         if (Object.keys(roomInfo).length !== 0) {
             return (
-                <div>
+                <div styleName="chatRoom">
                     <h1>roomName: {roomInfo.roomName}</h1>
                     <section styleName="currentRoom">
                         <div styleName="guestRoom">
