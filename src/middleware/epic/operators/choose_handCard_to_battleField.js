@@ -1,6 +1,7 @@
 import {
     CLICK_BATTLE_FIELD,
-    CLICK_HAND_CARD
+    CLICK_HAND_CARD,
+    CLICK_RIGHT_DOCUMENT
 } from 'reduxs/constant'
 
 
@@ -10,8 +11,10 @@ import { Observable } from 'rxjs/Observable';
 export default (action$, store) => 
     Observable.merge(
         action$.ofType(CLICK_BATTLE_FIELD),
-        action$.ofType(CLICK_HAND_CARD) 
+        action$.ofType(CLICK_HAND_CARD),
+        action$.ofType(CLICK_RIGHT_DOCUMENT)
     )
+    .do(x => console.log(x))
     .pairwise()
     .filter(xs => 
         xs.$firstOne().type === CLICK_HAND_CARD

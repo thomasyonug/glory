@@ -5,7 +5,8 @@ import {
     THROW_MONSTER_CARDS_TO_E_BATTLEFIELD,
     ACTIVE_HANDCARD,
     // UNACTIVE_HANDCARD
-    SUMMONABLE_BATTLEFIELD
+    SUMMONABLE_BATTLEFIELD,
+    CLICK_RIGHT_DOCUMENT
 } from 'reduxs/constant'
 
 
@@ -35,6 +36,10 @@ function get_card_from_hand_to_battle (store, next, action) {
             index: toIndex,
             card
         }
+    })
+
+    store.dispatch({
+        glory: CLICK_RIGHT_DOCUMENT
     })
 }
 
