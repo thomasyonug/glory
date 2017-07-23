@@ -11,7 +11,7 @@ import {
 const initState = {
     cards: [],
     active: false,
-    activeCard: null
+    activeIndex: null
 }
 
 
@@ -64,12 +64,13 @@ function activeHandle(state, action){
     return {
         ...state,
         active: true,
-        activeCard: action.content.card
+        activeIndex: action.content.index
     }
 }
 function unactiveHandle(state, action){
     return {
         ...state,
-        active: false
+        active: false,
+        activeIndex: null
     }
 }

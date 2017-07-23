@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {CardFace} from 'components/common/card'
 
 
-
+import {autobind} from 'core-decorators'
 
 
 import {connect} from 'react-redux'
@@ -20,6 +20,19 @@ import {connect} from 'react-redux'
     },
     dispatch => {
         return {
+            _click: index => dispatch({
+                type: 'CLICK_BATTLE_FIELD',
+                content: {
+                    index
+                }
+            }),
+            // _summon: index => dispatch(new window.Transer({
+            //     glory: 'get_card_from_hand_to_battle', 
+            //     content: {
+            //         fromIndex: index, 
+            //         toIndex: index
+            //     }}
+            // )),
         }
     }
 )
@@ -45,7 +58,7 @@ export default class BattleField extends Component {
                 {firstArea.map((card,index)=> {
                     if (card) {
                         return (
-                            <li key={index} styleName="item">
+                            <li key={index} styleName="item" onClick={() => this.click(index)}>
                                 <CardFace
                                     card={card}
                                 ></CardFace>
@@ -54,11 +67,9 @@ export default class BattleField extends Component {
                     } else {
                         const wrapper = 
                             summonAble ? 
-                                <li key={index} styleName="itemActive">empty</li> 
-                                : 
-                                <li key={index} styleName="item">empty</li> 
-
-
+                                <li key={index} styleName="itemActive" onClick={() => this.click(index)}>empty</li> 
+                                :
+                                <li key={index} styleName="item" onClick={() => this.click(index)}>empty</li> 
 
                         return (
                             wrapper
@@ -67,6 +78,11 @@ export default class BattleField extends Component {
                 })}
             </ul>
         )
+    }
+
+    @autobind
+    click (index) {
+        this.props._click(index)
     }
 }
 

@@ -19,8 +19,17 @@ export default (action$, store) =>
         xs.$lastOne().type === CLICK_BATTLE_FIELD 
     )
     .map(xs => {
-        console.log(xs)
-        return {
-            type: '123'
-        }
+        const fromIndex = xs.$firstOne().content.index
+        const toIndex = xs.$lastOne().content.index
+
+
+
+        return new window.Transer({
+            glory: 'get_card_from_hand_to_battle',
+            content: {
+                fromIndex,
+                toIndex
+            }
+        })
+        
     })

@@ -12,7 +12,6 @@ export default store => next => action => {
                 action: action.translate()
             }
         })
-        
         return next({...action})
     } else {
         return next(action)

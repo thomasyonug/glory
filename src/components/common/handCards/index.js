@@ -17,23 +17,16 @@ import {
     state => {
         return {
             active: state.handCards.active,
-            activeCard: state.handCards.activeCard
+            activeIndex: state.handCards.activeIndex
         }
     },
     dispatch => {
         return {
-            _summon: index => dispatch(new window.Transer({
-                glory: 'get_card_from_hand_to_battle', 
-                content: {
-                    fromIndex: index, 
-                    toIndex: 1
-                }}
-            )),
 
-            _clickHandcard: card => dispatch({
+            _clickHandcard: index => dispatch({
                 glory: 'CLICK_HAND_CARD',
                 content: {
-                    card
+                    index
                 }
             })
         }
@@ -45,10 +38,10 @@ export default class HandCards extends Component {
         const {
             cards,
             active,
-            activeCard
+            activeIndex
         } = this.props
 
-        const cardFaceSlot = index => <button onClick={() => this.summon(index)}>summon</button>
+        // const cardFaceSlot = index => <button onClick={() => this.summon(index)}>summon</button>
 
         return (
             <ul styleName='cardsWrapper'>
@@ -56,12 +49,11 @@ export default class HandCards extends Component {
                     return (
                         <li styleName='cardWrapper' key={index}>
                             <div style={{
-                                border: (activeCard === card && active) ? '1px solid green' : ''
+                                border: (activeIndex === index && active) ? '1px solid green' : ''
                             }}>
                                 <CardFace 
-                                    onClick={() => this.click(card)}
+                                    onClick={() => this.click(index)}
                                     card={card}
-                                    slot={cardFaceSlot(index)}
                                 >
                                     {index}
                                 </CardFace>
@@ -82,12 +74,7 @@ export default class HandCards extends Component {
             return this.$dialogAuto(`in ${round} cant do this`)
         }
     })
-    summon (index) {
-        this.props._summon(index)
-    }
-
-    @autobind
-    click (card) {
-        this.props._clickHandcard(card)
+    click (index) {
+        this.props._clickHandcard(index)
     }
 }

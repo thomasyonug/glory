@@ -5,6 +5,7 @@ import {
     THROW_MONSTER_CARDS_TO_E_BATTLEFIELD,
     ACTIVE_HANDCARD,
     // UNACTIVE_HANDCARD
+    SUMMONABLE_BATTLEFIELD
 } from 'reduxs/constant'
 
 
@@ -71,6 +72,10 @@ function CLICK_HAND_CARD (store, next, action) {
     store.dispatch({
         type: ACTIVE_HANDCARD,
         content: action.content
+    })
+
+    store.dispatch({
+        type: SUMMONABLE_BATTLEFIELD
     })
 
     return next({
