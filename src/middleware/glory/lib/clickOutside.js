@@ -12,6 +12,10 @@ function CLICK_RIGHT_DOCUMENT (store, next, action) {
     store.dispatch({
         type: SUMMONENABLE_BATTLEFIELD
     })
+
+    return next({
+        type: CLICK_RIGHT_DOCUMENT.name
+    })
 }
 
 
