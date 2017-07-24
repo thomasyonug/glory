@@ -1,4 +1,5 @@
 export const CLICK = 'CLICK'
+export const ATTACK = 'ATTACK'
 
 export const CLICK_OUTSIDE = 'CLICK_OUTSIDE'
 export const CLICK_HAND_CARD = 'CLICK_HAND_CARD'
@@ -7,3 +8,5 @@ export const CLICK_BATTLE_FIELD = 'CLICK_BATTLE_FIELD'
 
 export const CLICK_DOUBLE = 'CLICK_DOUBLE'
 export const CLICK_RIGHT_DOCUMENT = 'CLICK_RIGHT_DOCUMENT'
+
+

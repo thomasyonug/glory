@@ -25,14 +25,7 @@ import {connect} from 'react-redux'
                 content: {
                     index
                 }
-            }),
-            // _summon: index => dispatch(new window.Transer({
-            //     glory: 'get_card_from_hand_to_battle', 
-            //     content: {
-            //         fromIndex: index, 
-            //         toIndex: index
-            //     }}
-            // )),
+            })
         }
     }
 )
@@ -51,6 +44,9 @@ export default class BattleField extends Component {
             firstArea,
             summonAble
         } = this.props
+
+
+
 
 
         return (

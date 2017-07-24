@@ -4,7 +4,8 @@ import {propertiesCheck, prototype} from 'decorators'
 @propertiesCheck({
     unStaticProperties: {
         attack: Number,
-        defensive: Number
+        defensive: Number,
+        validateAttackTimes: Number
     }
 })
 @prototype({

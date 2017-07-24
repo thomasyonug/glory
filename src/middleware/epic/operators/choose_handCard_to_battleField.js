@@ -14,7 +14,6 @@ export default (action$, store) =>
         action$.ofType(CLICK_HAND_CARD),
         action$.ofType(CLICK_RIGHT_DOCUMENT)
     )
-    .do(x => console.log(x))
     .pairwise()
     .filter(xs => 
         xs.$firstOne().type === CLICK_HAND_CARD

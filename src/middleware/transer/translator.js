@@ -6,4 +6,6 @@ export default new Map([
     ['get_card_from_e_hand_to_e_battle', 'get_card_from_hand_to_battle'],
     ['get_card_from_hand_to_battle', 'get_card_from_e_hand_to_e_battle'],
     ['NEXT_ROUND', 'NEXT_ROUND'],
+    ['DROP_MONSTER_CARDS_FROM_BATTLEFIELD', 'DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD'],
+    ['DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD', 'DROP_MONSTER_CARDS_FROM_BATTLEFIELD']
 ])

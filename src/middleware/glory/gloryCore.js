@@ -12,7 +12,6 @@ export default store => next => action => {
 
     if (!glory) { return next(action) }
 
-
     return lib[glory](store, next, action)
 }
 

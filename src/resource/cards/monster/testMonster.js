@@ -10,6 +10,8 @@ import {prototype} from 'decorators'
 export class TestMonster extends MonsterEntity {
     static cardCode = '1';
     static cardName = 'TestMonster'
+
+    validateAttackTimes = 1;
 }
 
 
