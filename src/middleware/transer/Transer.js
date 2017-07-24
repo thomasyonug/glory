@@ -14,10 +14,19 @@ window.Transer =
 
         @autobind
         translate () {
-            return {
-                ...this,
-                type: translator.get(this.type),
-                glory: translator.get(this.glory)
+            if (this.econtent) {
+                return {
+                    ...this,
+                    type: translator.get(this.type),
+                    glory: translator.get(this.glory),
+                    content: this.econtent
+                }
+            } else {
+                return {
+                    ...this,
+                    type: translator.get(this.type),
+                    glory: translator.get(this.glory)
+                }
             }
         }
     }

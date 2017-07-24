@@ -2,7 +2,9 @@ import {
     THROW_MONSTER_CARDS_TO_BATTLEFIELD,
     DROP_MONSTER_CARDS_FROM_BATTLEFIELD,
     SUMMONABLE_BATTLEFIELD,
-    SUMMONENABLE_BATTLEFIELD
+    SUMMONENABLE_BATTLEFIELD,
+    REFRESH_ATTACK_TIMES,
+    MINUS_ATTACK_TIMES
 } from 'reduxs/constant'
 
 
@@ -24,6 +26,12 @@ export default function battleField (state = initState, action) {
             return summonableHandle(state, action)
         case SUMMONENABLE_BATTLEFIELD:
             return summonEnableHandle(state, action)
+
+        case REFRESH_ATTACK_TIMES:
+            return refreshHandle(state, action)
+
+        case MINUS_ATTACK_TIMES:
+            return minusHandle(state, action)
         default: 
             return state
     }
@@ -76,3 +84,38 @@ function summonEnableHandle (state, action) {
         summonAble: false
     }
 }
+
+function refreshHandle (state, action) {
+    const firstAreaCards = state.firstAreaCards
+    const {
+        index
+    } = action.content
+
+    firstAreaCards[index].validateAttackTimes = 1
+
+
+    return {
+        ...state,
+        firstAreaCards: [
+            ...firstAreaCards
+        ]
+    }
+}
+
+function minusHandle (state, action) {
+    const firstAreaCards = state.firstAreaCards
+    const {
+        index
+    } = action.content
+
+    firstAreaCards[index].validateAttackTimes -= 1
+
+
+    return {
+        ...state,
+        firstAreaCards: [
+            ...firstAreaCards
+        ]
+    }
+}
+

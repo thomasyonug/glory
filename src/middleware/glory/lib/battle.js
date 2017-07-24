@@ -1,6 +1,7 @@
 import {
     DROP_MONSTER_CARDS_FROM_BATTLEFIELD,
-    DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD
+    DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD,
+    MINUS_ATTACK_TIMES
 } from 'reduxs/constant'
 
 
@@ -38,6 +39,12 @@ function ATTACK (store, next, action) {
             }
         }))
     }
+    store.dispatch(new window.Transer({
+        type: MINUS_ATTACK_TIMES,
+        content: {
+            index: fromIndex
+        }
+    }))
 
     if (result === 0) {
         destoryFromMonster()
@@ -47,6 +54,8 @@ function ATTACK (store, next, action) {
     } else if (result < 0) {
         destoryToMonster()
     }
+
+
 }
 
 

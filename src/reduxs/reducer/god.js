@@ -9,7 +9,7 @@ import {
 } from 'reduxs/constant'
 
 
-const nextRoundStateMap = new Map([
+export const nextRoundStateMap = new Map([
     [ROUND_NAME_START, ROUND_NAME_GET_CARD_REGULAR],
     [ROUND_NAME_GET_CARD_REGULAR, ROUND_NAME_PLAY],
     [ROUND_NAME_PLAY, ROUND_NAME_END],

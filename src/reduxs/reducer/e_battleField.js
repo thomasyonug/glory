@@ -1,6 +1,8 @@
 import {
     THROW_MONSTER_CARDS_TO_E_BATTLEFIELD,
-    DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD
+    DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD,
+    REFRESH_E_ATTACK_TIMES,
+    MINUS_E_ATTACK_TIMES
 } from 'reduxs/constant'
 
 
@@ -17,6 +19,13 @@ export default function battleField (state = initState, action) {
             return throwHandle(state, action)
         case DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD:
             return dropHandle(state, action)
+
+        
+        case REFRESH_E_ATTACK_TIMES:
+            return refreshHandle(state, action)
+
+        case MINUS_E_ATTACK_TIMES:
+            return minusHandle(state, action)
         default: 
         return state
     }
@@ -53,5 +62,41 @@ function dropHandle (state, action) {
     return {
         ...state,
         firstAreaCards: newArr
+    }
+}
+
+
+function refreshHandle (state, action) {
+    const firstAreaCards = state.firstAreaCards
+    const {
+        index
+    } = action.content
+
+    firstAreaCards[index].validateAttackTimes = 1
+
+
+    return {
+        ...state,
+        firstAreaCards: [
+            ...firstAreaCards
+        ]
+    }
+}
+
+function minusHandle (state, action) {
+    const firstAreaCards = state.firstAreaCards
+
+    const {
+        index
+    } = action.content
+
+    firstAreaCards[index].validateAttackTimes -= 1
+
+
+    return {
+        ...state,
+        firstAreaCards: [
+            ...firstAreaCards
+        ]
     }
 }
