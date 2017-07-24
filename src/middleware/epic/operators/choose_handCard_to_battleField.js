@@ -14,6 +14,10 @@ export default (action$, store) =>
         action$.ofType(CLICK_HAND_CARD),
         action$.ofType(CLICK_RIGHT_DOCUMENT)
     )
+<<<<<<< HEAD
+=======
+    .do(x => console.log(x))
+>>>>>>> 2fd7e2547aef666c0b28b1fb6d4e77828f58f4a3
     .pairwise()
     .filter(xs => 
         xs.$firstOne().type === CLICK_HAND_CARD

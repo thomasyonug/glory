@@ -27,7 +27,8 @@ export default class Arrengement extends Component{
         this.state = {
             choosedCards: [],
             choosedCardGroup: {},
-            usingGroup: {}
+            usingGroup: {},
+            rightBarStyle: "rightBarClose"
         }
     }
 
@@ -38,7 +39,8 @@ export default class Arrengement extends Component{
 
     render(){
         const {
-            choosedCards
+            choosedCards,
+            rightBarStyle
         } = this.state
         const {
             cardGroups,
@@ -47,7 +49,7 @@ export default class Arrengement extends Component{
 
         return (
             <div>
-                <div styleName="rightBar">
+                <div styleName={rightBarStyle}>
                     <div>
                         {choosedCards.map((choosedCard, index) => 
                             <div key={index}>{choosedCard.cardName}</div> 
@@ -136,7 +138,8 @@ export default class Arrengement extends Component{
         })
         this.setState({
             choosedCards: cards,
-            chooseCardGroup: cardGroup
+            chooseCardGroup: cardGroup,
+            rightBarStyle: "rightBar"
         })
     }
 
