@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Styles             from './roomChatCore.css'
+import Styles             from './roomChatCore.scss'
 import CSSModules         from 'react-css-modules'
 import SendCore           from '../sendCore'
 

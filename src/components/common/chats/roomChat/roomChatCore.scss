@@ -1,7 +1,6 @@
 .chatInfoShow {
 	width: 100%;
-	height: 30%;
-	
+	position: relative;
 	border-radius: 5px;
 	background-color: #0d72d2;
 	border: solid 1px black;
@@ -19,4 +18,6 @@
 
 .sendChatInfo {
 	width: 100%;
+	position: absolute;
+	bottom: -19px;
 }

@@ -1,0 +1,16 @@
+.reachRoom {
+	margin: 0 auto;
+	text-align: center;
+	.roomWrapper{
+	    width: 33%;
+	    display: inline-block;
+	    border: 1px solid #e1e1e1;
+	    overflow: hidden;
+	}
+
+	button {
+		margin: 10px;
+		padding: 10px;
+		text-align: center;
+	}
+}

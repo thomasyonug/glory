@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
-import styles from './search.css'
+import styles from './search.scss'
 
 import { routeHook } from 'decorators'
 
@@ -64,7 +64,7 @@ export default class Search extends Component{
 
 
         return (
-            <div>
+            <div styleName="reachRoom">
                 {rooms.map((room, index) => 
                     <div key={index}>
                         {roomRender(room)}
