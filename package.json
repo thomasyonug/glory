@@ -16,7 +16,10 @@
     "redux-observable": "^0.14.1",
     "rxjs": "^5.0.0",
     "socket.io": "^2.0.3",
-    "uuid": "^3.1.0"
+    "uuid": "^3.1.0",
+    "socket.io-client": "^2.0.3",
+    "promise": "7.1.1",
+    "whatwg-fetch": "2.0.2"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",
@@ -55,17 +58,14 @@
     "node-sass": "^4.5.3",
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
-    "promise": "7.1.1",
     "prop-types": "^15.5.10",
     "react-dev-utils": "^0.5.2",
     "sass-loader": "^6.0.6",
-    "socket.io-client": "^2.0.3",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.14.0",
     "webpack-dev-server": "1.16.2",
     "webpack-manifest-plugin": "1.1.0",
-    "whatwg-fetch": "2.0.2"
   },
   "scripts": {
     "start": "node scripts/start.js",
