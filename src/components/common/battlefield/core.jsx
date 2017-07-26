@@ -6,7 +6,7 @@ import {CardFace} from 'components/common/card'
 
 
 import {autobind} from 'core-decorators'
-
+import {attackCtrl} from 'decorators'
 
 import {connect} from 'react-redux'
 
@@ -22,6 +22,12 @@ import {connect} from 'react-redux'
         return {
             _click: index => dispatch({
                 type: 'CLICK_BATTLE_FIELD',
+                content: {
+                    index
+                }
+            }),
+            _attack: index => dispatch({
+                type: 'ATTACK_READY',
                 content: {
                     index
                 }
@@ -57,6 +63,9 @@ export default class BattleField extends Component {
                             <li key={index} styleName="item" onClick={() => this.click(index)}>
                                 <CardFace
                                     card={card}
+                                    slot={
+                                        <button onClick={() => this.attack(index)}>attack</button>
+                                    }
                                 ></CardFace>
                             </li>
                         )
@@ -76,9 +85,24 @@ export default class BattleField extends Component {
         )
     }
 
+
     @autobind
     click (index) {
         this.props._click(index)
     }
+
+
+
+
+    @autobind
+    @attackCtrl({
+        card (index) {
+            return this.firstArea[index]
+        }
+    })
+    attack (index) {
+        this.props._attack(index)
+    }
+
 }
 

@@ -1,5 +1,5 @@
 import {
-    CLICK_BATTLE_FIELD,
+    ATTACK_READY,
     CLICK_E_BATTLE_FIELD,
     CLICK_RIGHT_DOCUMENT,
     ATTACK
@@ -11,13 +11,13 @@ import { Observable } from 'rxjs/Observable';
 
 export default (action$, store) => 
     Observable.merge(
-        action$.ofType(CLICK_BATTLE_FIELD),
+        action$.ofType(ATTACK_READY),
         action$.ofType(CLICK_E_BATTLE_FIELD),
         action$.ofType(CLICK_RIGHT_DOCUMENT)
     )
     .pairwise()
     .filter(xs => 
-        xs.$firstOne().type === CLICK_BATTLE_FIELD
+        xs.$firstOne().type === ATTACK_READY
         && 
         xs.$lastOne().type === CLICK_E_BATTLE_FIELD 
     )

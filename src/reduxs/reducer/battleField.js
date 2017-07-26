@@ -4,14 +4,18 @@ import {
     SUMMONABLE_BATTLEFIELD,
     SUMMONENABLE_BATTLEFIELD,
     REFRESH_ATTACK_TIMES,
-    MINUS_ATTACK_TIMES
+    MINUS_ATTACK_TIMES,
+    ACTIVE_BATTLE_FIELD,
+    UNACTIVE_BATTLE_FIELD
 } from 'reduxs/constant'
 
 
 const initState = {
     firstAreaCards: new Array(5).fill(null),
     secondAreaCards: new Array(5).fill(null),
-    summonAble: false
+    summonAble: false,
+    active: false,
+    activeIndex: null
 }
 
 
@@ -32,6 +36,12 @@ export default function battleField (state = initState, action) {
 
         case MINUS_ATTACK_TIMES:
             return minusHandle(state, action)
+
+        case ACTIVE_BATTLE_FIELD:
+            return activeHandle(state, action)
+        
+        case UNACTIVE_BATTLE_FIELD:
+            return unactiveHandle(state, action)
         default: 
             return state
     }
@@ -63,7 +73,7 @@ function dropHandle (state, action) {
         ...state.firstAreaCards
     ]
 
-    newArr.splice(action.content.index, 1)
+    newArr[action.content.index] = null
 
     return {
         ...state,
@@ -119,3 +129,23 @@ function minusHandle (state, action) {
     }
 }
 
+
+function activeHandle (state, action) {
+    const {
+        index
+    } = action.content
+
+    return {
+        ...state,
+        active: true,
+        activeIndex: index
+    }
+}
+
+function unactiveHandle (state, action) {
+    return {
+        ...state,
+        active: false,
+        activeIndex: null
+    }
+}
