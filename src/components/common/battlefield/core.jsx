@@ -97,7 +97,7 @@ export default class BattleField extends Component {
     @autobind
     @attackCtrl({
         card (index) {
-            return this.firstArea[index]
+            return this.props.firstArea[index]
         }
     })
     attack (index) {
