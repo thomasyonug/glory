@@ -57,7 +57,7 @@ function dropHandle (state, action) {
         ...state.firstAreaCards
     ]
 
-    newArr.splice(action.content.index, 1)
+    newArr[action.content.index] = null
 
     return {
         ...state,
