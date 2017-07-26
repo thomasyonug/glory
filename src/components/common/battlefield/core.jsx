@@ -9,7 +9,7 @@ import {autobind} from 'core-decorators'
 import {attackCtrl} from 'decorators'
 
 import {connect} from 'react-redux'
-
+import {ROUND_NAME_PLAY} from 'reduxs/constant'
 
 
 @connect(
@@ -98,7 +98,13 @@ export default class BattleField extends Component {
     @attackCtrl({
         card (index) {
             return this.props.firstArea[index]
-        }
+        },
+        illegalHandler (err) {
+            return this.$dialogAuto(`u cant attack now`)
+        },
+        validateRound: [
+            ROUND_NAME_PLAY
+        ]
     })
     attack (index) {
         this.props._attack(index)

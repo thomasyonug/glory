@@ -15,8 +15,9 @@ export const attackCtrl =
 
 
             descriptor.value = function (...args) {
-                const currentRoundState = store.getState().god.roundState                                
-                const cardInstance = card.call(target, ...args)
+                const stateSnapshot = store.getState()
+                const currentRoundState = stateSnapshot.god.roundState                                
+                const cardInstance = card.call(this, ...args)
 
                 if (!cardInstance) return oldValue.call(this, ...args)
 
@@ -27,7 +28,6 @@ export const attackCtrl =
                 ) {
                     return illegalHandler.call(target, currentRoundState, cardInstance.validateAttackTimes)
                 }
-
                 return oldValue.call(this, ...args)
             }
             return descriptor
