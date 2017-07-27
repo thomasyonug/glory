@@ -37,6 +37,10 @@ export default class Arrengement extends Component{
         this.$ws.gameApi.arrengement_getUsingGroup()
     }
 
+    componentDidUpdate () {
+        this.scrollWrapper.scrollTop = this.scrollWrapper.scrollHeight 
+    }
+
     render(){
         const {
             choosedCards,
@@ -49,7 +53,7 @@ export default class Arrengement extends Component{
 
         return (
             <div>
-                <div styleName={rightBarStyle}>
+                <div styleName={rightBarStyle} ref={scrollWrapper => this.scrollWrapper = scrollWrapper} >
                     <div>
                         {choosedCards.map((choosedCard, index) => 
                             <div key={index}>{choosedCard.cardName}</div> 
@@ -112,7 +116,8 @@ export default class Arrengement extends Component{
     chooseHandle (cardClass) {
         console.log(`choosedCards: ${JSON.stringify(this.state.choosedCards)}`)
         console.log(`cardClass: ${cardClass.cardCode}`)
-        if (this.state.choosedCards.filter((item) => { return item.cardCode === cardClass.cardCode}).length >= 3) return
+        // if (this.state.choosedCards.filter((item) => { return item.cardCode === cardClass.cardCode}).length >= 3) return
+        if (this.state.choosedCards.length > 40) return
         let newcard = {cardName:cardClass.cardName , cardCode:cardClass.cardCode}
         this.setState({
             choosedCards: [
