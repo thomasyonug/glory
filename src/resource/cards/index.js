@@ -7,7 +7,8 @@ import {
 import {TestTrap}    from './trap'
 import {
     TestMagic,
-    FireBallMagic
+    FireBallMagic,
+    BlackHoleMagic
 }   from './magic'
 
 
@@ -24,6 +25,7 @@ export default new Map([
     [TestMagic.cardCode, TestMagic],                                  //3
     [SunfeiMonster.cardCode, SunfeiMonster],                          //4
     [godMonster.cardCode, godMonster],                                //5
-    [FireBallMagic.cardCode, FireBallMagic]                           //6
+    [FireBallMagic.cardCode, FireBallMagic],                          //6
+    [BlackHoleMagic.cardCode, BlackHoleMagic]                         //7
 ])
 
