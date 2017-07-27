@@ -1,0 +1,19 @@
+
+.wrapper {
+    position: fixed;
+    bottom: -75px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 100px;
+    border-radius: 100px;
+    background: green;
+    opacity: .5;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    transition: .5s;
+    &:hover{
+        bottom: -50px;
+    }
+}

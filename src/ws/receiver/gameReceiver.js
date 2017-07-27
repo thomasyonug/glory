@@ -2,7 +2,11 @@ import Entity from './entity'
 import {store} from '@/index'
 import {cardClassMap} from 'resource'
 
-
+import {
+    MAX_HP,
+    SET_HP,
+    SET_E_HP
+} from 'reduxs/constant'
 
 export class GameReceiver extends Entity{
     socket;
@@ -83,6 +87,18 @@ export class GameReceiver extends Entity{
         })
     }
 
+    glory_initGlory (msg) {
+        store.dispatch({
+            type: SET_HP,
+            content: MAX_HP
+        })
+
+        store.dispatch({
+            type: SET_E_HP,
+            content: MAX_HP
+        })
+    }
+
     glory_initAll (msg) {
         const {
             initStoreContent,
@@ -91,6 +107,7 @@ export class GameReceiver extends Entity{
         this.glory_initStoreCards(initStoreContent)
         this.glory_initHandCards()
         this.glory_initGod(initGodContent)
+        this.glory_initGlory()
     }
     
     glory_transfer (msg) {

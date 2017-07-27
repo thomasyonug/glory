@@ -12,6 +12,8 @@ import Operator     from 'components/common/operator'
 import BattleField  from 'components/common/battlefield'
 import EBattleField from 'components/common/e_battlefield'
 import Dashboard    from 'components/common/dashboard'
+import Role         from 'components/common/role'
+import ERole        from 'components/common/e_role'
 
 
 
@@ -101,6 +103,8 @@ export default class Start extends Component{
                 </div>
                 <Operator></Operator>
                 <Dashboard></Dashboard>
+                <Role></Role>
+                <ERole></ERole>
             </div>
         )
     }

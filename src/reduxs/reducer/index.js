@@ -10,6 +10,7 @@ import chat                from './chat'
 import arrengement         from './arrengement'
 import battleField         from './battleField'
 import e_battleField       from './e_battleField'
+import glory               from './glory'
 import test                from './test'
 
 
@@ -29,6 +30,7 @@ export default combineReducers({
     arrengement,
     battleField,
     e_battleField,
+    glory,
     test
 })
 
