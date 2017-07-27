@@ -1,7 +1,7 @@
 import {
     CLICK_RIGHT_DOCUMENT,
     SPELL_HANDCARD,
-    SPELL_HANDCARD_DONE
+    CLICK_E_BATTLE_FIELD
 } from 'reduxs/constant'
 
 
@@ -12,6 +12,13 @@ export default (action$, store) =>
     Observable.merge(
         action$.ofType(CLICK_RIGHT_DOCUMENT),
         action$.ofType(SPELL_HANDCARD),
-        action$.ofType(SPELL_HANDCARD_DONE)
+        action$.ofType(CLICK_E_BATTLE_FIELD)
     )
     .pairwise()
+    .filter(xs => (
+        xs.$firstOne().type === SPELL_HANDCARD &&
+        xs.$lastOne().type  === CLICK_E_BATTLE_FIELD
+    ))
+    .map(xs => {
+        return xs.$firstOne().effect(xs, store)
+    })

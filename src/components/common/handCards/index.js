@@ -35,11 +35,12 @@ import {
                 }
             }),
 
-            _spell: index => dispatch({
+            _spell: (index, effect) => dispatch({
                 glory: SPELL_HANDCARD,
                 content: {
                     index
-                }
+                },
+                effect
             })
         }
     }
@@ -66,6 +67,12 @@ export default class HandCards extends Component {
                                 <CardFace 
                                     onClick={() => this.click(index)}
                                     card={card}
+                                    slot={
+                                        card.type === 'MAGIC' ? 
+                                        <button onClick={() => this.spell(index, card.effect)}>spell</button>
+                                        :
+                                        <div></div>
+                                    }
                                 >
                                     {index}
                                 </CardFace>
@@ -101,8 +108,8 @@ export default class HandCards extends Component {
             return this.$dialogAuto(`in ${round} cant do this`)
         }
     })
-    spell (index) {
-        this.props._spell(index)
+    spell (index, effect) {
+        this.props._spell(index, effect)
     }
 
 
