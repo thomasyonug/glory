@@ -1,11 +1,26 @@
 import {
     DROP_MONSTER_CARDS_FROM_BATTLEFIELD,
     DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD,
-    MINUS_ATTACK_TIMES
+    MINUS_ATTACK_TIMES,
+    REDUCE_HP,
+    REDUCE_E_HP
 } from 'reduxs/constant'
 
 
 
+const reduceHP = (store, content) => {
+    store.dispatch({
+        type: REDUCE_HP,
+        content
+    })
+}
+
+const reduceEHP = (store, content) => {
+    store.dispatch({
+        type: REDUCE_E_HP,
+        content
+    })
+}
 
 function ATTACK (store, next, action) {
     const {
@@ -51,10 +66,11 @@ function ATTACK (store, next, action) {
         destoryToMonster()
     } else if (result > 0) {
         destoryFromMonster()
+        reduceHP(store, result * -1)
     } else if (result < 0) {
         destoryToMonster()
+        reduceEHP(store, result)
     }
-
 
 }
 
