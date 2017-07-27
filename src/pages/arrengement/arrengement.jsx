@@ -124,7 +124,7 @@ export default class Arrengement extends Component{
 
     unchooseHandle (cardClass) {
         this.setState({
-            choosedCards: this.state.choosedCards.$delete(item => item === cardClass)
+            choosedCards: this.state.choosedCards.$delete(item => item.cardCode === cardClass.cardCode)
         })
     }
 

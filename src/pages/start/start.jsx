@@ -32,7 +32,9 @@ import { routeHook } from 'decorators'
             handCards: state.handCards,
             e_handCards: state.e_handCards,
             battleField: state.battleField,
-            e_battleField: state.e_battleField
+            e_battleField: state.e_battleField,
+            gaming: state.god.gaming,
+            HP: state.glory.HP
         }
     },
     dispatch => {
@@ -44,9 +46,20 @@ import { routeHook } from 'decorators'
 @CSSModules(Styles)
 export default class Start extends Component{
 
-
-
-    componentWillMount () {
+    componentWillReceiveProps (nextProps) {
+        const {
+            gaming,
+            HP
+        } = nextProps
+        if (!gaming) {
+            const content = HP > 0 ? 'u win' : 'u r fucking loser'
+            this.$dialog(() => <div>{content}</div>)
+                .then(res => {
+                    window.location = '#/room'
+                }).catch(cancel => {
+                    window.location = '#/room'
+                })
+        }
     }
 
     render(){
@@ -58,6 +71,7 @@ export default class Start extends Component{
             battleField,
             e_battleField
         } = this.props
+
 
         return (
             <div styleName='wrapper'>
@@ -109,6 +123,4 @@ export default class Start extends Component{
         )
     }
 
-    componentWillUnmount () {
-    }
 }
