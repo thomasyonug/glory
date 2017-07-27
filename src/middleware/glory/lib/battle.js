@@ -9,17 +9,17 @@ import {
 
 
 const reduceHP = (store, content) => {
-    store.dispatch({
+    store.dispatch(new window.Transer({
         type: REDUCE_HP,
         content
-    })
+    }))
 }
 
 const reduceEHP = (store, content) => {
-    store.dispatch({
+    store.dispatch(new window.Transer({
         type: REDUCE_E_HP,
         content
-    })
+    }))
 }
 
 function ATTACK (store, next, action) {

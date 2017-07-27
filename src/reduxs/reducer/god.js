@@ -5,7 +5,8 @@ import {
     ROUND_NAME_END,
     ROUND_NAME_SILENT,
     NEXT_ROUND,
-    INIT_GOD
+    INIT_GOD,
+    FINISH_GAME
 } from 'reduxs/constant'
 
 
@@ -38,6 +39,9 @@ export default function God(state = initState, action) {
 
         case INIT_GOD:
             return initHandle(state, action)
+
+        case FINISH_GAME:
+            return finishHandle(state, action)
         default:
             return state
     }
@@ -100,5 +104,12 @@ function initHandle(state, action){
             roundRole: 'e',
             gaming: true
         }
+    }
+}
+
+function finishHandle(state, action) {
+    return {
+        ...state,
+        gaming: false
     }
 }
