@@ -1,7 +1,7 @@
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 
 
-import roundGuardEpic from './roundGuard'
+import guardEpic      from './guard'
 import operatorsEpic  from './operators'
 import testEpic       from './test'
 
@@ -9,7 +9,7 @@ import testEpic       from './test'
 
 
 const rootEpic = combineEpics(
-    roundGuardEpic,
+    ...guardEpic,
     ...operatorsEpic,
     testEpic
 );
