@@ -5,7 +5,10 @@ import {
 } from './monster'
 
 import {TestTrap}    from './trap'
-import {TestMagic}   from './magic'
+import {
+    TestMagic,
+    FireBallMagic
+}   from './magic'
 
 
 
@@ -16,10 +19,11 @@ import {TestMagic}   from './magic'
 
 
 export default new Map([
-    [TestMonster.cardCode, TestMonster],
-    [TestTrap.cardCode, TestTrap],
-    [TestMagic.cardCode, TestMagic],
-    [SunfeiMonster.cardCode, SunfeiMonster],
-    [godMonster.cardCode, godMonster]
+    [TestMonster.cardCode, TestMonster],                              //1
+    [TestTrap.cardCode, TestTrap],                                    //2
+    [TestMagic.cardCode, TestMagic],                                  //3
+    [SunfeiMonster.cardCode, SunfeiMonster],                          //4
+    [godMonster.cardCode, godMonster],                                //5
+    [FireBallMagic.cardCode, FireBallMagic]                           //6
 ])
 

@@ -10,8 +10,11 @@ import {autobind} from 'core-decorators'
 
 import {roundCtrl} from 'decorators'
 import {
-    ROUND_NAME_PLAY
+    ROUND_NAME_PLAY,
+    CLICK_HAND_CARD,
+    SPELL_HANDCARD
 } from 'reduxs/constant'
+
 
 
 
@@ -25,9 +28,15 @@ import {
     },
     dispatch => {
         return {
-
             _clickHandcard: index => dispatch({
-                glory: 'CLICK_HAND_CARD',
+                glory: CLICK_HAND_CARD,
+                content: {
+                    index
+                }
+            }),
+
+            _spell: index => dispatch({
+                glory: SPELL_HANDCARD,
                 content: {
                     index
                 }
@@ -81,4 +90,20 @@ export default class HandCards extends Component {
         if (this.props.cards[index].type !== 'MONSTER') {return 0}
         this.props._clickHandcard(index)
     }
+
+
+    @autobind
+    @roundCtrl.methodCtrl({
+        validateRound: [
+            ROUND_NAME_PLAY
+        ],
+        illegalHandler (round) {
+            return this.$dialogAuto(`in ${round} cant do this`)
+        }
+    })
+    spell (index) {
+        this.props._spell(index)
+    }
+
+
 }

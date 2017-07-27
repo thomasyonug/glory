@@ -90,8 +90,22 @@ function CLICK_HAND_CARD (store, next, action) {
     })
 }
 
+function SPELL_HANDCARD (store, next, action) {
+    store.dispatch({
+        type: ACTIVE_HANDCARD,
+        content: action.content
+    })
+
+    return next({
+        ...action,
+        type: action.glory
+    })
+}
+
+
 export default {
     get_card_from_hand_to_battle,
     get_card_from_e_hand_to_e_battle,
-    CLICK_HAND_CARD
+    CLICK_HAND_CARD,
+    SPELL_HANDCARD
 }
