@@ -18,9 +18,15 @@
 .itemActive {
     flex: 1;
     margin: 0 5px;
-    border: 1px solid red;
+    border: 15px solid black;
 }
 
-.itemActive:hover {
+.itemActiveEmpty:hover {
     border: 1px solid blue;
+}
+
+.itemActiveEmpty {
+    flex: 1;
+    margin: 0 5px;
+    border: 1px solid red;
 }

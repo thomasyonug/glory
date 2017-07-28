@@ -1,13 +1,5 @@
-export const CLICK = 'CLICK'
-export const ATTACK = 'ATTACK'
-
-
-export const CLICK_OUTSIDE = 'CLICK_OUTSIDE'
-
-export const CLICK_DOUBLE = 'CLICK_DOUBLE'
-
 //所有点击事件流
-export const CLICK_RIGHT_DOCUMENT           = 'CLICK_RIGHT_DOCUMENT'
+export const CLICK_RIGHT_BUTTON             = 'CLICK_RIGHT_BUTTON'
 export const CLICK_HAND_CARD                = 'CLICK_HAND_CARD'
 export const CLICK_E_HAND_CARD              = 'CLICK_E_HAND_CARD'
 export const CLICK_BATTLE_FIELD             = 'CLICK_BATTLE_FIELD'

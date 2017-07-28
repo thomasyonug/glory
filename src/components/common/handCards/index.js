@@ -12,7 +12,6 @@ import {roundCtrl} from 'decorators'
 import {
     ROUND_NAME_PLAY,
     CLICK_HAND_CARD,
-    SPELL_HANDCARD
 } from 'reduxs/constant'
 
 
@@ -29,18 +28,10 @@ import {
     dispatch => {
         return {
             _clickHandcard: index => dispatch({
-                glory: CLICK_HAND_CARD,
+                type: CLICK_HAND_CARD,
                 content: {
                     index
                 }
-            }),
-
-            _spell: (index, effect) => dispatch({
-                glory: SPELL_HANDCARD,
-                content: {
-                    index
-                },
-                effect
             })
         }
     }
@@ -67,12 +58,6 @@ export default class HandCards extends Component {
                                 <CardFace 
                                     onClick={() => this.click(index)}
                                     card={card}
-                                    slot={
-                                        card.type === 'MAGIC' ? 
-                                        <button onClick={() => this.spell(index, card.effect)}>spell</button>
-                                        :
-                                        <div></div>
-                                    }
                                 >
                                     {index}
                                 </CardFace>
@@ -94,23 +79,22 @@ export default class HandCards extends Component {
         }
     })
     click (index) {
-        if (this.props.cards[index].type !== 'MONSTER') {return 0}
         this.props._clickHandcard(index)
     }
 
 
-    @autobind
-    @roundCtrl.methodCtrl({
-        validateRound: [
-            ROUND_NAME_PLAY
-        ],
-        illegalHandler (round) {
-            return this.$dialogAuto(`in ${round} cant do this`)
-        }
-    })
-    spell (index, effect) {
-        this.props._spell(index, effect)
-    }
+    // @autobind
+    // @roundCtrl.methodCtrl({
+    //     validateRound: [
+    //         ROUND_NAME_PLAY
+    //     ],
+    //     illegalHandler (round) {
+    //         return this.$dialogAuto(`in ${round} cant do this`)
+    //     }
+    // })
+    // spell (index, effect) {
+    //     this.props._spell(index, effect)
+    // }
 
 
 }

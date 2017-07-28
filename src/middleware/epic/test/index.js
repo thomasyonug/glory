@@ -8,7 +8,6 @@ export default action$ =>
     //     console.log('epic')
     // })
     .map(action => {
-        console.log(123)
 
         return {
             type: 'fuck test'

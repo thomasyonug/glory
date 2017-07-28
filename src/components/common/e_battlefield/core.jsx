@@ -17,7 +17,7 @@ import {
 @connect(
     state => {
         return {
-            summonAble: state.battleField.summonAble
+            activeAttackAble: state.e_battleField.activeAttackAble
         }
     },
     dispatch => {
@@ -46,7 +46,8 @@ export default class EBattleField extends Component {
 
     render () {
         const {
-            firstArea
+            firstArea,
+            activeAttackAble
         } = this.props
 
 
@@ -57,7 +58,7 @@ export default class EBattleField extends Component {
                         return (
                             <li 
                                 key={index} 
-                                styleName="item"
+                                styleName={activeAttackAble ? 'activeItem' : 'item'}
                                 onClick={() => this.click(index)}
                                 >
                                 <CardFace

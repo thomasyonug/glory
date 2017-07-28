@@ -1,10 +1,11 @@
 import {
     UNACTIVE_HANDCARD,
-    SUMMONENABLE_BATTLEFIELD
+    SUMMONENABLE_BATTLEFIELD,
+    UNACTIVE_BATTLE_FIELD
 } from 'reduxs/constant'
 
 
-function CLICK_RIGHT_DOCUMENT (store, next, action) {
+function unActiveAll (store, next, action) {
     store.dispatch({
         type: UNACTIVE_HANDCARD
     })
@@ -12,14 +13,13 @@ function CLICK_RIGHT_DOCUMENT (store, next, action) {
     store.dispatch({
         type: SUMMONENABLE_BATTLEFIELD
     })
-
-    return next({
-        type: CLICK_RIGHT_DOCUMENT.name
+    store.dispatch({
+        type: UNACTIVE_BATTLE_FIELD
     })
 }
 
 
 
 export default {
-    CLICK_RIGHT_DOCUMENT
+    unActiveAll
 }

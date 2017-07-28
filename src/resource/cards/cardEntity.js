@@ -11,7 +11,9 @@ import {propertiesCheck} from 'decorators'
     unStaticProperties: {
         type: String,
         cardName: String,
-        describe: String
+        describe: String,
+        inHandCardTarget: Function,
+        inBattleFieldTarget: Function
     }
 })
 export class CardEntity {

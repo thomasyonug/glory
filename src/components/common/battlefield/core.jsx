@@ -20,7 +20,8 @@ import {
 @connect(
     state => {
         return {
-            summonAble: state.battleField.summonAble
+            summonAble: state.battleField.summonAble,
+            activeIndex: state.battleField.activeIndex
         }
     },
     dispatch => {
@@ -33,12 +34,6 @@ import {
             }),
             _clickEmpty: index => dispatch({
                 type: CLICK_BATTLE_FIELD_EMPTY,
-                content: {
-                    index
-                }
-            }),
-            _attack: index => dispatch({
-                type: 'ATTACK_READY',
                 content: {
                     index
                 }
@@ -59,7 +54,8 @@ export default class BattleField extends Component {
     render () {
         const {
             firstArea,
-            summonAble
+            summonAble,
+            activeIndex
         } = this.props
 
 
@@ -71,19 +67,19 @@ export default class BattleField extends Component {
                 {firstArea.map((card,index)=> {
                     if (card) {
                         return (
-                            <li key={index} styleName="item" onClick={() => this.click(index)}>
+                            <li 
+                                key={index} 
+                                styleName={activeIndex === index ? 'itemActive' : 'item'} 
+                                onClick={() => this.click(index)}>
                                 <CardFace
                                     card={card}
-                                    slot={
-                                        <button onClick={() => this.attack(index)}>attack</button>
-                                    }
                                 ></CardFace>
                             </li>
                         )
                     } else {
                         const wrapper = 
                             summonAble ? 
-                                <li key={index} styleName="itemActive" onClick={() => this.clickEmpty(index)}>empty</li> 
+                                <li key={index} styleName="itemActiveEmpty" onClick={() => this.clickEmpty(index)}>empty</li> 
                                 :
                                 <li key={index} styleName="item" onClick={() => this.clickEmpty(index)}>empty</li> 
 

@@ -11,7 +11,13 @@ import {propertiesCheck, prototype} from 'decorators'
     }
 })
 @prototype({
-    type: 'MAGIC'
+    type: 'MAGIC',
+    inHandCardTarget (store) {
+        console.log('target')
+    },
+    inBattleFieldTarget (index) {
+        
+    }
 })
 export class MagicEntity extends CardEntity {
 

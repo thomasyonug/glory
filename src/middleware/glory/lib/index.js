@@ -1,12 +1,12 @@
 import cardStoreLib     from './cardStore'
 import handLib          from './hand'
-import clickOutsideLib  from './clickOutside'
+import unActiveAllLib   from './unActiveAll'
 import battleLib        from './battle'
 
 
 export default {
     ...cardStoreLib,
     ...handLib,
-    ...clickOutsideLib,
+    ...unActiveAllLib,
     ...battleLib
 }

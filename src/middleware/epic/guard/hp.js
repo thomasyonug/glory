@@ -20,7 +20,6 @@ export default (action$, store) =>
         } = store.getState().glory
         
         if (HP <= 0 || E_HP <= 0) { return true }
-        console.log(123)
         return false
     })
     .map(x => ({type: FINISH_GAME}))

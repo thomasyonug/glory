@@ -9,6 +9,11 @@ import {
 import {connect}  from 'react-redux'
 import Rx from 'rxjs'
 
+import {
+  CLICK_RIGHT_BUTTON
+} from 'reduxs/constant'
+
+
 const contexts = require.context('pages', true, /@index\.js$/)
 const routers = contexts.keys().reduce((routers, key) => {
   const routeName = key.match(/([a-zA-Z\-0-9]+)\/@index.js$/i)[1]
@@ -27,7 +32,7 @@ const routers = contexts.keys().reduce((routers, key) => {
     dispatch => {
         return {
           cancelActiveAll: () => dispatch({
-            glory: 'CLICK_RIGHT_DOCUMENT'
+            type: CLICK_RIGHT_BUTTON
           })
         }
     }

@@ -3,10 +3,6 @@ import {
     DELETE_HANDCARDS,
     DELETE_E_HANDCARDS,
     THROW_MONSTER_CARDS_TO_E_BATTLEFIELD,
-    ACTIVE_HANDCARD,
-    // UNACTIVE_HANDCARD
-    SUMMONABLE_BATTLEFIELD,
-    CLICK_RIGHT_DOCUMENT
 } from 'reduxs/constant'
 
 
@@ -22,7 +18,6 @@ function get_card_from_hand_to_battle (store, next, action) {
     } = store.getState().handCards
 
     const card = cards[fromIndex]
-
 
     next({
         type: DELETE_HANDCARDS,
@@ -40,7 +35,7 @@ function get_card_from_hand_to_battle (store, next, action) {
     })
 
     store.dispatch({
-        glory: CLICK_RIGHT_DOCUMENT
+        glory: 'unActiveAll'
     })
 }
 
@@ -71,41 +66,16 @@ function get_card_from_e_hand_to_e_battle (store, next, action) {
             card
         }
     })
+    
+    store.dispatch({
+        glory: 'unActiveAll'
+    })
 }
 
 
-function CLICK_HAND_CARD (store, next, action) {
-    store.dispatch({
-        type: ACTIVE_HANDCARD,
-        content: action.content
-    })
-
-    store.dispatch({
-        type: SUMMONABLE_BATTLEFIELD
-    })
-
-    return next({
-        ...action,
-        type: action.glory
-    })
-}
-
-function SPELL_HANDCARD (store, next, action) {
-    store.dispatch({
-        type: ACTIVE_HANDCARD,
-        content: action.content
-    })
-
-    return next({
-        ...action,
-        type: action.glory
-    })
-}
 
 
 export default {
     get_card_from_hand_to_battle,
-    get_card_from_e_hand_to_e_battle,
-    CLICK_HAND_CARD,
-    SPELL_HANDCARD
+    get_card_from_e_hand_to_e_battle
 }

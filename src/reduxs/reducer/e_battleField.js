@@ -2,13 +2,20 @@ import {
     THROW_MONSTER_CARDS_TO_E_BATTLEFIELD,
     DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD,
     REFRESH_E_ATTACK_TIMES,
-    MINUS_E_ATTACK_TIMES
+    MINUS_E_ATTACK_TIMES,
+    ACTIVE_E_BATTLEFIELD,
+    UNACTIVE_E_BATTLEFIELD,
+    ACTIVE_ATTACKABLE_E_BATTLEFIELD,
+    UNACTIVE_ATTACKABLE_E_BATTLEFIELD
 } from 'reduxs/constant'
 
 
 const initState = {
     firstAreaCards: new Array(5).fill(null),
-    secondAreaCards: new Array(5).fill(null)
+    secondAreaCards: new Array(5).fill(null),
+    active: false,
+    activeIndex: null,
+    activeAttackAble: false
 }
 
 
@@ -26,6 +33,19 @@ export default function battleField (state = initState, action) {
 
         case MINUS_E_ATTACK_TIMES:
             return minusHandle(state, action)
+
+        case ACTIVE_E_BATTLEFIELD:
+            return activeHandle(state, action)
+
+        case UNACTIVE_E_BATTLEFIELD:
+            return unactiveHandle(state, action)
+
+        case ACTIVE_ATTACKABLE_E_BATTLEFIELD:
+            return activeAttackAbleHandle(state, action)
+        
+        case UNACTIVE_ATTACKABLE_E_BATTLEFIELD:
+            return unActiveAttackAbleHandle(state, action)
+
         default: 
         return state
     }
@@ -98,5 +118,33 @@ function minusHandle (state, action) {
         firstAreaCards: [
             ...firstAreaCards
         ]
+    }
+}
+
+function activeHandle (state, action) {
+    return {
+        ...state,
+        active: true,
+        activeIndex: action.content.index
+    }
+}
+function unactiveHandle (state, action) {
+    return {
+        ...state,
+        active: false,
+        activeIndex: null
+    }
+}
+
+function activeAttackAbleHandle (state, action) {
+    return {
+        ...state,
+        activeAttackAble: true
+    }
+}
+function unActiveAttackAbleHandle (state, action) {
+    return {
+        ...state,
+        activeAttackAble: false
     }
 }

@@ -11,7 +11,12 @@ import {propertiesCheck, prototype} from 'decorators'
     }
 })
 @prototype({
-    type: 'TRAP'
+    type: 'TRAP',
+    inHandCardTarget (store) {
+        console.log('target')
+    },
+    inBattleFieldTarget (index) {
+    }
 })
 export class TrapEntity extends CardEntity {
 
