@@ -7,7 +7,7 @@ import {
 } from 'reduxs/constant'
 
 @prototype({
-    describe: '指定消灭所有场上怪物',
+    describe: '消灭所有场上怪物',
     cardName: 'BlackHoleMagic',
     effect (xs, store) {
         const stateSnapshot = store.getState()
