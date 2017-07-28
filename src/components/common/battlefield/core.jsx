@@ -9,7 +9,12 @@ import {autobind} from 'core-decorators'
 import {attackCtrl} from 'decorators'
 
 import {connect} from 'react-redux'
-import {ROUND_NAME_PLAY} from 'reduxs/constant'
+import {
+    ROUND_NAME_PLAY,
+    CLICK_BATTLE_FIELD,
+    CLICK_BATTLE_FIELD_EMPTY,
+} from 'reduxs/constant'
+
 
 
 @connect(
@@ -21,7 +26,13 @@ import {ROUND_NAME_PLAY} from 'reduxs/constant'
     dispatch => {
         return {
             _click: index => dispatch({
-                type: 'CLICK_BATTLE_FIELD',
+                type: CLICK_BATTLE_FIELD,
+                content: {
+                    index
+                }
+            }),
+            _clickEmpty: index => dispatch({
+                type: CLICK_BATTLE_FIELD_EMPTY,
                 content: {
                     index
                 }
@@ -72,9 +83,9 @@ export default class BattleField extends Component {
                     } else {
                         const wrapper = 
                             summonAble ? 
-                                <li key={index} styleName="itemActive" onClick={() => this.click(index)}>empty</li> 
+                                <li key={index} styleName="itemActive" onClick={() => this.clickEmpty(index)}>empty</li> 
                                 :
-                                <li key={index} styleName="item" onClick={() => this.click(index)}>empty</li> 
+                                <li key={index} styleName="item" onClick={() => this.clickEmpty(index)}>empty</li> 
 
                         return (
                             wrapper
@@ -91,6 +102,10 @@ export default class BattleField extends Component {
         this.props._click(index)
     }
 
+    @autobind
+    clickEmpty (index) {
+        this.props._clickEmpty(index)
+    }
 
 
 

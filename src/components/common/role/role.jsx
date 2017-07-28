@@ -5,9 +5,11 @@ import CSSModules from 'react-css-modules'
 import {connect}  from 'react-redux'
 
 
-import {} from 'prop-types'
+import {
+    CLICK_ROLE
+} from 'reduxs/constant'
 
-
+import {autobind} from 'core-decorators'
 
 
 @connect(
@@ -18,6 +20,10 @@ import {} from 'prop-types'
     },
     dispatch => {
         return {
+            _click: content => dispatch({
+                type: CLICK_ROLE,
+                content
+            })
         }
     }
 )
@@ -29,10 +35,18 @@ export default class Role extends Component {
 
     render () {
         return (
-            <div styleName="wrapper">
+            <div 
+                styleName="wrapper"
+                onClick={this.click} 
+                >
                 {this.props.HP}
             </div>
         )
+    }
+
+    @autobind
+    click () {
+        this.props._click()
     }
 
 

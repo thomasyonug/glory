@@ -9,6 +9,10 @@ import {CardFace} from 'components/common/card'
 import {connect} from 'react-redux'
 import{autobind} from 'core-decorators'
 
+import {
+    CLICK_E_BATTLE_FIELD,
+    CLICK_E_BATTLE_FIELD_EMPTY,
+} from 'reduxs/constant'
 
 @connect(
     state => {
@@ -19,7 +23,13 @@ import{autobind} from 'core-decorators'
     dispatch => {
         return {
             _click: index => dispatch({
-                type: 'CLICK_E_BATTLE_FIELD',
+                type: CLICK_E_BATTLE_FIELD,
+                content: {
+                    index
+                }
+            }),
+            _clickEmpty: index => dispatch({
+                type: CLICK_E_BATTLE_FIELD_EMPTY,
                 content: {
                     index
                 }
@@ -57,8 +67,11 @@ export default class EBattleField extends Component {
                         )
                     } else {
                         return (
-                            <li key={index} styleName="item">
-                                empty
+                            <li 
+                                key={index} 
+                                styleName="item" 
+                                onClick={() => this.clickEmpty(index)}>
+                                    empty
                             </li>
                         )
                     }
@@ -71,6 +84,11 @@ export default class EBattleField extends Component {
     @autobind
     click (index) {
         this.props._click(index)
+    }
+
+    @autobind
+    clickEmpty (index) {
+        this.props._clickEmpty(index)
     }
 
 }

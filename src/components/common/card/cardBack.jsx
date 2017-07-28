@@ -2,11 +2,26 @@ import React, {Component} from 'react'
 import Styles from './cardCore.css'
 import CSSModules from 'react-css-modules'
 
+
+
+import {func} from 'prop-types'
+
 @CSSModules(Styles)
 export default class CardBack extends Component {
+    static propTypes = {
+        onClick: func
+    }
+
+
     render () {
+
+        const {
+            onClick
+        } = this.props
+
+
         return (
-            <div styleName='cardBack'>CardBack</div>
+            <div styleName='cardBack' onClick={onClick}>CardBack</div>
         )
     }
 }

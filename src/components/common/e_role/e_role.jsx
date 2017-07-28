@@ -7,7 +7,10 @@ import {connect}  from 'react-redux'
 
 import {} from 'prop-types'
 
-
+import {autobind} from 'core-decorators'
+import {
+    CLICK_E_ROLE
+} from 'reduxs/constant'
 
 
 @connect(
@@ -18,6 +21,10 @@ import {} from 'prop-types'
     },
     dispatch => {
         return {
+            _click: content => dispatch({
+                type: CLICK_E_ROLE,
+                content
+            })
         }
     }
 )
@@ -29,12 +36,21 @@ export default class ERole extends Component {
 
     render () {
         return (
-            <div styleName="wrapper">
+            <div 
+                styleName="wrapper"
+                onClick={this.click}
+                >
                 <span>
                     {this.props.E_HP}
                 </span>
             </div>
         )
+    }
+
+
+    @autobind
+    click () {
+        this.props._click()
     }
 
 
