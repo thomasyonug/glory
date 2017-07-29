@@ -22,7 +22,7 @@ const reduceEHP = (store, content) => {
     }))
 }
 
-function ATTACK (store, next, action) {
+function attack (store, next, action) {
     const {
         battleField,
         e_battleField
@@ -86,7 +86,7 @@ function ATTACK (store, next, action) {
 
 
 export default {
-    ATTACK
+    attack
 }
 
 
