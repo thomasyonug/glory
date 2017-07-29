@@ -50,20 +50,24 @@ export default class HandCards extends Component {
         return (
             <ul styleName='cardsWrapper'>
                 {cards.map((card, index) => {
-                    return (
-                        <li styleName='cardWrapper' key={index}>
-                            <div style={{
-                                border: (activeIndex === index && active) ? '1px solid green' : ''
-                            }}>
-                                <CardFace 
-                                    onClick={() => this.click(index)}
-                                    card={card}
-                                >
-                                    {index}
-                                </CardFace>
-                            </div>
-                        </li>
-                    )
+                    if (card) {
+                        return (
+                            <li styleName='cardWrapper' key={index}>
+                                <div style={{
+                                    border: (activeIndex === index && active) ? '1px solid green' : ''
+                                }}>
+                                    <CardFace 
+                                        onClick={() => this.click(index)}
+                                        card={card}
+                                    >
+                                        {index}
+                                    </CardFace>
+                                </div>
+                            </li>
+                        )
+                    } else {
+                        return null
+                    }
                 })}
             </ul>
         )

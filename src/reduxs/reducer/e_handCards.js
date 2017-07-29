@@ -6,7 +6,7 @@ import {
 } from 'reduxs/constant'
 
 const initState = {
-    cards: []
+    cards: new Array(10).fill(null)
 }
 
 
@@ -42,7 +42,7 @@ function deleteHandle(state, action){
     } = action.content
 
     return {
-        cards: state.cards.$delete(card ? card : index)
+        cards: state.cards.$setItem(card ? card : index, null)
     };
 }
 

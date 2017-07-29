@@ -22,11 +22,11 @@ export default (action$, store) =>
         const first = xs.$firstOne()
         const last  = xs.$lastOne()
         const stateSnapshot = store.getState()
+
         if (
             (first.type !== CLICK_HAND_CARD) ||
             (last.type  !== CLICK_BATTLE_FIELD_EMPTY)
         ) { return unActiveAll }
-
 
         if (
             (stateSnapshot.handCards.cards[first.content.index].type !== 'MONSTER') ||

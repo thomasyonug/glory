@@ -11,7 +11,7 @@ export default (action$, store) =>
         const stateSnapshot = store.getState()
         const card = stateSnapshot.handCards.cards[action.content.index]
 
-        card.inHandCardTarget(store)
+        card && card.inHandCardTarget && card.inHandCardTarget(store)
 
         return {
             type: ACTIVE_HANDCARD,

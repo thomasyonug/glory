@@ -40,13 +40,17 @@ export default class E_HandCards extends Component {
         return (
             <ul styleName='e_cardsWrapper'>
                 {cards.map((card, index) => {
-                    return (
-                        <li styleName='e_cardWrapper' key={index}>
-                            <CardBack onClick={() => this.click(index)}>
-                                {index}
-                            </CardBack>
-                        </li>
-                    )
+                    if (card) {
+                        return (
+                            <li styleName='e_cardWrapper' key={index}>
+                                <CardBack onClick={() => this.click(index)}>
+                                    {index}
+                                </CardBack>
+                            </li>
+                        )
+                    } else {
+                        return null
+                    }
                 })}
             </ul>
         )

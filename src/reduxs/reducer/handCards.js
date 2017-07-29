@@ -9,7 +9,7 @@ import {
 } from 'reduxs/constant'
 
 const initState = {
-    cards: [],
+    cards: new Array(10).fill(null),
     active: false,
     activeIndex: null
 }
@@ -40,6 +40,7 @@ export default function HandCards(state = initState, action){
 
 function addHandle(state, action){
     return {
+        ...state,
         cards: [...state.cards, action.content.card]
     }
 }
@@ -50,7 +51,8 @@ function deleteHandle(state, action){
     } = action.content
 
     return {
-        cards: state.cards.$delete(card ? card : index)
+        ...state,
+        cards: state.cards.$setItem(card ? card : index, null)
     };
 }
 
