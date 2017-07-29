@@ -2,13 +2,29 @@ import {MagicEntity} from './magicEntity'
 import {prototype} from 'decorators'
 import {
     DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD,
-    DELETE_HANDCARDS
+    DELETE_HANDCARDS,
+    CLICK_E_BATTLE_FIELD
 } from 'reduxs/constant'
 
 @prototype({
     describe: '指定消灭一个场上怪物',
     cardName: 'FireBallMagic',
     effect (xs, store) {
+
+        // const stateSnapshot = store.getState()
+        // const {
+        //     battleField,
+        //     e_battleField
+        // } = stateSnapshot
+        
+        const lastOneType = xs.$lastOne().type
+
+        if (
+            lastOneType !== CLICK_E_BATTLE_FIELD
+        ) { return }
+
+
+
         store.dispatch(new window.Transer({
             type: DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD,
             content: {
