@@ -6,7 +6,8 @@ import {
     REFRESH_ATTACK_TIMES,
     MINUS_ATTACK_TIMES,
     ACTIVE_BATTLE_FIELD,
-    UNACTIVE_BATTLE_FIELD
+    UNACTIVE_BATTLE_FIELD,
+    REFRESH
 } from 'reduxs/constant'
 
 
@@ -42,6 +43,8 @@ export default function battleField (state = initState, action) {
         
         case UNACTIVE_BATTLE_FIELD:
             return unactiveHandle(state, action)
+        case REFRESH:
+            return initState
         default: 
             return state
     }

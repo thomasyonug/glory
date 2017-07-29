@@ -99,11 +99,17 @@ export class GameReceiver extends Entity{
         })
     }
 
+    glory_clearBefore (msg){
+        store.dispatch({
+            glory: 'clearBefore'
+        })
+    }
     glory_initAll (msg) {
         const {
             initStoreContent,
             initGodContent
         } = msg.content
+        this.glory_clearBefore()
         this.glory_initStoreCards(initStoreContent)
         this.glory_initHandCards()
         this.glory_initGod(initGodContent)

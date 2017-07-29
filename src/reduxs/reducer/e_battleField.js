@@ -6,7 +6,8 @@ import {
     ACTIVE_E_BATTLEFIELD,
     UNACTIVE_E_BATTLEFIELD,
     ACTIVE_ATTACKABLE_E_BATTLEFIELD,
-    UNACTIVE_ATTACKABLE_E_BATTLEFIELD
+    UNACTIVE_ATTACKABLE_E_BATTLEFIELD,
+    REFRESH
 } from 'reduxs/constant'
 
 
@@ -45,7 +46,8 @@ export default function battleField (state = initState, action) {
         
         case UNACTIVE_ATTACKABLE_E_BATTLEFIELD:
             return unActiveAttackAbleHandle(state, action)
-
+        case REFRESH:
+            return initState
         default: 
         return state
     }

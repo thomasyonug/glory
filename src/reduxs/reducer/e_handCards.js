@@ -2,7 +2,8 @@ import {
     ADD_E_HANDCARDS,
     DELETE_E_HANDCARDS,
     UPDATE_E_HANDCARDS,
-    QUERY_E_HANDCARDS
+    QUERY_E_HANDCARDS,
+    REFRESH
 } from 'reduxs/constant'
 
 const initState = {
@@ -22,6 +23,8 @@ export default function E_HandCards(state = initState, action){
             return updateHandle(state, action);
         case QUERY_E_HANDCARDS:
             return queryHandle(state, action);
+        case REFRESH:
+            return initState
         default:
             return state
     }

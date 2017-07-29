@@ -5,7 +5,8 @@ import {
     QUERY_HANDCARDS,
     
     ACTIVE_HANDCARD,
-    UNACTIVE_HANDCARD
+    UNACTIVE_HANDCARD,
+    REFRESH
 } from 'reduxs/constant'
 
 const initState = {
@@ -30,6 +31,8 @@ export default function HandCards(state = initState, action){
             return activeHandle(state, action);
         case UNACTIVE_HANDCARD:
             return unactiveHandle(state, action);
+        case REFRESH:
+            return initState
         default:
             return state
     }

@@ -2,7 +2,8 @@ import {
     ADD_E_STORECARDS,
     DELETE_E_STORECARDS,
     UPDATE_E_STORECARDS,
-    SET_E_STORECARDS
+    SET_E_STORECARDS,
+    REFRESH
 } from 'reduxs/constant'
 
 
@@ -24,6 +25,8 @@ export default function E_StoreCards(state = initState, action){
             return deleteHandle(state, action)
         case UPDATE_E_STORECARDS:
             return updateHandle(state, action)
+        case REFRESH:
+            return initState
         default:
             return state
     }
