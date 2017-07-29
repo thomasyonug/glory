@@ -32,12 +32,12 @@ import {
             }
         }))
 
-        return new window.Transer({
+        store.dispatch(new window.Transer({
             type: DELETE_HANDCARDS, 
             content: {
                 index: xs.$firstOne().content.index
             }
-        })
+        }))
     }
 })
 export class FireBallMagic extends MagicEntity {

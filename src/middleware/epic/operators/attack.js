@@ -17,7 +17,6 @@ export default (action$, store) =>
     Observable.merge(
         ...Object.values(inputConstant).map(input => action$.ofType(input))
     )
-    .do(x => console.log(x, 'attackEpic'))
     .pairwise()
     .map(xs => {
 
