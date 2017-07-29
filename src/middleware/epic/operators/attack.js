@@ -1,6 +1,7 @@
 import {
     CLICK_BATTLE_FIELD,
-    CLICK_E_BATTLE_FIELD
+    CLICK_E_BATTLE_FIELD,
+    CLICK_E_ROLE
 } from 'reduxs/constant'
 
 import * as inputConstant from 'reduxs/constant/input'
@@ -24,9 +25,25 @@ export default (action$, store) =>
         const last  = xs.$lastOne()
         // const stateSnapshot = store.getState()
         if (
+            (first.type === CLICK_BATTLE_FIELD) && 
+            (last.type === CLICK_E_ROLE)
+        ) {
+            return {
+                glory: 'attack',
+                content: {
+                    fromIndex: first.content.index,
+                    toIndex: 'e_role'
+                }
+            }
+        }
+
+        if (
             (first.type !== CLICK_BATTLE_FIELD) ||
             (last.type  !== CLICK_E_BATTLE_FIELD)
         ) { return unActiveAll }
+
+
+
 
         return {
             glory: 'attack',

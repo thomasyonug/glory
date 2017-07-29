@@ -16,7 +16,8 @@ import {
 @connect(
     state => {
         return {
-            E_HP: state.glory.E_HP
+            E_HP: state.glory.E_HP,
+            EBattleFieldCards: state.e_battleField.firstAreaCards
         }
     },
     dispatch => {
@@ -35,13 +36,19 @@ export default class ERole extends Component {
 
 
     render () {
+
+        const {
+            E_HP
+        } = this.props
+        
+
         return (
             <div 
                 styleName="wrapper"
                 onClick={this.click}
                 >
                 <span>
-                    {this.props.E_HP}
+                    {E_HP}
                 </span>
             </div>
         )
@@ -50,7 +57,11 @@ export default class ERole extends Component {
 
     @autobind
     click () {
-        this.props._click()
+        const aliveNum = this.props.EBattleFieldCards.reduce((sum, item) => {
+            return sum += item ? 1 : 0
+        }, 0)
+        
+        if (!aliveNum) {this.props._click()}
     }
 
 

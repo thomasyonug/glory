@@ -36,7 +36,6 @@ function attack (store, next, action) {
     const fromMonster = battleField.firstAreaCards[fromIndex]
     const toMonster   = e_battleField.firstAreaCards[toIndex]
 
-    const result =  toMonster.attack - fromMonster.attack
 
     const destoryFromMonster = function(){
         store.dispatch(new window.Transer({
@@ -60,6 +59,12 @@ function attack (store, next, action) {
             index: fromIndex
         }
     }))
+
+    if (toIndex === 'e_role') {
+        return reduceEHP(store, fromMonster.attack * -1)
+    }
+
+    const result =  toMonster.attack - fromMonster.attack
 
     if (result === 0) {
         destoryFromMonster()
