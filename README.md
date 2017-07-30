@@ -1,3 +1,39 @@
 ### Glory Game
 *** 
-不知道这个新坑会持续多久，反正先开起来~
+
+### Monster Hook
+
+| hook name     | statu        
+| ------------- |:-------------:|
+| attackBefore  | Todo |
+| attackAfter   | Todo |
+| deathBefore   | Todo |
+| deathAfter    | Todo |
+| changeBefore  | Todo |
+| changeAfter   | Todo |
+| summonBefore  | Todo |
+| summonAfter   | Todo |
+
+
+### Magic Hook
+
+| hook name     | statu        
+| ------------- |:-------------:|
+| spellBefore   | Todo |
+| spellAfter    | Todo |
+
+
+
+### Trap Hook
+
+| hook name     | statu        
+| ------------- |:-------------:|
+| triggerBefore | Todo |
+| triggerAfter  | Todo |
+
+
+
+### middleware stream
+
+![image](https://github.com/thomasyonug/glory/blob/master/doc/img/03585E73-4525-49F1-9F10-A4DA7AE49E18.png)
+
