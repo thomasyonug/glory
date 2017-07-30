@@ -88,7 +88,8 @@ module.exports = {
       'middleware': path.resolve(__dirname, '../src/middleware'),
       '@': path.resolve(__dirname, '../src'),
       'resource': path.resolve(__dirname, '../src/resource'),
-      'storeGuard': path.resolve(__dirname, '../src/storeGuard')
+      'storeGuard': path.resolve(__dirname, '../src/storeGuard'),
+      'canvas': path.resolve(__dirname, '../src/canvas')
       // 'router': path.resolve(__dirname, '../src/router')
     }
   },

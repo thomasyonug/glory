@@ -4,17 +4,17 @@ import {connect}          from 'react-redux'
 import Styles             from './start.css'
 
 
-import StoreCards   from 'components/common/storeCards'
-import EStoreCards  from 'components/common/e_storeCards'
-import HandCards    from 'components/common/handCards'
-import EHandCards   from 'components/common/e_handCards'
-import Operator     from 'components/common/operator'
-import BattleField  from 'components/common/battlefield'
-import EBattleField from 'components/common/e_battlefield'
-import Dashboard    from 'components/common/dashboard'
-import Role         from 'components/common/role'
-import ERole        from 'components/common/e_role'
-
+import StoreCards    from 'components/common/storeCards'
+import EStoreCards   from 'components/common/e_storeCards'
+import HandCards     from 'components/common/handCards'
+import EHandCards    from 'components/common/e_handCards'
+import Operator      from 'components/common/operator'
+import BattleField   from 'components/common/battlefield'
+import EBattleField  from 'components/common/e_battlefield'
+import Dashboard     from 'components/common/dashboard'
+import Role          from 'components/common/role'
+import ERole         from 'components/common/e_role'
+import CanvasWrapper from 'components/common/canvasWrapper'
 
 
 
@@ -119,8 +119,12 @@ export default class Start extends Component{
                 <Dashboard></Dashboard>
                 <Role></Role>
                 <ERole></ERole>
+                <CanvasWrapper></CanvasWrapper>
             </div>
         )
+    }
+
+    componentDidMount () {
     }
 
 }

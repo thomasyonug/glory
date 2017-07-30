@@ -12,7 +12,7 @@ export default (action$, store) =>
         const card = stateSnapshot.handCards.cards[action.content.index]
 
         card && card.inHandCardTarget && card.inHandCardTarget(store)
-
+        
         return {
             type: ACTIVE_HANDCARD,
             content: action.content
