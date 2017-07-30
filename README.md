@@ -3,7 +3,7 @@
 
 ### Monster Hook
 
-| hook name     | statu        
+| hook name     | status        
 | ------------- |:-------------:|
 | attackBefore  | Todo |
 | attackAfter   | Todo |
@@ -17,7 +17,7 @@
 
 ### Magic Hook
 
-| hook name     | statu        
+| hook name     | status        
 | ------------- |:-------------:|
 | spellBefore   | Todo |
 | spellAfter    | Todo |
@@ -26,7 +26,7 @@
 
 ### Trap Hook
 
-| hook name     | statu        
+| hook name     | status        
 | ------------- |:-------------:|
 | triggerBefore | Todo |
 | triggerAfter  | Todo |
