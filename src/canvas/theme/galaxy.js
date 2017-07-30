@@ -49,7 +49,8 @@ export default function () {
         h = canvas.height,
         hue = 217,
         stars = [],
-        maxStars = 1400;
+        maxStars = 1400,
+        renderCount = 0
 
     // Cache gradient
     const canvas2 = document.createElement('canvas'),
@@ -76,9 +77,13 @@ export default function () {
     }
 
     function animation() {
+        renderCount += 1
+        if (renderCount % 10 !== 0) {
+            return window.requestAnimationFrame(animation);
+        }
         ctx.globalCompositeOperation = 'source-over';
         ctx.globalAlpha = 0.8;
-        ctx.fillStyle = 'hsla(' + hue + ', 64%, 20%, 1)';
+        ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 1)';
         ctx.fillRect(0, 0, w, h)
 
         ctx.globalCompositeOperation = 'lighter';
