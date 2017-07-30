@@ -1,4 +1,4 @@
-import scene        from './scene'
+import theme        from './theme'
 import lib          from './lib'
 import animate      from './animate'
 
@@ -7,7 +7,7 @@ import {prototype}  from 'decorators'
 
 
 @prototype({
-    ...scene,
+    ...theme,
     ...lib,
     ...animate
 })
