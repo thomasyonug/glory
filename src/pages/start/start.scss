@@ -13,7 +13,8 @@
 .battle-field-all{
     height: 60%;
     width: 100%;
-    border: 1px solid black;
+    border: 1px solid white;
+    color:white;
     position: relative;
 }
 
@@ -39,19 +40,23 @@
     width:30%;
     height: 100%;
     border: 1px solid black;
+    color:black;
 }
 .e-handCard-field{
     width:70%;
     height: 100%;
     border: 1px solid black;
+    color: black;
 }
 .storeCard-field{
     width:30%;
     height: 100%;
     border: 1px solid black;
+    color:white;
 }
 .handCard-field{
     width:70%;
     height: 100%;
     border: 1px solid black;
+    color: white;
 }

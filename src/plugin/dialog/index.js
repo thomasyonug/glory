@@ -11,6 +11,7 @@ const curryFn = method => result => {
     ReactDOM.unmountComponentAtNode(mount) 
     method(result) 
 }
+const white = {color:"red"}
 
 export const $dialog = (renderFn = () => <div></div>, cb = () => {}, props = {}) => 
     new Promise((resolve, rej) => {
@@ -45,7 +46,7 @@ export const $dialogAuto = content =>
             }, 2000)
 
             return (
-                <div>
+                <div style={white}>
                     {content}
                 </div>
             )

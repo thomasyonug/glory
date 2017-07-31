@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import CSSModules         from 'react-css-modules'
 import {connect}          from 'react-redux'
-import Styles             from './start.css'
+import Styles             from './start.scss'
 
 
 import StoreCards    from 'components/common/storeCards'
