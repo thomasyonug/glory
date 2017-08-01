@@ -11,7 +11,7 @@ const curryFn = method => result => {
     ReactDOM.unmountComponentAtNode(mount) 
     method(result) 
 }
-const white = {color:"red"}
+const white = {background:"#e1e1e1",width:'400px',margin:'0 auto'}
 
 export const $dialog = (renderFn = () => <div></div>, cb = () => {}, props = {}) => 
     new Promise((resolve, rej) => {

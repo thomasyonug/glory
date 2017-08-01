@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Styles from './dashboard.css'
+import Styles from './dashboard.scss'
 import CSSModules from 'react-css-modules'
 import {connect} from 'react-redux'
 import Tip from 'components/standard/tip'
@@ -60,7 +60,7 @@ export default class Dashboard extends Component {
     clickHandle = tipContext => {
         this.setState({
             styleObj: {
-                left: this.state.styleObj.left === '-500px' ? '0px' : '-500px'
+                left: this.state.styleObj.left === '-300px' ? '0px' : '-300px'
             }
         })
     }
