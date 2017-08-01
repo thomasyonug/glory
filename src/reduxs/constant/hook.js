@@ -1,0 +1,8 @@
+export const attackAfter  = 'attackAfter'
+export const attackBefore = 'attackBefore'
+export const deadAfter    = 'deadAfter'
+export const deadBefore   = 'deadBefore'
+export const changeAfter  = 'changeAfter'
+export const changeBefore = 'changeBefore'
+export const summonAfter  = 'summonAfter'
+export const summonBefore = 'summonBefore'

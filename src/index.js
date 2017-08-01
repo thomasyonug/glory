@@ -20,6 +20,7 @@ import 'rxjs'
 
 
 
+
 Object.keys(plugins).forEach(key => {
   Component.prototype[key] = plugins[key]
 })
