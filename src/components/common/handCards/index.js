@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Styles from './handCards.css'
+import Styles from './handCards.scss'
 import CSSModules from 'react-css-modules'
 import {CardFace} from 'components/common/card'
 
@@ -54,7 +54,7 @@ export default class HandCards extends Component {
                         return (
                             <li styleName='cardWrapper' key={index}>
                                 <div style={{
-                                    border: (activeIndex === index && active) ? '1px solid green' : ''
+                                    border: (activeIndex === index && active) ? '2px solid red' : ''
                                 }}>
                                     <CardFace 
                                         onClick={() => this.click(index)}

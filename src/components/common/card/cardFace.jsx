@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Styles from './cardCore.css'
+import Styles from './cardCore.scss'
 import CSSModules from 'react-css-modules'
 // import {connect}          from 'react-redux'
 // import {autobind} from 'core-decorators'
@@ -30,10 +30,10 @@ export default class CardFace extends Component {
 
         return (
             <div styleName='cardFace' onClick={onClick}>
-                 <h3 styleName="head">
+                 <h3 styleName="">
                     {card.cardName}
                 </h3>
-                <div styleName="describe">
+                <div styleName="">
                     {card.describe}
                 </div>
                 <div>

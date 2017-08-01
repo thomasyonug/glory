@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Styles from './e_handCards.css'
+import Styles from './e_handCards.scss'
 import CSSModules from 'react-css-modules'
 import {connect} from 'react-redux'
 

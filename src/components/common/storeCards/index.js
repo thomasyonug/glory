@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Styles from './storeCards.css'
+import Styles from './storeCards.scss'
 import CSSModules from 'react-css-modules'
 
 import {connect} from 'react-redux'
