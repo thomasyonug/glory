@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 
 
 
-export const routeHook = (Target) => {
+export const routeHook = Target => {
     @connect(
         state => {
             return {

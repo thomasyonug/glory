@@ -6,7 +6,7 @@ import { routeHook } from 'decorators'
 
 import {connect} from 'react-redux'
 import {setRoomsActionCreator, joinRoomActionCreator} from 'reduxs/actions'
-
+import {autobind} from 'core-decorators'
 
 
 
@@ -81,7 +81,8 @@ export default class Search extends Component{
     componentWillUnmount() {
     }
 
-    createRoom = () => {
+    @autobind
+    createRoom () {
         
         const dialogContentRender = (dialogContext) => {
             return (
@@ -107,7 +108,9 @@ export default class Search extends Component{
             })
             window.location = '#/room'
         })
-        .catch(err => {}) 
+        .catch(err => {
+            console.log(err)
+        }) 
     }
 
     joinRoom = room => {
