@@ -58,6 +58,7 @@ export default class App extends Component {
   }
 
   componentDidMount () {
+    console.log(123123)
       document.oncontextmenu = function(){return false};
       Rx.Observable.fromEvent(document, 'mouseup')
       .filter(e => e.button === 2)

@@ -72,6 +72,15 @@ export default class Start extends Component{
             e_battleField
         } = this.props
 
+        if (
+            !storeCards ||
+            !e_storeCards ||
+            !handCards ||
+            !e_handCards ||
+            !battleField ||
+            !e_battleField 
+        ) { return false }
+
 
         return (
             <div styleName='wrapper'>
