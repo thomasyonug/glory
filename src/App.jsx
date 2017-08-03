@@ -5,13 +5,10 @@ import {
   Redirect,
   Switch
 } from 'react-router-dom'
-
 import {connect}  from 'react-redux'
+import { CLICK_RIGHT_BUTTON } from 'reduxs/constant'
+import {autobind} from 'core-decorators'
 import Rx from 'rxjs'
-
-import {
-  CLICK_RIGHT_BUTTON
-} from 'reduxs/constant'
 
 
 const contexts = require.context('pages', true, /@index\.js$/)
@@ -23,6 +20,10 @@ const routers = contexts.keys().reduce((routers, key) => {
   })
   return routers
 }, [])
+
+
+
+
 
 @connect(
     state => {
@@ -57,8 +58,9 @@ export default class App extends Component {
     );
   }
 
+
+
   componentDidMount () {
-    console.log(123123)
       document.oncontextmenu = function(){return false};
       Rx.Observable.fromEvent(document, 'mouseup')
       .filter(e => e.button === 2)

@@ -12,10 +12,10 @@ export default (action$, store) =>
         action$.ofType(DROP_MONSTER_CARDS_FROM_BATTLEFIELD),
         action$.ofType(DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD)
     )
-    .do(x => console.log('attackAfter'))
+    .filter(action => action.epicHelper)
     .map(action => {
-        console.log(action)
+        action.epicHelper.card.deathwhisper?.(store, action)
         return {
-            type: 'fuck'
+            type: ''
         }
     })

@@ -13,8 +13,13 @@ export default function (store, next, action) {
     } = stateSnapshot
 
     if (action.type === DROP_MONSTER_CARDS_FROM_BATTLEFIELD) {
-        const monster = battleField[action.content.index]
-        monster.deathwhisper?.()
+        const monster = battleField.firstArea[action.content.index]
+        monster.struggle?.(store, next, action)
+    } else if (DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD) {
+        const monster = e_battleField.firstArea[action.content.index]
+        monster.struggle?.(store, next, action)
+    } else {
+        next(action)
     }
-
 }
+

@@ -3,24 +3,24 @@
 
 ### Monster Hook
 
-| hook name     | status        
-| ------------- |:-------------:|
-| attackBefore  | Todo |
-| attackAfter   | Todo |
-| deathBefore   | Todo |
-| deathAfter    | Todo |
-| changeBefore  | Todo |
-| changeAfter   | Todo |
-| summonBefore  | Todo |
-| summonAfter   | Todo |
+| hook timeing  | status | hook name    | param                 |        
+| ------------- |:------:|:------------:| :--------------------:|
+| attackBefore  | X      |              |                       |
+| attackAfter   | X      |              |                       |
+| deathBefore   | √      | struggle     | (store, next, action) |
+| deathAfter    | √      | deathwhisper | (store, action)       |
+| changeBefore  | X      |              |                       |
+| changeAfter   | X      |              |                       |
+| summonBefore  | X      |              |                       |
+| summonAfter   | X      |              |                       |
 
 
 ### Magic Hook
 
 | hook name     | status        
 | ------------- |:-------------:|
-| spellBefore   | Todo |
-| spellAfter    | Todo |
+| spellBefore   | X |
+| spellAfter    | X |
 
 
 
@@ -28,8 +28,8 @@
 
 | hook name     | status        
 | ------------- |:-------------:|
-| triggerBefore | Todo |
-| triggerAfter  | Todo |
+| triggerBefore | X |
+| triggerAfter  | X |
 
 
 
