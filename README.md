@@ -8,7 +8,7 @@
 | attackBefore  | X      |              |                       |
 | attackAfter   | X      |              |                       |
 | deathBefore   | done   | struggle     | (store, next, action) |
-| deathAfter    | done   | deathwhisper | (store, action)       |
+| deathAfter    | done   | deathwhisper | (store, action)       |
 | changeBefore  | X      |              |                       |
 | changeAfter   | X      |              |                       |
 | summonBefore  | X      |              |                       |
