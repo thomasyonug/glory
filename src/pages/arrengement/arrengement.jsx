@@ -61,10 +61,9 @@ export default class Arrengement extends Component{
                     </div>
                     <div styleName="buttonArea">
                         <button onClick={() => this.saveHandle()}>save</button>
-                        <button onClick={() => this.createCardGroupHandle()}>新建</button>
                     </div>
                 </div>
-
+                <div styleName="addNewBtn"><button onClick={() => this.createCardGroupHandle()}>新建</button></div>
                 <div>now using cardGroup:  { usingGroup.groupName}</div>
                 <div>
                     <button onClick={() => this.chooseUsingGroup()}>choose usingGroup</button>
@@ -114,8 +113,6 @@ export default class Arrengement extends Component{
 
     @autobind
     chooseHandle (cardClass) {
-        console.log(`choosedCards: ${JSON.stringify(this.state.choosedCards)}`)
-        console.log(`cardClass: ${cardClass.cardCode}`)
         // if (this.state.choosedCards.filter((item) => { return item.cardCode === cardClass.cardCode}).length >= 3) return
         if (this.state.choosedCards.length > 40) return
         let newcard = {cardName:cardClass.cardName , cardCode:cardClass.cardCode}
