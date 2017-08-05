@@ -5,7 +5,7 @@
 
 | hook timeing  | status | hook name    | param                 |        
 | ------------- |:------:|:------------:| :--------------------:|
-| attackBefore  | X      |              |                       |
+| attackBefore  | X      | prophet      | (store, next, action) |
 | attackAfter   | X      |              |                       |
 | deathBefore   | done   | struggle     | (store, next, action) |
 | deathAfter    | done   | deathwhisper | (store, action)       |
@@ -17,10 +17,10 @@
 
 ### Magic Hook
 
-| hook name     | status        
-| ------------- |:-------------:|
-| spellBefore   | X |
-| spellAfter    | X |
+| hook name     | status |   
+| ------------- |:------:|
+| spellBefore   | X      |
+| spellAfter    | X      |
 
 
 
