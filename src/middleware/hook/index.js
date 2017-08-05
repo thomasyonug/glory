@@ -5,13 +5,13 @@ import {
 
 
 import deadBefore from './deadBefore'
-
+import attackBefore from './attackBefore'
 
 export default store => next => action => {
     if (match_deadBefore(action)) {
         return deadBefore(store, next, action)
     } else if (match_attackBefore(action)) {
-        return false
+        return attackBefore(store, next, action)
     } else if (match_changeBefore(action)) {
         return false
     } else if (match_summonBefore(action)) {
@@ -33,6 +33,10 @@ function match_deadBefore (action) {
 }
 
 function match_attackBefore (action) {
+    if (
+        action.glory === 'attack'
+    ) { return true }
+
     return false
 }
 
