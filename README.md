@@ -3,9 +3,9 @@
 
 ### Monster Hook
 
-| hook timeing  | status | hook name    | param                 |        
+| hook timing  | status | hook name    | param                 |        
 | ------------- |:------:|:------------:| :--------------------:|
-| attackBefore  | X      | prophet      | (store, next, action) |
+| attackBefore  | done   | prophet      | (store, next, action) |
 | attackAfter   | X      |              |                       |
 | deathBefore   | done   | struggle     | (store, next, action) |
 | deathAfter    | done   | deathwhisper | (store, action)       |
@@ -17,7 +17,7 @@
 
 ### Magic Hook
 
-| hook name     | status |   
+| hook timing     | status |   
 | ------------- |:------:|
 | spellBefore   | X      |
 | spellAfter    | X      |
@@ -26,7 +26,7 @@
 
 ### Trap Hook
 
-| hook name     | status        
+| hook timing     | status        
 | ------------- |:-------------:|
 | triggerBefore | X |
 | triggerAfter  | X |

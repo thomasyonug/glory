@@ -76,6 +76,14 @@ function attack (store, next, action) {
         destoryToMonster()
         reduceEHP(store, result)
     }
+    
+    return next({
+        type: 'ATTACK_AFTER',
+        content: {
+            toMonster,
+            fromMonster
+        }
+    })
 
 }
 
