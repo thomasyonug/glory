@@ -3,10 +3,10 @@
 
 ### Monster Hook
 
-| hook timing  | status | hook name    | param                 |        
+| hook timing   | status | hook name    | param                 |        
 | ------------- |:------:|:------------:| :--------------------:|
 | attackBefore  | done   | prophet      | (store, next, action) |
-| attackAfter   | X      |              |                       |
+| attackAfter   | done   | aftershock   | (store, action)       |
 | deathBefore   | done   | struggle     | (store, next, action) |
 | deathAfter    | done   | deathwhisper | (store, action)       |
 | changeBefore  | X      |              |                       |
