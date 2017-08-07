@@ -11,7 +11,7 @@
 | deathAfter    | done   | deathwhisper | (store, action)       |
 | changeBefore  | X      |              |                       |
 | changeAfter   | X      |              |                       |
-| summonBefore  | X      |              |                       |
+| summonBefore  | done   | momentum     | (store, next, action) |
 | summonAfter   | X      |              |                       |
 
 

@@ -6,6 +6,7 @@ import {
 
 import deadBefore from './deadBefore'
 import attackBefore from './attackBefore'
+import summonBefore from './summonBefore'
 
 export default store => next => action => {
     if (match_deadBefore(action)) {
@@ -15,7 +16,7 @@ export default store => next => action => {
     } else if (match_changeBefore(action)) {
         return false
     } else if (match_summonBefore(action)) {
-        return false
+        return summonBefore(store, next, action)
     } else {
         return next(action)
     }
@@ -45,5 +46,8 @@ function match_changeBefore (action) {
 }
 
 function match_summonBefore (action) {
+    if (action.glory === 'get_card_from_hand_to_battle') {
+        return true
+    }
     return false
 }
