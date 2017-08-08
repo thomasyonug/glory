@@ -11,7 +11,6 @@ export class SunfeiMonster extends MonsterEntity {
     static cardCode = '4';
     static cardName = 'sunfeiMonster'
 
-    validateAttackTimes = 1;
 }
 
 

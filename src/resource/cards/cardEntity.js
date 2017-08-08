@@ -5,7 +5,7 @@ import {propertiesCheck} from 'decorators'
 
 @propertiesCheck({
     staticProperties: {
-        cardCode: String,
+        // cardCode: String,
         cardName: String
     },
     unStaticProperties: {

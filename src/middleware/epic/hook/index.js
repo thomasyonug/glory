@@ -1,7 +1,7 @@
 import deadAfter from './deadAfter'
 import attackAfter from './attackAfter'
 
-export default {
+export default [
     deadAfter,
     attackAfter
-}
+]

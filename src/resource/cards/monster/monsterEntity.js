@@ -28,4 +28,5 @@ import {
     }
 })
 export class MonsterEntity extends CardEntity{
+    validateAttackTimes = 1;
 }
