@@ -42,6 +42,12 @@ export class RoomApi {
             }
         })
     }
+
+    hostInfo = () => {
+        this.socket.coreSocket.$emit('room', {
+            type: 'hostInfo'
+        })
+    }
 }
 
 

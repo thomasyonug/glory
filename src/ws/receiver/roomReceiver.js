@@ -27,6 +27,13 @@ export class RoomReceiver extends Entity{
         })
     }
 
+    hostInfo (msg) {
+        store.dispatch({
+            type: 'SET_HOST',
+            content: msg.content
+        })
+    }
+
 
 
 }

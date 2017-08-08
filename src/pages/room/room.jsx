@@ -16,7 +16,8 @@ import { routeHook } from 'decorators'
     state => {
         return {
             roomInfo: state.room.currentRoom,
-            msgs: state.chat.msgs
+            msgs: state.chat.msgs,
+            host: state.room.currentHost
         }
     },
     dispatch => {
@@ -36,12 +37,14 @@ export default class Room extends Component{
 
     componentDidMount () {
         this.$ws.roomApi.roomInfo()
+        this.$ws.roomApi.hostInfo()
     }
 
     render () {
         const {
             roomInfo,
-            msgs
+            msgs,
+            host
         } = this.props
 
         if (Object.keys(roomInfo).length !== 0) {
@@ -85,7 +88,11 @@ export default class Room extends Component{
         this.$ws.roomApi.quitRoom(roomID)
     }
     startGame = () => {
-        this.$ws.gameApi.startGame()
+        if(this.props.host == this.props.roomInfo.host){
+            this.$ws.gameApi.startGame()
+        }else{
+            this.$dialogAuto(`you are not host,can't start game!`)
+        }
     }
     componentWillUnmount () {
         this.props.clearMsgs()

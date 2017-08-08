@@ -4,7 +4,8 @@ import {
     JOIN_ROOM, 
     QUIT_ROOM,
     SET_ROOMS,
-    SET_ROOM
+    SET_ROOM,
+    SET_HOST
 } from 'reduxs/constant'
 
 
@@ -38,6 +39,12 @@ export default function room(state = initState, action) {
             return {
                 ...state,
                 currentRoom: action.content
+            }
+
+        case SET_HOST: 
+            return {
+                ...state,
+                currentHost: action.content
             }
         default:
         return state;
