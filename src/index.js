@@ -38,7 +38,8 @@ export const store = createStore(
         middlewares.transer, 
         middlewares.roundHook,
         middlewares.glory,
-        middlewares.epic
+        middlewares.epic,
+        middlewares.epicHelper
       )
     )
 )
