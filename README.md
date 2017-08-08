@@ -3,21 +3,21 @@
 
 ### Monster Hook
 
-| hook timeing  | status | hook name    | param                 |        
+| hook timing   | status | hook name    | param                 |        
 | ------------- |:------:|:------------:| :--------------------:|
-| attackBefore  | X      | prophet      | (store, next, action) |
-| attackAfter   | X      |              |                       |
+| attackBefore  | done   | prophet      | (store, next, action) |
+| attackAfter   | done   | aftershock   | (store, action)       |
 | deathBefore   | done   | struggle     | (store, next, action) |
 | deathAfter    | done   | deathwhisper | (store, action)       |
 | changeBefore  | X      |              |                       |
 | changeAfter   | X      |              |                       |
-| summonBefore  | X      |              |                       |
+| summonBefore  | done   | momentum     | (store, next, action) |
 | summonAfter   | X      |              |                       |
 
 
 ### Magic Hook
 
-| hook name     | status |   
+| hook timing     | status |   
 | ------------- |:------:|
 | spellBefore   | X      |
 | spellAfter    | X      |
@@ -26,7 +26,7 @@
 
 ### Trap Hook
 
-| hook name     | status        
+| hook timing     | status        
 | ------------- |:-------------:|
 | triggerBefore | X |
 | triggerAfter  | X |
