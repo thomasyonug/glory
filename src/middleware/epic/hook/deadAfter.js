@@ -14,7 +14,7 @@ export default (action$, store) =>
     )
     .filter(action => action.epicHelper)
     .map(action => {
-        action.epicHelper.card.deathwhisper?.(store, action)
+        action.epicHelper?.card?.deathwhisper?.(store, action)
         return {
             type: ''
         }
