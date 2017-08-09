@@ -51,6 +51,14 @@ Object.assign(Array.prototype, {
 
     },
 
+    $random () {
+        const arr = [...this]
+
+        arr.sort(() => 0.5 - Math.random())
+
+        return arr
+    },
+
     $lastOne () {
         const index = this.length - 1
 
