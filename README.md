@@ -1,4 +1,4 @@
-### Glory Game
+### <img src='https://github.com/thomasyonug/glory/blob/master/doc/img/readMeLogo.png' height='120'>
 *** 
 
 ### Monster Hook
