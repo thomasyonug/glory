@@ -65,6 +65,7 @@ export default class Search extends Component{
 
         return (
             <div styleName="reachRoom">
+                <button styleName="backBtn" onClick={this.back}>返回</button>
                 {rooms.map((room, index) => 
                     <div key={index}>
                         {roomRender(room)}
@@ -120,6 +121,10 @@ export default class Search extends Component{
 
     arrengement = () => {
         window.location = '#/arrengement'
+    }
+
+    back = () =>{
+        window.location = '#/login'
     }
 
 }

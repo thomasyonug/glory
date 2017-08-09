@@ -10,7 +10,7 @@ import {autobind} from 'core-decorators'
 @connect(
     state => {
         return {
-            cardGroups: state.arrengement.cardGroups || 'loading',
+            cardGroups: state.arrengement.cardGroups || 'no cardGroups,please create first!',
             usingGroup: state.arrengement.usingGroup  || 'no choose'
         }
     },
@@ -53,6 +53,7 @@ export default class Arrengement extends Component{
 
         return (
             <div>
+                <button styleName="backBtn" onClick={() => this.back()}>返回</button>
                 <div styleName={rightBarStyle} ref={scrollWrapper => this.scrollWrapper = scrollWrapper} >
                     <div>
                         {choosedCards.map((choosedCard, index) => 
@@ -104,7 +105,7 @@ export default class Arrengement extends Component{
                             </div> 
                         )
                         :
-                        'loading'
+                        'no cardGroups,please create first!'
                     }
                 </div>
             </div>
@@ -195,6 +196,10 @@ export default class Arrengement extends Component{
         .catch(() => {
         })
 
+    }
+
+    back () {
+        window.location = '#/search'
     }
 
 }

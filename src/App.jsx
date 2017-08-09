@@ -67,8 +67,13 @@ export default class App extends Component {
       .subscribe(e => {
         this.props.cancelActiveAll()
       })
+      
+      //禁用浏览器后退键
+      window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+      });
+      
   }
-
 }
 
 
