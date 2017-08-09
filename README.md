@@ -12,7 +12,7 @@
 | changeBefore  | X      |              |                       |
 | changeAfter   | X      |              |                       |
 | summonBefore  | done   | momentum     | (store, next, action) |
-| summonAfter   | X      |              |                       |
+| summonAfter   | done   | appearance   | (store, action)       |
 
 
 ### Magic Hook
