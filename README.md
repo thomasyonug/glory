@@ -1,4 +1,4 @@
-### Glory Game
+### <img src='https://github.com/thomasyonug/glory/blob/master/doc/img/readMeLogo.png' height='120'>
 *** 
 
 ### Monster Hook
@@ -12,7 +12,7 @@
 | changeBefore  | X      |              |                       |
 | changeAfter   | X      |              |                       |
 | summonBefore  | done   | momentum     | (store, next, action) |
-| summonAfter   | X      |              |                       |
+| summonAfter   | done   | appearance   | (store, action)       |
 
 
 ### Magic Hook

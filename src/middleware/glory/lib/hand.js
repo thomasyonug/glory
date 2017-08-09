@@ -37,6 +37,16 @@ function get_card_from_hand_to_battle (store, next, action) {
     store.dispatch({
         glory: 'unActiveAll'
     })
+
+    //to triggle summonAfter epic
+    next({
+        type: 'get_card_from_hand_to_battle',
+        content: {
+            card,
+            fromIndex,
+            toIndex
+        }
+    })
 }
 
 
@@ -69,6 +79,16 @@ function get_card_from_e_hand_to_e_battle (store, next, action) {
     
     store.dispatch({
         glory: 'unActiveAll'
+    })
+
+    //to triggle summonAfter epic
+    next({
+        type: 'get_card_from_e_hand_to_e_battle',
+        content: {
+            card,
+            fromIndex,
+            toIndex
+        }
     })
 }
 
