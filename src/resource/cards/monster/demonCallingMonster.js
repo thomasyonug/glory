@@ -7,8 +7,8 @@ import {
 
 
 @prototype({
-    describe: '恶魔的召唤',
-    cardName: 'demonCalling',
+    describe: '召唤时随机破坏我方战场上一只怪兽',
+    cardName: '恶魔的召唤',
     attack: 2500,
     defensive: 2000,
     appearance (store, action) {
@@ -40,7 +40,7 @@ import {
 })
 export class DemonCallingMonster extends MonsterEntity {
     static cardCode = '9';
-    static cardName = 'demonCalling'
+    static cardName = '恶魔的召唤'
 
     validateAttackTimes = 1;
 }
