@@ -8,6 +8,10 @@ import {
     SET_E_HP
 } from 'reduxs/constant'
 
+import {
+    syncRandom
+} from 'util'
+
 export class GameReceiver extends Entity{
     socket;
 
@@ -81,6 +85,10 @@ export class GameReceiver extends Entity{
     }
 
     glory_initGod (msg) {
+        const {seed} = msg.content
+
+        Math.$random = syncRandom(seed)
+
         store.dispatch({
             type: 'INIT_GOD',
             content: msg.content

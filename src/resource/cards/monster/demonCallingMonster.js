@@ -12,7 +12,6 @@ import {
     attack: 2500,
     defensive: 2000,
     appearance (store, action) {
-        debugger
         const {
             card
         } = action.content
@@ -31,12 +30,12 @@ import {
         if (!choosenCard) { return }
         const type = action.type === 'get_card_from_hand_to_battle' ? DROP_MONSTER_CARDS_FROM_BATTLEFIELD : DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD
 
-        store.dispatch(new window.Transer({
+        store.dispatch({
             type,
             content: {
                 index: cards.findIndex(item => item === choosenCard)
             }
-        }))
+        })
     }
 })
 export class DemonCallingMonster extends MonsterEntity {

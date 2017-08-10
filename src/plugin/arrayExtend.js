@@ -54,7 +54,7 @@ Object.assign(Array.prototype, {
     $random () {
         const arr = [...this]
 
-        arr.sort(() => 0.5 - Math.random())
+        arr.sort(() => 0.5 - Math.$random())
 
         return arr
     },

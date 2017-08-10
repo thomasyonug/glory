@@ -18,6 +18,6 @@ export default (action$, store) =>
         fromMonster?.aftershock?.(store, action)
 
         return {
-            type: ''
+            type: 'attackAfterFinish'
         }
     })

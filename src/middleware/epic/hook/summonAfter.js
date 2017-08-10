@@ -12,7 +12,7 @@ export const summonAfter = (action$, store) =>
         action.content.card.appearance?.(store, action)
 
         return {
-            type: ''
+            type: 'summonAfterFinish'
         }
     })
 
@@ -26,6 +26,6 @@ export const summonAfterE = (action$, store) =>
         action.content.card.appearance?.(store, action)
 
         return {
-            type: ''
+            type: 'e_summonAfterFinish'
         }
     })

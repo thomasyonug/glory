@@ -16,6 +16,6 @@ export default (action$, store) =>
     .map(action => {
         action.epicHelper?.card?.deathwhisper?.(store, action)
         return {
-            type: ''
+            type: 'deadAfterFinish'
         }
     })
