@@ -35,6 +35,7 @@ export const store = createStore(
     reducer,
     composeEnhancers(
       applyMiddleware(
+        middlewares.watchDog,
         middlewares.transer, 
         middlewares.roundHook,
         middlewares.glory,
