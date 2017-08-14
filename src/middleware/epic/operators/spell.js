@@ -2,13 +2,12 @@ import * as inputConstant from 'reduxs/constant/input'
 
 const {
     CLICK_HAND_CARD,
-    // CLICK_BATTLE_FIELD,
-    // CLICK_STORE_CARD,
-    // CLICK_ROLE,
-    // CLICK_E_STORE_CARD,
-    // CLICK_E_BATTLE_FIELD,
-    // CLICK_E_ROLE,
 } = inputConstant
+
+import {
+    END_ANIMATE,
+    SET_ANIMATE
+} from 'reduxs/constant'
 
 import { Observable } from 'rxjs/Observable';
 
@@ -36,9 +35,45 @@ export default (action$, store) =>
             (firstCard.type !== 'MAGIC')
         ) { return unActiveAll }
 
+        //失去焦点
+        store.dispatch(unActiveAll)
+
+        //调用动画
+        store.dispatch({
+            type: SET_ANIMATE,
+            content: {
+                animate_name: firstCard.animate_name
+            }
+        })
+
+        //唤醒看门狗
+        store.dispatch({
+            bone: true,
+            passType: END_ANIMATE
+        })
+
+        //等待动画结束
+        return Observable.ofType(END_ANIMATE).map(action => ({
+            firstCard,
+            xs
+        }))
+
+    })
+    .switchMap(param => {
+        const {
+            xs,
+            firstCard
+        } = param
+
+        //看门狗沉睡
+        store.dispatch({
+           sleepingPill: true
+        })
+
+        //发动效果
         firstCard.effect(xs, store)
 
         return {
-            glory: 'unActiveAll'
+            type: 'spell finish'
         }
     })
