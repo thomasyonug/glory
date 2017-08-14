@@ -3,25 +3,25 @@
 
 ### Monster Hook
 
-| hook timing   | status | hook name    | param                 |        
-| ------------- |:------:|:------------:| :--------------------:|
-| attackBefore  | done   | prophet      | (store, next, action) |
-| attackAfter   | done   | aftershock   | (store, action)       |
-| deathBefore   | done   | struggle     | (store, next, action) |
-| deathAfter    | done   | deathwhisper | (store, action)       |
-| changeBefore  | X      |              |                       |
-| changeAfter   | X      |              |                       |
-| summonBefore  | done   | momentum     | (store, next, action) |
-| summonAfter   | done   | appearance   | (store, action)       |
+| hook timing   | status | hook name    | param                 | where |        
+| ------------- |:------:|:------------:| :--------------------:| :----:|
+| attackBefore  | done   | prophet      | (store, next, action) | card  |
+| attackAfter   | done   | aftershock   | (store, action)       | card  |     
+| deathBefore   | done   | struggle     | (store, next, action) | card  |      
+| deathAfter    | done   | deathwhisper | (store, action)       | card  |      
+| changeBefore  | X      |              |                       |       |
+| changeAfter   | X      |              |                       |       |
+| summonBefore  | done   | momentum     | (store, next, action) | card  |      
+| summonAfter   | done   | appearance   | (store, action)       | card  |      
 
 
 ### Magic Hook
 
-| hook timing     | status |   
-| ------------- |:------:|
-| spellBefore   | X      |
-| spellAfter    | X      |
-
+| hook timing   | status | hook name |   
+| ------------- |:------:| :--------:|
+| spellBefore   | X      |           |
+| spellAfter    | X      |           |
+| spell         | done   | card      |
 
 
 ### Trap Hook
