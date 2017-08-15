@@ -17,11 +17,14 @@
 
 ### Magic Hook
 
-| hook timing   | status | hook name |   
-| ------------- |:------:| :--------:|
-| spellBefore   | X      |           |
-| spellAfter    | X      |           |
-| spell         | done   | card      |
+| hook timing   | status | hook name | type       | param            |
+| ------------- |:------:|:---------:|:----------:|:----------------:|
+| spellBefore   | X      |           |            |                  |
+| spellAfter    | X      |           |            |                  |
+| effect        | done   | card      | function   | (actions, store) |
+| animate_name  | done   | card      | string     | x                |
+| isEffectTarget| done   | card      | function   | (actions, store, target) |
+
 
 
 ### Trap Hook
