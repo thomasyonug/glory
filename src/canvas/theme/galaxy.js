@@ -43,7 +43,7 @@ class Star {
 
 
 export default function () {
-    let canvas = this.canvas,
+    let canvas = this.canvasEl,
         ctx = canvas.getContext('2d'),
         w = canvas.width,
         h = canvas.height,

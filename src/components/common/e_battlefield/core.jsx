@@ -22,17 +22,19 @@ import {
     },
     dispatch => {
         return {
-            _click: index => dispatch({
+            _click: (index, event) => dispatch({
                 type: CLICK_E_BATTLE_FIELD,
                 content: {
                     index
-                }
+                },
+                event
             }),
-            _clickEmpty: index => dispatch({
+            _clickEmpty: (index, event) => dispatch({
                 type: CLICK_E_BATTLE_FIELD_EMPTY,
                 content: {
                     index
-                }
+                },
+                event
             })
         }
     }
@@ -59,7 +61,7 @@ export default class EBattleField extends Component {
                             <li 
                                 key={index} 
                                 styleName={activeAttackAble ? 'activeItem' : 'item'}
-                                onClick={() => this.click(index)}
+                                onClick={(e) => this.click(index, e)}
                                 >
                                 <CardFace
                                     card={card}
@@ -71,7 +73,7 @@ export default class EBattleField extends Component {
                             <li 
                                 key={index} 
                                 styleName="item" 
-                                onClick={() => this.clickEmpty(index)}>
+                                onClick={(e) => this.clickEmpty(index, e)}>
                                     empty
                             </li>
                         )
@@ -83,12 +85,14 @@ export default class EBattleField extends Component {
 
 
     @autobind
-    click (index) {
-        this.props._click(index)
+    click (index, e) {
+        e.persist()
+        this.props._click(index, e)
     }
 
     @autobind
-    clickEmpty (index) {
+    clickEmpty (index, e) {
+        e.persist()
         this.props._clickEmpty(index)
     }
 

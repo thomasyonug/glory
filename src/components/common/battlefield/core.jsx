@@ -26,17 +26,19 @@ import {
     },
     dispatch => {
         return {
-            _click: index => dispatch({
+            _click: (index, event) => dispatch({
                 type: CLICK_BATTLE_FIELD,
                 content: {
                     index
-                }
+                },
+                event
             }),
-            _clickEmpty: index => dispatch({
+            _clickEmpty: (index, event) => dispatch({
                 type: CLICK_BATTLE_FIELD_EMPTY,
                 content: {
                     index
-                }
+                },
+                event
             })
         }
     }
@@ -70,7 +72,7 @@ export default class BattleField extends Component {
                             <li 
                                 key={index} 
                                 styleName={activeIndex === index ? 'itemActive' : 'item'} 
-                                onClick={() => this.click(index)}>
+                                onClick={(e) => this.click(index, e)}>
                                 <CardFace
                                     card={card}
                                 ></CardFace>
@@ -79,9 +81,9 @@ export default class BattleField extends Component {
                     } else {
                         const wrapper = 
                             summonAble ? 
-                                <li key={index} styleName="itemActiveEmpty" onClick={() => this.clickEmpty(index)}>empty</li> 
+                                <li key={index} styleName="itemActiveEmpty" onClick={(e) => this.clickEmpty(index, e)}>empty</li> 
                                 :
-                                <li key={index} styleName="item" onClick={() => this.clickEmpty(index)}>empty</li> 
+                                <li key={index} styleName="item" onClick={(e) => this.clickEmpty(index, e)}>empty</li> 
 
                         return (
                             wrapper
@@ -94,12 +96,14 @@ export default class BattleField extends Component {
 
 
     @autobind
-    click (index) {
-        this.props._click(index)
+    click (index, e) {
+        e.persist()
+        this.props._click(index, e)
     }
 
     @autobind
-    clickEmpty (index) {
+    clickEmpty (index, e) {
+        e.persist()
         this.props._clickEmpty(index)
     }
 

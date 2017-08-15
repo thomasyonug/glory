@@ -14,7 +14,7 @@ import Canvas from 'canvas'
 @connect(
     state => {
         return {
-            animate_name: state.glory.animate_name
+            animateInfo: state.glory.animateInfo
         }
     },
     dispatch => {
@@ -28,18 +28,22 @@ import Canvas from 'canvas'
 @CSSModules(Styles)
 export default class CanvasWrapper extends Component {
     state = {
-        canvas: null
+        canvasRender: null
     }
 
     async componentWillReceiveProps (nextProps) {
-        if (this.props.animate_name === nextProps.animate_name) { return }
-        await canvas.animate(nextProps.animate_name)
-        this.endAnimate()
+        const {
+            animate_name,
+            payload
+        } = nextProps.animateInfo
+
+        if (this.props.animateInfo?.animate_name === animate_name) { return }
+        await this.state.canvasRender.animate(animate_name, payload)
+        this.props.endAnimate()
     }
 
 
     render () {
-
         return (
             <canvas 
                 ref={canvas => this.canvas = canvas}
@@ -49,10 +53,10 @@ export default class CanvasWrapper extends Component {
     }
 
     componentDidMount () {
-        const canvas = new Canvas(this.canvas)
+        const canvasRender = new Canvas(this.canvas)
         this.setState({
-            canvas: canvas
+            canvasRender: canvasRender
         })
-        canvas.galaxy()
+        canvasRender.galaxy()
     }
 }

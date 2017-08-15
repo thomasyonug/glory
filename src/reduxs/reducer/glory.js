@@ -3,14 +3,14 @@ import {
     REDUCE_E_HP,
     SET_HP,
     SET_E_HP,
-    SET_ANIMATE_NAME
+    SET_ANIMATE_INFO
 } from 'reduxs/constant'
 
 
 const initState = {
     HP: null,
     E_HP: null,
-    animate_name: null
+    animateInfo: null
 }
 
 
@@ -39,10 +39,10 @@ export default function Glory(state = initState, action) {
                 E_HP: action.content 
             }
 
-        case SET_ANIMATE_NAME:
+        case SET_ANIMATE_INFO:
             return {
                 ...state,
-                animate_name: action.content.animate_name
+                animateInfo: action.content
             }
         default:
             return state

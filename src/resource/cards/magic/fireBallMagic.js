@@ -10,7 +10,6 @@ import {
     describe: '指定消灭一个场上怪物',
     cardName: 'FireBallMagic',
     effect (xs, store) {
-
         // const stateSnapshot = store.getState()
         // const {
         //     battleField,
@@ -38,6 +37,11 @@ import {
                 index: xs.$firstOne().content.index
             }
         }))
+    },
+    animate_name: 'fireball',
+    isEffectTarget (actions, store, target) {
+        if (target?.type === 'MONSTER') { return true }
+        else { return false }
     }
 })
 export class FireBallMagic extends MagicEntity {

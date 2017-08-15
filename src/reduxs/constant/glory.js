@@ -7,4 +7,4 @@ export const SET_E_HP = 'SET_E_HP'
 
 export const START_ANIMATE = 'START_ANIMATE'
 export const END_ANIMATE = 'END_ANIMATE'
-export const SET_ANIMATE_NAME = 'SET_ANIMATE_NAME'
+export const SET_ANIMATE_INFO = 'SET_ANIMATE_INFO'

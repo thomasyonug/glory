@@ -3,7 +3,7 @@ const WATCH = 'WATCH'
 
 
 let status = SLEEP
-let password = null
+let passType = null
 
 
 export default store => next => action => {

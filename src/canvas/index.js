@@ -1,19 +1,27 @@
-import theme        from './theme'
-import lib          from './lib'
-import animate      from './animate'
+import theme             from './theme'
+import lib               from './lib'
+import * as animateCore  from './animate'
 
-import {prototype}  from 'decorators'
+import {prototype}       from 'decorators'
+import {autobind}        from 'core-decorators'
 
 
 @prototype({
     ...theme,
-    ...lib,
-    ...animate
+    ...lib
 })
 export default class Canvas {
-    canvas = null;
+    canvasEl = null;
+    ctx = null;
 
     constructor (canvas) {
-        this.canvas = canvas
+        this.canvasEl = canvas
+        this.ctx = canvas.getContext('2d')
+    }
+
+
+    @autobind
+    animate(animate_name, ...rest) {
+        return animateCore[animate_name]?.call(this, ...rest)
     }
 }

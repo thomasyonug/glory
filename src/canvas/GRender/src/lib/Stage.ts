@@ -12,6 +12,7 @@ export default class Stage {
         public height: number
     ){}
 
+    
 
     render (): () => void {
         let running = true;
