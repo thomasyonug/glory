@@ -167,6 +167,7 @@ export default class Arrengement extends Component{
     }
 
     createCardGroupHandle () {
+        console.log(234234)
         const dialogContentRender = (dialogContext) => {
             return (
                 <input
@@ -191,7 +192,11 @@ export default class Arrengement extends Component{
     deleteHandle (cardGroup) {
         this.$dialogConfirm(<div>确认删除此卡组？</div>)
         .then(() => {
-            this.$ws.gameApi.arrengement_deleteCardGroup(cardGroup)
+            if(cardGroup.groupName === this.state.usingGroup.groupName){
+                this.$dialogAuto(`you can't delete the using cardgroup !`)
+            }else{
+                this.$ws.gameApi.arrengement_deleteCardGroup(cardGroup)
+            }
         })
         .catch(() => {
         })
