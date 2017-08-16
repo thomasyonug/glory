@@ -40,7 +40,10 @@ import {
     },
     animate_name: 'fireball',
     isEffectTarget (actions, store, target) {
-        if (target?.type === 'MONSTER') { return true }
+        if (
+            target?.type === 'MONSTER' && 
+            actions.$lastOne().type === CLICK_E_BATTLE_FIELD
+        ) { return true }
         else { return false }
     }
 })
