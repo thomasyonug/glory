@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import CSSModules from 'react-css-modules'
-import styles from './login.css'
+import styles from './login.scss'
 import {connect} from 'react-redux'
 import * as ac from 'reduxs/actions'
-
+import { Form, Icon, Input, Button, Checkbox, Row, Col } from 'antd';
+const FormItem = Form.Item;
 @connect(
     state => {
         return {
@@ -17,41 +18,61 @@ import * as ac from 'reduxs/actions'
     }
 )
 @CSSModules(styles)
-export default class Login extends Component{
-    constructor(props) {
-        super(props)
-        this.state = {username:'', password:''}
-    }
-
+class NormalLoginForm extends Component{
+   
     render(){
         const {
-            handleUserName,
-            handlePassWord,
             login
         } = this
+        const { getFieldDecorator } = this.props.form
 
         return (
-            <div styleName="login_content">
-                <div>
-                    <label >用户名:</label>
-                    <input  name="username" onChange={handleUserName} />
-                </div>
-                <div>
-                    <label >密码:</label>
-                    <input  name="password" type="password" onChange={handlePassWord} />
-                </div>
-                <button styleName="login_btn" onClick={login}>登陆</button>
-            </div>
+            <Row type="flex" justify="space-around" align="middle" styleName="login_page">
+                <Col>
+                    <Form onSubmit={this.login} styleName="login-form">
+                        <FormItem>
+                            {getFieldDecorator('userName', {
+                                rules: [{ required: true, message: 'Please input your username!' }],
+                            })(
+                                <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Username" />
+                            )}
+                            </FormItem>
+                            <FormItem>
+                            {getFieldDecorator('password', {
+                                rules: [{ required: true, message: 'Please input your Password!' }],
+                            })(
+                                <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password" />
+                            )}
+                            </FormItem>
+                            <FormItem>
+                            {getFieldDecorator('remember', {
+                                valuePropName: 'checked',
+                                initialValue: true,
+                            })(
+                                <Checkbox>Remember me</Checkbox>
+                            )}
+                            {/* <a styleName="login-form-forgot" href="">Forgot password</a> */}
+                            <Button type="primary" htmlType="submit" styleName="login-form-button">
+                                Log in
+                            </Button>
+                             Or <a href="">register now!</a> 
+                        </FormItem>
+                    </Form>
+                </Col>
+            </Row>
         )
     }
 
-    login = async () => {
-        const {
-            username,
-            password
-        } = this.state
+    login = async (e) => {
+        let data = {};
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                data = {password:values.password,username:values.userName}
+            }
+        });
         try {
-            const json = await this.$http.post('/public/login', {username, password})
+            const json = await this.$http.post('/public/login', data)
             this.props.modifyLoginStatus(true)
             this.props.saveLoginToken(json.token)
             this.initSocket()
@@ -60,18 +81,11 @@ export default class Login extends Component{
         }
     }
 
-    handleUserName = (e) => {
-        this.setState({username: e.target.value})
-    }
-
-    handlePassWord = (e) => {
-        this.setState({password: e.target.value})
-    }
-    
-
     initSocket () {
         this.$ws.handShake()
         this.$ws.startListen()
     }
 
 }
+const Login = Form.create()(NormalLoginForm);
+export default Login;
