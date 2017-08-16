@@ -86,7 +86,7 @@ export default class CanvasWrapper extends Component {
             bgCanvasRender
         })
 
-        bgCanvasRender.gRender.drawImg('https://astralapp.com/dist/images/marketing-header.jpg')
+        bgCanvasRender.gRender.drawImg(require('resource/img/galaxy.jpg'))
         
         canvasRender.gRender.render()
     }
