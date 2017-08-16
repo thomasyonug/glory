@@ -30,8 +30,6 @@ export default class Stage {
             //清空tick
             this.nextTickSqueue.splice(0, length)
 
-
-
             //清空canvas
             this.clear()
 
@@ -63,10 +61,6 @@ export default class Stage {
         } else {
             const {ctx, width, height} = this
             ctx.save()
-            // ctx.globalCompositeOperation = 'source-over';
-            // ctx.globalAlpha = 0;
-            // ctx.fillStyle = 'black';
-            // ctx.fillRect(0,0,width,height);
             ctx.clearRect(0, 0, this.width, this.height)
             ctx.restore()
         }
