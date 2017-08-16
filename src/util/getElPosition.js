@@ -12,7 +12,7 @@ export function getElPosition (el) {
     } = window.getComputedStyle(el)
 
     return {
-        x: left * 1,
-        y: top * 1
+        x: left * 1 + parseFloat(width)/2,
+        y: top * 1 + parseFloat(height)/2
     }
 }

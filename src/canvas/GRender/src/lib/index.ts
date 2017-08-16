@@ -29,6 +29,24 @@ export default class GRender {
         this.sprites.push(...sprite)
     }
 
+    public removeSprite(sprite: Sprite): boolean {
+        const index = this.sprites.findIndex(item => sprite === item)
+
+        if (index > -1) {
+            this.sprites.splice(index, 1)
+            return true
+        } else {
+            return false
+        }
+    }
+
+    public nextTick(fn: (stage: Stage) => void): void {
+        this.stage.nextTick(fn)
+    }
+
 }
 
+export {
+    Sprite
+}
 

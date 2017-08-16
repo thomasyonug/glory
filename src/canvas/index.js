@@ -1,6 +1,7 @@
 import theme             from './theme'
 import lib               from './lib'
 import * as animateCore  from './animate'
+import GRender           from './GRender/dist'
 
 import {prototype}       from 'decorators'
 import {autobind}        from 'core-decorators'
@@ -13,10 +14,11 @@ import {autobind}        from 'core-decorators'
 export default class Canvas {
     canvasEl = null;
     ctx = null;
-
+    gRender = null;
     constructor (canvas) {
         this.canvasEl = canvas
         this.ctx = canvas.getContext('2d')
+        this.gRender = new GRender(canvas, this.ctx)
     }
 
 

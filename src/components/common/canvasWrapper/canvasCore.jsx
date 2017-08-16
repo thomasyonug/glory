@@ -28,7 +28,8 @@ import Canvas from 'canvas'
 @CSSModules(Styles)
 export default class CanvasWrapper extends Component {
     state = {
-        canvasRender: null
+        canvasRender: null,
+        bgCanvasRender: null
     }
 
     async componentWillReceiveProps (nextProps) {
@@ -37,26 +38,55 @@ export default class CanvasWrapper extends Component {
             payload
         } = nextProps.animateInfo
 
-        if (this.props.animateInfo?.animate_name === animate_name) { return }
-        await this.state.canvasRender.animate(animate_name, payload)
+        const {
+            canvasRender,
+            bgCanvasRender
+        } = this.state
+
+
+
+        // canvasRender.gRender.stage.backgroundEnable = false
+        await canvasRender.animate(animate_name, payload)
+        // canvasRender.gRender.stage.backgroundEnable = true
+
         this.props.endAnimate()
     }
 
 
     render () {
         return (
-            <canvas 
-                ref={canvas => this.canvas = canvas}
-                styleName="canvas"
-            ></canvas>
+            <div>
+                <canvas
+                    ref={canvas => this.canvasBgEl = canvas}
+                    styleName="bgCanvas"
+                ></canvas>
+                <canvas 
+                    ref={canvas => this.canvasEl = canvas}
+                    styleName="canvas"
+                ></canvas>
+            </div>
         )
     }
 
     componentDidMount () {
-        const canvasRender = new Canvas(this.canvas)
+        const {
+            canvasEl,
+            canvasBgEl
+        } = this
+        const canvasRender = new Canvas(canvasEl)
+        canvasEl.width = canvasEl.clientWidth
+        canvasEl.height = canvasEl.clientHeight
+
+        const bgCanvasRender = new Canvas(canvasBgEl)
+        canvasBgEl.width = canvasBgEl.clientWidth
+        canvasBgEl.height = canvasBgEl.clientHeight
+
+
         this.setState({
-            canvasRender: canvasRender
+            canvasRender,
+            bgCanvasRender
         })
-        canvasRender.galaxy()
+        bgCanvasRender.galaxy()
+        canvasRender.gRender.render()
     }
 }
