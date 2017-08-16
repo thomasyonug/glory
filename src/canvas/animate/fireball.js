@@ -4,7 +4,7 @@ import {
 
 import {
     Sprite
-} from '../GRender/dist'
+} from '../GRender/dist/lib'
 
 
 export async function fireball(payload) {

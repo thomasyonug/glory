@@ -81,12 +81,13 @@ export default class CanvasWrapper extends Component {
         canvasBgEl.width = canvasBgEl.clientWidth
         canvasBgEl.height = canvasBgEl.clientHeight
 
-
         this.setState({
             canvasRender,
             bgCanvasRender
         })
-        bgCanvasRender.galaxy()
+
+        bgCanvasRender.gRender.drawImg('https://astralapp.com/dist/images/marketing-header.jpg')
+        
         canvasRender.gRender.render()
     }
 }

@@ -1,7 +1,7 @@
 import theme             from './theme'
 import lib               from './lib'
 import * as animateCore  from './animate'
-import GRender           from './GRender/dist'
+import GRender           from './GRender/dist/lib'
 
 import {prototype}       from 'decorators'
 import {autobind}        from 'core-decorators'
