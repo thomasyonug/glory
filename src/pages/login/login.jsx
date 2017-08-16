@@ -19,7 +19,16 @@ const FormItem = Form.Item;
 )
 @CSSModules(styles)
 class NormalLoginForm extends Component{
-   
+    componentDidMount () {
+         if(localStorage.getItem('remember') == "true"){
+            this.props.form.setFieldsValue({'userName':localStorage.getItem('userName')})
+            this.props.form.setFieldsValue({'password':localStorage.getItem('password')})
+            this.props.form.setFieldsValue({'remember':true})
+         }else{
+            this.props.form.setFieldsValue({'remember':false})
+         }
+    }
+
     render(){
         const {
             login
@@ -47,7 +56,7 @@ class NormalLoginForm extends Component{
                             <FormItem>
                             {getFieldDecorator('remember', {
                                 valuePropName: 'checked',
-                                initialValue: true,
+                                initialValue: false,
                             })(
                                 <Checkbox>Remember me</Checkbox>
                             )}
@@ -64,18 +73,30 @@ class NormalLoginForm extends Component{
     }
 
     login = async (e) => {
-        let data = {};
+        let data = {}, rememBer = '';
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                data = {password:values.password,username:values.userName}
-            }
-        });
         try {
+            this.props.form.validateFields((err, values) => {
+                if (!err) {
+                    data = {password:values.password,username:values.userName}
+                    rememBer = values.remember;
+                    
+                }
+            });
             const json = await this.$http.post('/public/login', data)
             this.props.modifyLoginStatus(true)
             this.props.saveLoginToken(json.token)
             this.initSocket()
+            console.log(rememBer)
+            if(rememBer){
+                localStorage.setItem('password', data.password);
+                localStorage.setItem('userName', data.username);
+                localStorage.setItem('remember', rememBer);
+            }else{
+                localStorage.setItem('password', '');
+                localStorage.setItem('userName', '');
+                localStorage.setItem('remember', rememBer);
+            }
         } catch (err) {
             console.log(err)
         }
