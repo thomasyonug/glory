@@ -27,14 +27,20 @@ import {
                 content: {
                     index
                 },
-                event
+                event,
+                toString () {
+                    return {...this, event: ['event']}
+                }
             }),
             _clickEmpty: (index, event) => dispatch({
                 type: CLICK_E_BATTLE_FIELD_EMPTY,
                 content: {
                     index
                 },
-                event
+                event,
+                toString () {
+                    return {...this, event: ['event']}
+                }
             })
         }
     }

@@ -54,7 +54,6 @@ export async function fireball(payload) {
 
             },
             (ctx, now, preNow) => {
-                ctx.save()
                 ctx.globalCompositeOperation = 'lighter';
                 ctx.fillStyle = '#f74';
                 for (let i = 100; i > 0; i--) {
@@ -69,7 +68,6 @@ export async function fireball(payload) {
                     ctx.globalAlpha = i / 70;
                     ctx.fill();
                 }
-                ctx.restore()
             }
         )
 

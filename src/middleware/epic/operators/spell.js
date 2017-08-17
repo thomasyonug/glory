@@ -57,15 +57,18 @@ export default (action$, store) =>
     })
     .filter(arg => arg)
     //调用动画
-    .do(({firstCard, xs}) => store.dispatch({
-        type: SET_ANIMATE_INFO,
-        content: {
-            animate_name: firstCard.animate_name,
-            payload: {
-                xs
+    .do(({firstCard, xs}) => {
+        debugger
+        store.dispatch(new window.Transer({
+            type: SET_ANIMATE_INFO,
+            content: {
+                animate_name: firstCard.animate_name,
+                payload: {
+                    xs
+                }
             }
-        }
-    }))
+        }))
+    })
     //唤醒看门狗, 中间件通道关闭
     .do(arg => store.dispatch({
         bone: true,

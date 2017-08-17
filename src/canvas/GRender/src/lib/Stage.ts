@@ -35,12 +35,16 @@ export default class Stage {
 
             //更新sprite
             for (let sprite of this.sprites) {
+                this.ctx.save()
                 sprite.update(this.ctx, now, preNow)
+                this.ctx.restore()
             }
 
             //绘制sprite
             for (let sprite of this.sprites) {
+                this.ctx.save()
                 sprite.draw(this.ctx, now, preNow)
+                this.ctx.restore()
             }
             //保存now
             preNow = now;
