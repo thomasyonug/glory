@@ -64,7 +64,7 @@ class NormalLoginForm extends Component{
                             <Button type="primary" htmlType="submit" styleName="login-form-button">
                                 Log in
                             </Button>
-                             Or <a href="">register now!</a> 
+                             Or <a href="#/register">register now!</a> 
                         </FormItem>
                     </Form>
                 </Col>
