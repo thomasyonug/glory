@@ -15,6 +15,10 @@ import {
     CLICK_BATTLE_FIELD_EMPTY,
 } from 'reduxs/constant'
 
+import {
+    getElPosition
+} from 'util'
+
 
 
 @connect(
@@ -31,20 +35,34 @@ import {
                 content: {
                     index
                 },
-                event,
-                toString () {
-                    return {...this, event: ['event']}
-                }
+                event: {
+                    ...getElPosition(event.target)
+                },
+                // toString () {
+                //     return {
+                //         ...this, 
+                //         event: {
+                //             ...getElPosition(event.target)
+                //         }
+                //     }
+                // }
             }),
             _clickEmpty: (index, event) => dispatch({
                 type: CLICK_BATTLE_FIELD_EMPTY,
                 content: {
                     index
                 },
-                event,
-                toString () {
-                    return {...this, event: ['event']}
-                }
+                event: {
+                    ...getElPosition(event.target)
+                },
+                // toString () {
+                //     return {
+                //         ...this, 
+                //         event: {
+                //             ...getElPosition(event.target)
+                //         }
+                //     }
+                // }
             })
         }
     }
@@ -110,7 +128,7 @@ export default class BattleField extends Component {
     @autobind
     clickEmpty (index, e) {
         e.persist()
-        this.props._clickEmpty(index)
+        this.props._clickEmpty(index, e)
     }
 
 
