@@ -4,7 +4,7 @@ import {$ws} from 'plugin/index'
 const gameSocket = $ws.gameSocket
 
 export default store => next => action => {
-    if (match(action)) { 
+    if (match(action)) {
         
         gameSocket.coreSocket.$emit('game', {
             type: 'transfer',

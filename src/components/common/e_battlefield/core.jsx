@@ -7,7 +7,11 @@ import {CardFace} from 'components/common/card'
 
 
 import {connect} from 'react-redux'
-import{autobind} from 'core-decorators'
+import {autobind} from 'core-decorators'
+import {getElPosition} from 'util'
+
+
+
 
 import {
     CLICK_E_BATTLE_FIELD,
@@ -92,13 +96,13 @@ export default class EBattleField extends Component {
 
     @autobind
     click (index, e) {
-        e.persist()
+        // e.persist()
         this.props._click(index, e)
     }
 
     @autobind
     clickEmpty (index, e) {
-        e.persist()
+        // e.persist()
         this.props._clickEmpty(index)
     }
 

@@ -21,7 +21,7 @@ export const summonAfter = (action$, store) =>
 
 export const summonAfterE = (action$, store) => 
     action$.ofType('get_card_from_e_hand_to_e_battle')
-    .filter(action => action.content.card.type === 'MONSTER')
+    .filter(action => action.content?.card?.type === 'MONSTER')
     .map(action => {
         action.content.card.appearance?.(store, action)
 

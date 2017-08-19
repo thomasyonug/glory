@@ -35,6 +35,7 @@ export default function E_HandCards(state = initState, action){
 
 function addHandle(state, action){
     return {
+        ...state,
         cards: [...state.cards, action.content.card]
     }
 }
@@ -45,7 +46,8 @@ function deleteHandle(state, action){
     } = action.content
 
     return {
-        cards: state.cards.$setItem(card ? card : index, null)
+        ...state,
+        cards: state.cards.$delete(card || index)
     };
 }
 

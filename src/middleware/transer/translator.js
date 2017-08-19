@@ -10,9 +10,9 @@ export default new Map([
     ['DELETE_E_HANDCARDS', 'DELETE_HANDCARDS'],
     ['THROW_MONSTER_CARDS_TO_BATTLEFIELD', 'THROW_MONSTER_CARDS_TO_E_BATTLEFIELD'],
     ['THROW_MONSTER_CARDS_TO_E_BATTLEFIELD', 'THROW_MONSTER_CARDS_TO_BATTLEFIELD'],
+    ['SET_ANIMATE_INFO', 'SET_E_ANIMATE_INFO'],
     ['get_card_from_hand_to_battle', 'get_card_from_e_hand_to_e_battle'],
     ['get_card_from_e_hand_to_e_battle', 'get_card_from_hand_to_battle'],
     ['get_cards_from_store_to_hand', 'get_cards_from_e_store_to_e_hand'],
-    ['get_cards_from_e_store_to_e_hand','get_cards_from_store_to_hand'],
-    ['SET_ANIMATE_INFO', 'SET_E_ANIMATE_INFO']
+    ['get_cards_from_e_store_to_e_hand','get_cards_from_store_to_hand']
 ])

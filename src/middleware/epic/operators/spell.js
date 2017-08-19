@@ -58,7 +58,6 @@ export default (action$, store) =>
     .filter(arg => arg)
     //调用动画
     .do(({firstCard, xs}) => {
-        debugger
         store.dispatch(new window.Transer({
             type: SET_ANIMATE_INFO,
             content: {

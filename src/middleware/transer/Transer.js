@@ -1,6 +1,6 @@
 import translator from './translator'
 import {autobind} from 'core-decorators'
-
+import {deepSerialize} from 'util'
 
 
 
@@ -16,14 +16,14 @@ window.Transer =
         translate () {
             if (this.econtent) {
                 return {
-                    ...this,
+                    ...deepSerialize(this),
                     type: translator.get(this.type),
                     glory: translator.get(this.glory),
                     content: this.econtent
                 }
             } else {
                 return {
-                    ...this,
+                    ...deepSerialize(this),
                     type: translator.get(this.type),
                     glory: translator.get(this.glory)
                 }

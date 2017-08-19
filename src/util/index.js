@@ -1,4 +1,4 @@
 export * from './createWebworker'
-export * from './random'
-export * from './getElPosition'
+export * from './domUtil'
+export * from './normalUtil'
 
