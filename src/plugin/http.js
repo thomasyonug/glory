@@ -28,6 +28,8 @@ export const $http = {
 
         if (data.errcode === 0) { 
             return data 
+        } else if (data.errcode === 1 ) {
+            return data
         } else {
             throw new Error(data)
         }
