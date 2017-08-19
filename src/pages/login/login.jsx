@@ -79,11 +79,11 @@ class NormalLoginForm extends Component{
                     
                 }
             });
-            const json = await this.$http.post('/public/login', data)
+            const json = await this.$http.post('/public/login', data ,{loading:true})
             this.props.modifyLoginStatus(true)
             this.props.saveLoginToken(json.token)
             this.initSocket()
-            if(rememBer){
+            if(rememBer && (json.errcode === 0)){
                 localStorage.setItem('password', data.password);
                 localStorage.setItem('userName', data.username);
                 localStorage.setItem('remember', rememBer);

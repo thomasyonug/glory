@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DialogCore from './dialogCore'
+import DialogCore from './dialogCore';
+import { Spin } from 'antd';
 
 
 
@@ -49,5 +50,15 @@ export const $dialogAuto = content =>
                 <div style={white}>
                     {content}
                 </div>
+            )
+        }, () => {}, {simple: true})
+
+
+export const $dialogLoading = loading => 
+        $dialog((dialogContext) => {
+
+            return (
+                <Spin tip="Loading..." spinning={loading}>
+                </Spin>
             )
         }, () => {}, {simple: true})
