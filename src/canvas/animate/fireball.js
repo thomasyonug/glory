@@ -15,11 +15,14 @@ export async function fireball(payload) {
     } = this
 
     const {
-        xs
+        xs,
+        role
     } = payload
 
-    const targetEl = xs.$lastOne().event.target
-    const { x, y } = getElPosition(targetEl)
+    debugger
+
+    const {x, y} = xs.$lastOne().event
+    // const { x, y } = getElPosition(targetEl)
 
     const width = canvasEl.width
     const height = canvasEl.height
@@ -56,6 +59,9 @@ export async function fireball(payload) {
             (ctx, now, preNow) => {
                 ctx.globalCompositeOperation = 'lighter';
                 ctx.fillStyle = '#f74';
+                if (role === 'e') { 
+                    gRender.stage.mirror()
+                }
                 for (let i = 100; i > 0; i--) {
                     ctx.beginPath();
                     ctx.arc(

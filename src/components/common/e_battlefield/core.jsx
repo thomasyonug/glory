@@ -31,9 +31,8 @@ import {
                 content: {
                     index
                 },
-                event,
-                toString () {
-                    return {...this, event: ['event']}
+                event: {
+                    ...getElPosition(event.target)
                 }
             }),
             _clickEmpty: (index, event) => dispatch({
@@ -41,10 +40,17 @@ import {
                 content: {
                     index
                 },
-                event,
-                toString () {
-                    return {...this, event: ['event']}
+                event: {
+                    ...getElPosition(event.target)
                 }
+                // toString () {
+                //     return {
+                //         ...this,
+                //         event: {
+                //             ...getElPosition(event.target)
+                //         }
+                //     }
+                // }
             })
         }
     }
@@ -96,14 +102,14 @@ export default class EBattleField extends Component {
 
     @autobind
     click (index, e) {
-        // e.persist()
+        e.persist()
         this.props._click(index, e)
     }
 
     @autobind
     clickEmpty (index, e) {
-        // e.persist()
-        this.props._clickEmpty(index)
+        e.persist()
+        this.props._clickEmpty(index, e)
     }
 
 }

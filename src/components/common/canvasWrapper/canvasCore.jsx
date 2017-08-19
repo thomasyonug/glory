@@ -14,7 +14,8 @@ import Canvas from 'canvas'
 @connect(
     state => {
         return {
-            animateInfo: state.glory.animateInfo
+            animateInfo: state.glory.animateInfo,
+            e_animateInfo: state.glory.e_animateInfo
         }
     },
     dispatch => {
@@ -33,20 +34,25 @@ export default class CanvasWrapper extends Component {
     }
 
     async componentWillReceiveProps (nextProps) {
+        const role = nextProps.animateInfo !== this.props.animateInfo ? 'me' : 'e'
+
         const {
             animate_name,
             payload
-        } = nextProps.animateInfo
+        } = nextProps[
+            role === 'me' ? 'animateInfo' : 'e_animateInfo'
+        ]
 
         const {
             canvasRender,
             bgCanvasRender
         } = this.state
 
-
-
         // canvasRender.gRender.stage.backgroundEnable = false
-        await canvasRender.animate(animate_name, payload)
+        await canvasRender.animate(animate_name, {
+            ...payload,
+            role
+        })
         // canvasRender.gRender.stage.backgroundEnable = true
 
         this.props.endAnimate()

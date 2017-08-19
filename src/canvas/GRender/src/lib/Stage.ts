@@ -83,4 +83,9 @@ export default class Stage {
 
     public backgroundEnable: boolean = true;
 
+    public mirror(): void {
+        this.ctx.rotate(Math.PI) 
+        this.ctx.translate(-this.width, -this.height)
+    }
+
 }
