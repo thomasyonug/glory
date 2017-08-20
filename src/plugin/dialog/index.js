@@ -54,9 +54,11 @@ export const $dialogAuto = content =>
         }, () => {}, {simple: true})
 
 
-export const $dialogLoading = loading => 
+export const $dialogLoading = (loading, callback) => 
         $dialog((dialogContext) => {
 
+            callback(dialogContext)
+           
             return (
                 <Spin tip="Loading..." spinning={loading}>
                 </Spin>

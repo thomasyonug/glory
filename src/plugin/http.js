@@ -15,7 +15,7 @@ function statusHandle (status) {
 
 export const $http = {
    async post (url, body, {loading=false}) {
-       let _loading = ''
+        const dialogContext = await new Promise((resolve, reject) => $dialogLoading(loading, (dialogContext) => resolve(dialogContext)))
         const res = await fetch(url, {
             method: 'POST',
             headers: {
@@ -26,7 +26,7 @@ export const $http = {
         })
 
         if(loading){
-           _loading = $dialogLoading(loading);
+           $dialogLoading(loading);
         }
         statusHandle(res.status)
 
@@ -34,7 +34,7 @@ export const $http = {
 
         if (data.errcode === 0) { 
             if(loading){
-                console.log(_loading)
+                dialogContext.props.resolve();
             }
             return data 
         } else if (data.errcode === 1 ) {
