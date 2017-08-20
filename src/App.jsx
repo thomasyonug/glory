@@ -40,7 +40,6 @@ const routers = contexts.keys().reduce((routers, key) => {
 )
 export default class App extends Component {
 
-
   render() {
     return (
       <Router>
@@ -67,17 +66,19 @@ export default class App extends Component {
       .subscribe(e => {
         this.props.cancelActiveAll()
       })
-      
+      let back = false;
       //禁用浏览器后退键
       window.addEventListener('popstate', function () {
-        // history.pushState(null, null, document.URL);
-        // alert("popstate")
+        window.history.pushState(null, null, document.URL);
+        back = true;
+        setTimeout(function(){if(back == true){
+          alert("请使用返回键返回页面！")
+        }},100)
       });
 
       window.addEventListener('hashchange', function () {
-        // alert("hashchange")
+        back = false;
       })
-      
   }
 }
 
