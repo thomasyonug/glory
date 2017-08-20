@@ -70,8 +70,13 @@ export default class App extends Component {
       
       //禁用浏览器后退键
       window.addEventListener('popstate', function () {
-        history.pushState(null, null, document.URL);
+        // history.pushState(null, null, document.URL);
+        // alert("popstate")
       });
+
+      window.addEventListener('hashchange', function () {
+        // alert("hashchange")
+      })
       
   }
 }
