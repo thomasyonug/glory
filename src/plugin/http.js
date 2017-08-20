@@ -25,9 +25,6 @@ export const $http = {
             credentials: 'same-origin'
         })
 
-        if(loading){
-           $dialogLoading(loading);
-        }
         statusHandle(res.status)
 
         const data = await res.json()
