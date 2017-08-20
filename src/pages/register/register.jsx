@@ -139,7 +139,7 @@ class RegistrationForm extends Component{
                     data = values;
                 }
             });
-            const status = await this.$http.post('/public/register', data)
+            const status = await this.$http.post('/public/register', data, {loading: true})
            if(status.success){
              window.location = '#/login'
            } else {
