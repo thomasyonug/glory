@@ -88,7 +88,7 @@ export default class Room extends Component{
         this.$ws.roomApi.quitRoom(roomID)
     }
     startGame = () => {
-        if(this.props.host == this.props.roomInfo.host){
+        if(this.props.host === this.props.roomInfo.host){
             this.$ws.gameApi.startGame()
         }else{
             this.$dialogAuto(`you are not host,can't start game!`)
