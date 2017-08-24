@@ -58,6 +58,11 @@ import {
                 index: xs.$firstOne().content.index
             }
         }))
+    },
+    animate_name: 'blackhole',
+    isEffectTarget (actions, store, target) {
+        if (target?.type === 'MONSTER') { return true }
+        else { return false }
     }
 })
 export class BlackHoleMagic extends MagicEntity {

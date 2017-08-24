@@ -19,8 +19,6 @@ export async function fireball(payload) {
         role
     } = payload
 
-    debugger
-
     const {x, y} = xs.$lastOne().event
     // const { x, y } = getElPosition(targetEl)
 
