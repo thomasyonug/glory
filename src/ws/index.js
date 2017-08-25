@@ -2,7 +2,8 @@ import {
     RoomSocket,
     GameSocket,
     ErrorSocket,
-    ChatSocket
+    ChatSocket,
+    FriendsSocket
 } from './socket'
 
 import {
@@ -10,7 +11,8 @@ import {
     ErrorReceiver,
     MetaReceiver,
     ChatReceiver,
-    GameReceiver
+    GameReceiver,
+    FriendsReceiver
 } from './receiver'
 
 import {
@@ -38,17 +40,20 @@ export default class Ws {
         this.errorSocket   = new ErrorSocket()
         this.gameSocket    = new GameSocket()
         this.chatSocket    = new ChatSocket()
+        this.friendsSocket = new FriendsSocket()
 
         //api
         this.roomApi       = new RoomApi(this.roomSocket)
         this.chatApi       = new ChatApi(this.chatSocket)
         this.gameApi       = new GameApi(this.gameSocket)
+
         //receiver
         this.roomReceiver  = new RoomReceiver(this.roomSocket)
         this.errorReceiver = new ErrorReceiver(this.errorSocket)
         this.metaReceiver  = new MetaReceiver(this.roomSocket)
         this.chatReceiver  = new ChatReceiver(this.chatSocket)
         this.gameReceiver  = new GameReceiver(this.gameSocket)
+        this.friendsReceiver = new FriendsReceiver(this.friendsSocket)
     }
 
 
@@ -57,6 +62,7 @@ export default class Ws {
         this.gameSocket.handShake()
         this.errorSocket.handShake()
         this.chatSocket.handShake()
+        this.friendsSocket.handShake()
     }
 
     startListen () {
@@ -65,6 +71,7 @@ export default class Ws {
         this.metaReceiver.startListen('meta')
         this.chatReceiver.startListen('chat')
         this.gameReceiver.startListen('game')
+        this.friendsReceiver.startListen('friends')
     }
 
 }
