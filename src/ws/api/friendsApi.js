@@ -5,8 +5,8 @@
 export class FriendsApi {
     socket;
 
-    constructor (FriendsApi) {
-        this.socket = FriendsApi
+    constructor (friendsApi) {
+        this.socket = friendsApi
     }
 
     addFriend (username) {

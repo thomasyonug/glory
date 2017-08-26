@@ -1,8 +1,4 @@
 import {
-  getElPosition
-} from 'util'
-
-import {
   Sprite
 } from '../GRender/dist/lib'
 
@@ -45,19 +41,18 @@ export async function blackhole(payload) {
   let point = { x: halfScreenX, y: halfScreenY }
   let blackHolesize = 100
   let hue = 0, max = 200, stars = []
-  function Star(){};
 
-  Star.prototype = {
-    init(){
+  class Star {
+    constructor() {
       this.hue = hue;
       this.alpha = 0;
       this.size = this.random(0, 4);
       this.x = this.random(0, width);
       this.y = this.random(0, height);
       this.speed = this.size * 0.05;
-      return this;
-    },
-    draw(ctx){
+    }
+
+    draw(ctx) {
       ctx.strokeStyle = `hsla(${this.hue}, 50%, 85%, ${this.alpha})`;
       ctx.beginPath();
       ctx.lineWidth = 0.5;
@@ -80,8 +75,9 @@ export async function blackhole(payload) {
       ctx.closePath();
       // Update the scene
       this.update();
-    },
-    update(){
+    }
+
+    update() {
       let dx = point.x - this.x;
       let dy = point.y - this.y;
       let angle = atan2(dy, dx);
@@ -90,21 +86,21 @@ export async function blackhole(payload) {
       this.x += this.speed * cos(angle);
       this.y += this.speed * sin(angle);
       this.speed += 0.05;
-    },
-    reset(){
-      this.init();
-    },
+    }
+
     distance(x, y){
       return hypot(x - this.x, y - this.y);
-    },
+    }
+
     random(min, max) {
       return random() * (max - min) + min;
     }
   }
+
   return new Promise((resolve, rej) => {
     const startTime = Date.now()
     for(let i=0; i<max; i++){
-        let p = new Star().init();
+        let p = new Star();
         stars.push(p);
     }
     const blackhole = new Sprite('blackhole',
