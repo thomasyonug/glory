@@ -34,7 +34,7 @@ export default new Map([
     [FireBallMagic.cardCode, FireBallMagic],                          //6
     [BlackHoleMagic.cardCode, BlackHoleMagic],                        //7
     [BogManMonster.cardCode, BogManMonster],                           //8
-    [DemonCallingMonster.cardCode, DemonCallingMonster]                //9
+    [DemonCallingMonster.cardCode, DemonCallingMonster],                //9
     [LostAngelMonster.cardCode, LostAngelMonster]                      //10
 ])
 

@@ -1,8 +1,14 @@
 import {MonsterEntity} from './monsterEntity'
 import {prototype} from 'decorators'
 
+import {
+    DROP_MONSTER_CARDS_FROM_BATTLEFIELD,
+    DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD
+} from 'reduxs/constant'
+
+
 @prototype({
-    describe: '堕落天使',
+    describe: '召唤时随机摧毁对方场上一只怪兽',
     cardName: 'lostAngelMonster',
     attack: 1900,
     defensive: 1500,
