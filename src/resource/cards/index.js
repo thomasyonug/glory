@@ -4,7 +4,8 @@ import {
     godMonster,
     BogManMonster,
     DemonCallingMonster,
-    LostAngelMonster
+    LostAngelMonster,
+    GraveRobberMonster
 } from './monster'
 
 
@@ -35,6 +36,7 @@ export default new Map([
     [BlackHoleMagic.cardCode, BlackHoleMagic],                        //7
     [BogManMonster.cardCode, BogManMonster],                           //8
     [DemonCallingMonster.cardCode, DemonCallingMonster],                //9
-    [LostAngelMonster.cardCode, LostAngelMonster]                      //10
+    [LostAngelMonster.cardCode, LostAngelMonster],                      //10
+    [GraveRobberMonster.cardCode, GraveRobberMonster]                    //11
 ])
 

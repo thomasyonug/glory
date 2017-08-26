@@ -19,6 +19,8 @@ function get_card_from_hand_to_battle (store, next, action) {
 
     const card = cards[fromIndex]
 
+    card.camp = 'my'
+
     next({
         type: DELETE_HANDCARDS,
         content: {
@@ -61,6 +63,8 @@ function get_card_from_e_hand_to_e_battle (store, next, action) {
     } = store.getState().e_handCards
 
     const card = cards[fromIndex]
+
+    card.camp = 'e'
 
     next({
         type: DELETE_E_HANDCARDS,
