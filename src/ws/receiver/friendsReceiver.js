@@ -1,5 +1,9 @@
 import Entity from './entity'
+import {store} from '@/index'
 
+import {
+    INIT_FRIENDS
+} from 'reduxs/constant'
 
 
 export class FriendsReceiver extends Entity{
@@ -12,7 +16,10 @@ export class FriendsReceiver extends Entity{
 
 
     initFriends (msg) {
-        console.log(msg)
+        store.dispatch({
+            type: INIT_FRIENDS,
+            content: msg.content
+        })
     }
 
 

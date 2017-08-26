@@ -18,7 +18,8 @@ import {
 import {
     RoomApi,
     ChatApi,
-    GameApi
+    GameApi,
+    FriendsApi
 } from './api'
 
 
@@ -46,6 +47,7 @@ export default class Ws {
         this.roomApi       = new RoomApi(this.roomSocket)
         this.chatApi       = new ChatApi(this.chatSocket)
         this.gameApi       = new GameApi(this.gameSocket)
+        this.FriendsApi    = new FriendsApi(this.friendsSocket)
 
         //receiver
         this.roomReceiver  = new RoomReceiver(this.roomSocket)

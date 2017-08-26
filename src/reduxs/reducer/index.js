@@ -11,7 +11,9 @@ import arrengement         from './arrengement'
 import battleField         from './battleField'
 import e_battleField       from './e_battleField'
 import glory               from './glory'
+import friends             from './friends'
 import test                from './test'
+
 
 
 
@@ -31,6 +33,7 @@ export default combineReducers({
     battleField,
     e_battleField,
     glory,
+    friends,
     test
 })
 
