@@ -17,6 +17,16 @@ export class ChatApi {
         }) 
     }
 
+    friendMsg (msg, friendUsername) {
+        this.socket.coreSocket.$emit('chat', {
+            type: 'friendMsg',
+            content: {
+                msg,
+                username: friendUsername
+            }
+        })
+    }
+
     
 }
 
