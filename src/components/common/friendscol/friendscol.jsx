@@ -30,10 +30,22 @@ export default class FriendsCol extends Component {
       <div styleName="Friends">
         <Collapse defaultActiveKey={['1']} onChange={() => this.callback(allFriends, onlineFriends)}>
           <Panel header="好友列表" key="1">
-            <p></p>
+            {
+              allFriends.map((item, index) =>
+                 <div key={index}>
+                  {item.username}
+                </div>
+              )
+            }
           </Panel>
           <Panel header="在线好友" key="2">
-            <p></p>
+            {
+              onlineFriends.map((item, index) =>
+                <div key={index}>
+                  {item.username}
+                </div>
+              )
+            }
           </Panel>
         </Collapse>
         <Button type="primary" onClick={this.addFriend}>添加好友</Button>
@@ -62,9 +74,7 @@ export default class FriendsCol extends Component {
           if (!state.username) {
               return this.addFriend()
           }
-          this.$ws.FriendsApi.addFriend({
-              username: state.username
-          })
+          this.$ws.FriendsApi.addFriend(state.username)
       })
       .catch(err => {
           console.log(err)
