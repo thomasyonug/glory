@@ -8,6 +8,8 @@ import {connect} from 'react-redux'
 import {setRoomsActionCreator, joinRoomActionCreator} from 'reduxs/actions'
 import {autobind} from 'core-decorators'
 
+import FriendScol   from 'components/common/friendscol'
+import { Button } from 'antd'
 
 
 
@@ -16,7 +18,8 @@ import {autobind} from 'core-decorators'
 
 @connect(
     state => ({
-        rooms: state.room.rooms
+        rooms: state.room.rooms,
+        chat: state.chat
     }),
     dispatch => ({
         setRooms: content => dispatch(setRoomsActionCreator(content)),
@@ -39,7 +42,8 @@ export default class Search extends Component{
 
     render () {
         const {
-            rooms
+            rooms,
+            chat
         } = this.props
 
 
@@ -57,7 +61,7 @@ export default class Search extends Component{
                     guest: {room.guests.map((item, index) => <span key={index}>{item}</span>) || 'none'}
                 </div>
                 <div>
-                    <button onClick={event => this.joinRoom(room)}>加入</button>
+                    <Button onClick={event => this.joinRoom(room)}>加入</Button>
                 </div>
             </div>
         )
@@ -65,14 +69,19 @@ export default class Search extends Component{
 
         return (
             <div styleName="reachRoom">
-                <button styleName="backBtn" onClick={this.back}>返回</button>
+                <Button styleName="backBtn" onClick={this.back}>返回</Button>
                 {rooms.map((room, index) => 
                     <div key={index}>
                         {roomRender(room)}
                     </div>)}
 
-                <button onClick={this.createRoom}>create a room</button>
-                <button onClick={this.arrengement}>go to arrenge card group</button>
+                <Button onClick={this.createRoom}>create a room</Button>
+                <Button onClick={this.arrengement}>go to arrenge card group</Button>
+
+                <FriendScol
+                    allFriends={chat.allFriends}
+                    onlineFriends={chat.onlineFriends}
+                ></FriendScol>
             </div>
         )
     }
