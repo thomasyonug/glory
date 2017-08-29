@@ -66,19 +66,24 @@ export default class App extends Component {
       .subscribe(e => {
         this.props.cancelActiveAll()
       })
-      let back = false;
-      //禁用浏览器后退键
-      window.addEventListener('popstate', function () {
-        window.history.pushState(null, null, document.URL);
-        back = true;
-        setTimeout(function(){if(back == true){
-          alert("请使用返回键返回页面！")
-        }},100)
-      });
 
-      window.addEventListener('hashchange', function () {
-        back = false;
-      })
+
+      setTimeout(() => {
+        let back = false;
+        //禁用浏览器后退键
+        window.addEventListener('popstate', () => {
+          window.history.pushState(null, null, document.URL);
+          back = true;
+          setTimeout(function(){if(back == true){
+            alert("请使用返回键返回页面！")
+          }},100)
+        });
+  
+        window.addEventListener('hashchange', function () {
+          back = false;
+        })
+      }, 1000)
+
   }
 }
 
