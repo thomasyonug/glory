@@ -175,6 +175,9 @@ export async function defaultAttack(payload) {
             (ctx, now, preNow) => {
                 ctx.globalCompositeOperation = 'lighter';
                 ctx.fillStyle = '#f74';
+                if (role === 'e') {
+                    gRender.stage.mirror()
+                }
 
                 firework.draw(ctx)
 
