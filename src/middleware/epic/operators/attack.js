@@ -62,7 +62,7 @@ export default (action$, store) =>
         }
         return arg
     })
-    filter(arg => arg)
+    .filter(arg => arg)
     .do(arg => store.dispatch(new window.Transer({
         type: SET_ANIMATE_INFO,
         content: {

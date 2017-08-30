@@ -63,7 +63,7 @@ export default (action$, store) =>
         }
         return arg
     })
-    filter(arg => arg)
+    .filter(arg => arg)
     //调用动画
     .do(({firstCard, xs}) => {
         store.dispatch(new window.Transer({
