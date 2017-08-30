@@ -20,7 +20,7 @@ export class FriendsApi {
 
     deleteFriend (username) {
         this.socket.coreSocket.$emit('friends', {
-            type: 'deleteFriend',
+            type: 'deleteFriends',
             content: {
                 username
             }
