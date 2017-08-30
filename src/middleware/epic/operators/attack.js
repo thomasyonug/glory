@@ -1,7 +1,9 @@
 import {
     CLICK_BATTLE_FIELD,
     CLICK_E_BATTLE_FIELD,
-    CLICK_E_ROLE
+    CLICK_E_ROLE,
+    SET_ANIMATE_INFO,
+    END_ANIMATE
 } from 'reduxs/constant'
 
 import * as inputConstant from 'reduxs/constant/input'
@@ -32,7 +34,8 @@ export default (action$, store) =>
                 content: {
                     fromIndex: first.content.index,
                     toIndex: 'e_role'
-                }
+                },
+                xs
             }
         }
 
@@ -41,16 +44,33 @@ export default (action$, store) =>
             (last.type  !== CLICK_E_BATTLE_FIELD)
         ) { return unActiveAll }
 
-
-
-
         return {
             glory: 'attack',
             content: {
                 fromIndex: first.content.index,
                 toIndex: last.content.index
+            },
+            xs
+        }
+
+    })
+    .filter(arg => arg.glory === 'attack')
+    .do(arg => store.dispatch(new window.Transer({
+        type: SET_ANIMATE_INFO,
+        content: {
+            animate_name: 'defaultAttack',
+            payload: {
+                xs: arg.xs
             }
         }
-    })
-
+    })))
+    .do(arg => store.dispatch({
+        bone: true,
+        passType: END_ANIMATE
+    }))
+    .switchMap(arg => action$.ofType(END_ANIMATE).mapTo(arg))
+    .do(arg => store.dispatch({
+        sleepingPill: true
+    }))
+    .map(arg => arg)
 
