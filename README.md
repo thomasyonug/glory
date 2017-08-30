@@ -1,6 +1,20 @@
 ### <img src='https://github.com/thomasyonug/glory/blob/master/doc/img/readMeLogo.png' height='120'>
 *** 
 
+### card Trigger
+| type   |  param   |    
+| ------------- |:------:|
+| setMagicTrigger |  ((arg, store) => void) => void |   
+| setTrapTrigger  |  ((arg, store) => void) => void |   
+| setAttackTrigger  |  ((arg, store) => void) => void |   
+| setEffectTrigger  |  ((arg, store) => void) => void |   
+| deleteMagicTrigger  |  ((arg, store) => void) => void |   
+| deleteTrapTrigger  |  ((arg, store) => void) => void |   
+| deleteAttackTrigger  |  ((arg, store) => void) => void |   
+| deleteEffectTrigger  |  ((arg, store) => void) => void |   
+
+
+
 ### Monster Hook
 
 | hook timing   | status | hook name    | param                 | where |        
