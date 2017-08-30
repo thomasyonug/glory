@@ -48,7 +48,7 @@ export default class FriendsCol extends Component {
             }
           </Panel>
         </Collapse>
-        <Button type="primary" onClick={this.addFriend}>添加好友</Button>
+        <Button type="" onClick={this.addFriend}>添加好友</Button>
       </div>
     )
   }
