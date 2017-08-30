@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Styles             from './friendscol.scss'
 import CSSModules         from 'react-css-modules'
 import {connect}          from 'react-redux'
-import { Collapse, Button } from 'antd'
+import { Collapse, Button, Icon } from 'antd'
 
 import {autobind} from 'core-decorators'
 
@@ -28,12 +28,13 @@ export default class FriendsCol extends Component {
 
     return (
       <div styleName="Friends">
-        <Collapse defaultActiveKey={['1']} onChange={() => this.callback(allFriends, onlineFriends)}>
+        <Icon type="usergroup-add" onClick={this.addFriend} styleName="addBtn"/>
+        <Collapse defaultActiveKey={['1']} >
           <Panel header="好友列表" key="1">
             {
               allFriends.map((item, index) =>
                  <div key={index}>
-                  {item.username}
+                  {item.username}<Icon type="user-delete" styleName="delBtn" onClick={() => this.delFriend(item.username)}/>
                 </div>
               )
             }
@@ -42,13 +43,12 @@ export default class FriendsCol extends Component {
             {
               onlineFriends.map((item, index) =>
                 <div key={index}>
-                  {item.username}
+                  {item.username}<Icon type="user-delete" />
                 </div>
               )
             }
           </Panel>
         </Collapse>
-        <Button type="" onClick={this.addFriend}>添加好友</Button>
       </div>
     )
   }
@@ -81,9 +81,8 @@ export default class FriendsCol extends Component {
       }) 
   }
 
-  callback = (allFriends, onlineFriends) => {
-    console.log(allFriends)
-    console.log(`allFriends: ${onlineFriends}`)
+  delFriend (username) {
+    this.$ws.FriendsApi.deleteFriend(username)
   }
 
 }

@@ -1,4 +1,17 @@
 .Friends{
   width:15%;
   float: right;
+
+  .addBtn{
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    font-size: 20px;
+    z-index: 10;
+  }
+
+  .delBtn{
+      float: right;
+      margin-top: 2px;
+  }
 }
