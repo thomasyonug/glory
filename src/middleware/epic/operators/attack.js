@@ -55,6 +55,14 @@ export default (action$, store) =>
 
     })
     .filter(arg => arg.glory === 'attack')
+    .map(arg => {
+        const list = store.getState().glory.attackTriggerList
+        for (let trigger of list) {
+            if (!trigger(arg, store)) { return false }
+        }
+        return arg
+    })
+    filter(arg => arg)
     .do(arg => store.dispatch(new window.Transer({
         type: SET_ANIMATE_INFO,
         content: {

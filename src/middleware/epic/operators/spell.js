@@ -40,7 +40,7 @@ export default (action$, store) =>
 
 
         if (
-            (first.type !== CLICK_HAND_CARD) || 
+            (first.type !== CLICK_HAND_CARD) ||
             (firstCard.type !== 'MAGIC')
         ) { return false }
 
@@ -56,6 +56,14 @@ export default (action$, store) =>
         }
     })
     .filter(arg => arg)
+    .map(arg => {
+        const list = store.getState().glory.magicTriggerList
+        for(let trigger of list) {
+            if (!trigger(arg, store)) { return false }
+        }
+        return arg
+    })
+    filter(arg => arg)
     //调用动画
     .do(({firstCard, xs}) => {
         store.dispatch(new window.Transer({
