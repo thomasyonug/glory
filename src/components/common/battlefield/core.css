@@ -29,3 +29,8 @@
     flex-basis: 20%;
     border: 1px solid red;
 }
+
+.trapItemActiveEmpty {
+    border: 1px solid red;
+    flex-basis: 20%;
+}

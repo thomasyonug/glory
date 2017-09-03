@@ -1,5 +1,7 @@
 import {
     THROW_MONSTER_CARDS_TO_E_BATTLEFIELD,
+    THROW_TRAP_CARD_TO_E_BATTLEFIELD,
+    DROP_TRAP_CARD_TO_E_BATTLEFIELD,
     DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD,
     REFRESH_E_ATTACK_TIMES,
     MINUS_E_ATTACK_TIMES,
@@ -27,8 +29,10 @@ export default function battleField (state = initState, action) {
             return throwHandle(state, action)
         case DROP_MONSTER_CARDS_FROM_E_BATTLEFIELD:
             return dropHandle(state, action)
-
-        
+        case THROW_TRAP_CARD_TO_E_BATTLEFIELD:
+            return throwTrapHandle(state, action)
+        case DROP_TRAP_CARD_TO_E_BATTLEFIELD:
+            return dropTrapHandle(state, action)
         case REFRESH_E_ATTACK_TIMES:
             return refreshHandle(state, action)
 
@@ -73,6 +77,38 @@ function throwHandle (state, action) {
     }
 }
 
+function throwTrapHandle (state, action) {
+    const {
+        index,
+        card
+    } = action.content
+    if (state.secondAreaCards[index]) { return }     
+
+    const newArr = [
+        ...state.secondAreaCards
+    ]
+
+    newArr[index] = card
+
+    return {
+        ...state,
+        secondAreaCards: newArr
+    }
+}
+
+function dropTrapHandle (state, action) {
+    const newArr = [
+        ...state.secondAreaCards
+    ]
+
+    newArr[action.content.index] = null
+
+    return {
+        ...state,
+        secondAreaCards: newArr
+    }
+
+}
 
 function dropHandle (state, action) {
     const newArr = [

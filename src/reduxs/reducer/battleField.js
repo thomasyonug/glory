@@ -1,8 +1,12 @@
 import {
     THROW_MONSTER_CARDS_TO_BATTLEFIELD,
+    THROW_TRAP_CARD_TO_BATTLEFIELD,
+    DROP_TRAP_CARD_TO_BATTLEFIELD,
     DROP_MONSTER_CARDS_FROM_BATTLEFIELD,
     SUMMONABLE_BATTLEFIELD,
     SUMMONENABLE_BATTLEFIELD,
+    TRAPABLE_BATTLEFIELD,
+    TRAPENABLE_BATTLEFIELD,
     REFRESH_ATTACK_TIMES,
     MINUS_ATTACK_TIMES,
     ACTIVE_BATTLE_FIELD,
@@ -15,6 +19,7 @@ const initState = {
     firstAreaCards: new Array(5).fill(null),
     secondAreaCards: new Array(5).fill(null),
     summonAble: false,
+    trapAble: false,
     active: false,
     activeIndex: null
 }
@@ -45,6 +50,20 @@ export default function battleField (state = initState, action) {
             return unactiveHandle(state, action)
         case REFRESH:
             return initState
+        case TRAPABLE_BATTLEFIELD:
+            return {
+                ...state,
+                trapAble: true
+            }
+       case TRAPENABLE_BATTLEFIELD:
+            return {
+                ...state,
+                trapAble: false
+            }
+        case THROW_TRAP_CARD_TO_BATTLEFIELD:
+            return throwTrapHandle(state, action)
+        case DROP_TRAP_CARD_TO_BATTLEFIELD:
+            return dropTrapHandle(state, action)
         default: 
             return state
     }
@@ -70,6 +89,37 @@ function throwHandle (state, action) {
     }
 }
 
+function throwTrapHandle (state, action) {
+    const {
+        index,
+        card
+    } = action.content
+    if (state.secondAreaCards[index]) { return }     
+
+    const newArr = [
+        ...state.secondAreaCards
+    ]
+
+    newArr[index] = card
+
+    return {
+        ...state,
+        secondAreaCards: newArr
+    }
+}
+
+function dropTrapHandle (state, action) {
+    const newArr = [
+        ...state.secondAreaCards
+    ]
+
+    newArr[action.content.index] = null
+
+    return {
+        ...state,
+        secondAreaCards: newArr
+    }
+}
 
 function dropHandle (state, action) {
     const newArr = [

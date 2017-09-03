@@ -1,6 +1,8 @@
 import {CardEntity} from '../cardEntity'
 import {propertiesCheck, prototype} from 'decorators'
-
+import {
+    TRAPABLE_BATTLEFIELD
+} from 'reduxs/constant'
 
 
 
@@ -13,7 +15,9 @@ import {propertiesCheck, prototype} from 'decorators'
 @prototype({
     type: 'TRAP',
     inHandCardTarget (store) {
-        console.log('target')
+        store.dispatch({
+            type: TRAPABLE_BATTLEFIELD
+        })
     },
     inBattleFieldTarget (index) {
     }

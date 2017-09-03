@@ -13,6 +13,8 @@ import {
     ROUND_NAME_PLAY,
     CLICK_BATTLE_FIELD,
     CLICK_BATTLE_FIELD_EMPTY,
+    CLICK_BATTLE_FIELD_TRAP,
+    CLICK_BATTLE_FIELD_TRAP_EMPTY
 } from 'reduxs/constant'
 
 import {
@@ -25,6 +27,7 @@ import {
     state => {
         return {
             summonAble: state.battleField.summonAble,
+            trapAble: state.battleField.trapAble,
             activeIndex: state.battleField.activeIndex
         }
     },
@@ -41,6 +44,24 @@ import {
             }),
             _clickEmpty: (index, event) => dispatch({
                 type: CLICK_BATTLE_FIELD_EMPTY,
+                content: {
+                    index
+                },
+                event: {
+                    ...getElPosition(event.target)
+                }
+            }),
+            _clickTrapEmpty: (index, event) => dispatch({
+                type: CLICK_BATTLE_FIELD_TRAP_EMPTY,
+                content: {
+                    index
+                },
+                event: {
+                    ...getElPosition(event.target)
+                }
+            }),
+            _clickTrap: (index, event) => dispatch({
+                type: CLICK_BATTLE_FIELD_TRAP,
                 content: {
                     index
                 },
@@ -66,6 +87,7 @@ export default class BattleField extends Component {
             firstArea,
             secondArea,
             summonAble,
+            trapAble,
             activeIndex
         } = this.props
 
@@ -105,7 +127,7 @@ export default class BattleField extends Component {
                             <li 
                                 key={index} 
                                 styleName={activeIndex === index ? 'itemActive' : 'item'} 
-                                onClick={(e) => this.click(index, e)}>
+                                onClick={(e) => this.clickTrap(index, e)}>
                                 <CardFace
                                     card={card}
                                 ></CardFace>
@@ -113,11 +135,16 @@ export default class BattleField extends Component {
                         )
                     } else {
                         const wrapper = 
-                            summonAble ? 
-                                <li key={index} styleName="itemActiveEmpty" onClick={(e) => this.clickEmpty(index, e)}>陷阱区</li> 
+                            trapAble ?
+                                <li 
+                                    key={index} 
+                                    styleName="trapItemActiveEmpty" 
+                                    onClick={e => this.clickTrapEmpty(index, e)}>陷阱区</li> 
                                 :
-                                <li key={index} styleName="item" onClick={(e) => this.clickEmpty(index, e)}>陷阱区</li> 
-
+                                <li 
+                                    key={index} 
+                                    styleName="item"
+                                    onClick={e => this.clickTrapEmpty(index, e)}>陷阱区</li> 
                         return (
                             wrapper
                         )
@@ -130,15 +157,25 @@ export default class BattleField extends Component {
 
     @autobind
     click (index, e) {
-        e.persist()
         this.props._click(index, e)
     }
 
     @autobind
     clickEmpty (index, e) {
-        e.persist()
         this.props._clickEmpty(index, e)
     }
+
+    @autobind
+    clickTrap (index, e) {
+        this.props._clickTrap(index, e)
+    }
+
+    @autobind
+    clickTrapEmpty (index, e) {
+        this.props._clickTrapEmpty(index, e)
+    }
+
+
 
 
 
