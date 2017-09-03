@@ -100,14 +100,14 @@ export default class Start extends Component{
                     <div styleName='e-battle-field'>
                         <EBattleField
                             firstArea={e_battleField.firstAreaCards}
-                            secondArea={123}
+                            secondArea={e_battleField.secondAreaCards}
                         >
                         </EBattleField>
                     </div>
                     <div styleName='battle-field'>
                         <BattleField
                             firstArea={battleField.firstAreaCards}
-                            secondArea={123}
+                            secondArea={battleField.secondAreaCards}
                         >
                         </BattleField>
                     </div>
