@@ -3,7 +3,7 @@ import Styles from './core.css'
 import CSSModules from 'react-css-modules'
 import PropTypes from 'prop-types';
 
-import {CardFace} from 'components/common/card'
+import {CardFace, CardBack} from 'components/common/card'
 
 
 import {connect} from 'react-redux'
@@ -43,14 +43,6 @@ import {
                 event: {
                     ...getElPosition(event.target)
                 }
-                // toString () {
-                //     return {
-                //         ...this,
-                //         event: {
-                //             ...getElPosition(event.target)
-                //         }
-                //     }
-                // }
             })
         }
     }
@@ -101,12 +93,11 @@ export default class EBattleField extends Component {
                         return (
                             <li 
                                 key={index} 
-                                styleName={activeAttackAble ? 'activeItem' : 'item'}
-                                onClick={(e) => this.click(index, e)}
+                                styleName='item'
                                 >
-                                <CardFace
+                                <CardBack
                                     card={card}
-                                ></CardFace>
+                                ></CardBack>
                             </li>
                         )
                     } else {
