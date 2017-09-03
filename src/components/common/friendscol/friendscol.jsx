@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Styles             from './friendscol.scss'
 import CSSModules         from 'react-css-modules'
 import {connect}          from 'react-redux'
-import { Collapse, Button, Icon } from 'antd'
+import { Collapse, Button, Icon, Alert } from 'antd'
 
 import {autobind} from 'core-decorators'
 
@@ -34,16 +34,9 @@ export default class FriendsCol extends Component {
             {
               allFriends.map((item, index) =>
                  <div key={index}>
-                  {item.username}<Icon type="user-delete" styleName="delBtn" onClick={() => this.delFriend(item.username)}/>
-                </div>
-              )
-            }
-          </Panel>
-          <Panel header="在线好友" key="2">
-            {
-              onlineFriends.map((item, index) =>
-                <div key={index}>
-                  {item.username}<Icon type="user-delete" />
+                  {item.username}({onlineFriends.find((i) => i.username == item.username) == undefined ? "离线" : "在线"})
+                  <Icon type="message" />
+                  <Icon type="user-delete" styleName="delBtn" onClick={() => this.delFriend(item.username)}/>
                 </div>
               )
             }
@@ -82,7 +75,11 @@ export default class FriendsCol extends Component {
   }
 
   delFriend (username) {
-    this.$ws.FriendsApi.deleteFriend(username)
+    this.$dialogConfirm(<div>确认删除此好友？</div>)
+    .then(() => {
+        this.$ws.FriendsApi.deleteFriend(username)
+    })
+    .catch(() => {
+    })
   }
-
 }
