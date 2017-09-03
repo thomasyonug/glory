@@ -37,15 +37,7 @@ import {
                 },
                 event: {
                     ...getElPosition(event.target)
-                },
-                // toString () {
-                //     return {
-                //         ...this, 
-                //         event: {
-                //             ...getElPosition(event.target)
-                //         }
-                //     }
-                // }
+                }
             }),
             _clickEmpty: (index, event) => dispatch({
                 type: CLICK_BATTLE_FIELD_EMPTY,
@@ -54,15 +46,7 @@ import {
                 },
                 event: {
                     ...getElPosition(event.target)
-                },
-                // toString () {
-                //     return {
-                //         ...this, 
-                //         event: {
-                //             ...getElPosition(event.target)
-                //         }
-                //     }
-                // }
+                }
             })
         }
     }
@@ -80,6 +64,7 @@ export default class BattleField extends Component {
     render () {
         const {
             firstArea,
+            secondArea,
             summonAble,
             activeIndex
         } = this.props
@@ -108,6 +93,30 @@ export default class BattleField extends Component {
                                 <li key={index} styleName="itemActiveEmpty" onClick={(e) => this.clickEmpty(index, e)}>empty</li> 
                                 :
                                 <li key={index} styleName="item" onClick={(e) => this.clickEmpty(index, e)}>empty</li> 
+
+                        return (
+                            wrapper
+                        )
+                    }
+                })}
+                {secondArea.map((card,index)=> {
+                    if (card) {
+                        return (
+                            <li 
+                                key={index} 
+                                styleName={activeIndex === index ? 'itemActive' : 'item'} 
+                                onClick={(e) => this.click(index, e)}>
+                                <CardFace
+                                    card={card}
+                                ></CardFace>
+                            </li>
+                        )
+                    } else {
+                        const wrapper = 
+                            summonAble ? 
+                                <li key={index} styleName="itemActiveEmpty" onClick={(e) => this.clickEmpty(index, e)}>陷阱区</li> 
+                                :
+                                <li key={index} styleName="item" onClick={(e) => this.clickEmpty(index, e)}>陷阱区</li> 
 
                         return (
                             wrapper

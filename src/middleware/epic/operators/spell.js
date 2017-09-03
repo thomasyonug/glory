@@ -59,11 +59,11 @@ export default (action$, store) =>
     .map(arg => {
         const list = store.getState().glory.magicTriggerList
         for(let trigger of list) {
-            if (!trigger(arg, store)) { return false }
+            if (!trigger(arg, store)) { return Observable.empty() }
         }
         return arg
     })
-    .filter(arg => arg)
+    // .filter(arg => arg)
     //调用动画
     .do(({firstCard, xs}) => {
         store.dispatch(new window.Transer({
