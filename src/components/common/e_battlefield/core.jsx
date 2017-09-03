@@ -65,6 +65,7 @@ export default class EBattleField extends Component {
     render () {
         const {
             firstArea,
+            secondArea,
             activeAttackAble
         } = this.props
 
@@ -91,6 +92,30 @@ export default class EBattleField extends Component {
                                 styleName="item" 
                                 onClick={(e) => this.clickEmpty(index, e)}>
                                     empty
+                            </li>
+                        )
+                    }
+                })}
+                {secondArea.map((card,index)=> {
+                    if (card) {
+                        return (
+                            <li 
+                                key={index} 
+                                styleName={activeAttackAble ? 'activeItem' : 'item'}
+                                onClick={(e) => this.click(index, e)}
+                                >
+                                <CardFace
+                                    card={card}
+                                ></CardFace>
+                            </li>
+                        )
+                    } else {
+                        return (
+                            <li 
+                                key={index} 
+                                styleName="item" 
+                                onClick={(e) => this.clickEmpty(index, e)}>
+                                    陷阱区
                             </li>
                         )
                     }

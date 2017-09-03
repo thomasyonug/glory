@@ -3,13 +3,13 @@
     width: 100%;
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     flex-direction: row-reverse;
 }
 
 .item {
-    flex: 1;
-    margin: 0 5px;
+    flex-basis: 20%;
 }
 
 .item:hover {
@@ -17,8 +17,7 @@
 }
 
 .itemActive {
-    flex: 1;
-    margin: 0 5px;
+    flex-basis: 20%;
     border: 15px solid black;
 }
 
@@ -27,7 +26,6 @@
 }
 
 .itemActiveEmpty {
-    flex: 1;
-    margin: 0 5px;
+    flex-basis: 20%;
     border: 1px solid red;
 }
