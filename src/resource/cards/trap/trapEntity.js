@@ -9,7 +9,7 @@ import {
 
 @propertiesCheck({
     unStaticProperties: {
-        effect: Function
+        setTrigger: Function
     }
 })
 @prototype({

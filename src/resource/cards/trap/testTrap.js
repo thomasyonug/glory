@@ -4,7 +4,7 @@ import {prototype} from 'decorators'
 @prototype({
     describe: 'this is test trap',
     cardName: 'testTrap',
-    effect () {
+    setTrigger () {
         console.log('trap effect dodododo')
     }
 })
