@@ -56,12 +56,20 @@ export default (action$, store) =>
         }
     })
     .filter(arg => arg)
+    //触发trigger
     .map(arg => {
         const list = store.getState().glory.magicTriggerList
+        let pass = true
         for(let trigger of list) {
-            if (!trigger(arg, store)) { return Observable.empty() }
+            if (!trigger(arg, store)) {
+                pass = false
+            }
         }
-        return arg
+        if (pass) {
+            return arg
+        } else {
+            return false
+        }
     })
     // .filter(arg => arg)
     //调用动画

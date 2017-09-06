@@ -133,14 +133,15 @@ function get_card_from_hand_to_trap_battle (store, next, action) {
         glory: 'unActiveAll'
     })
 
-    // next({
-    //     type: 'get_card_from_hand_to_battle',
-    //     content: {
-    //         card,
-    //         fromIndex,
-    //         toIndex
-    //     }
-    // })
+    //trigger coverAfter 
+    next({
+        type: 'get_card_from_hand_to_trap_battle',
+        content: {
+            card,
+            fromIndex,
+            toIndex
+        }
+    })
 }
 function get_card_from_hand_to_trap_e_battle (store, next, action) {
     const {
@@ -175,14 +176,15 @@ function get_card_from_hand_to_trap_e_battle (store, next, action) {
         glory: 'unActiveAll'
     })
 
-    // next({
-    //     type: 'get_card_from_e_hand_to_e_battle',
-    //     content: {
-    //         card,
-    //         fromIndex,
-    //         toIndex
-    //     }
-    // })
+    //trigger coverAfter
+    next({
+        type: 'get_card_from_e_hand_to_e_battle',
+        content: {
+            card,
+            fromIndex,
+            toIndex
+        }
+    })
 }
 
 

@@ -9,10 +9,12 @@ import {
     PUSH_TRAP_TRIGGER, 
     PUSH_ATTACK_TRIGGER,
     PUSH_EFFECT_TRIGGER,
+    PUSH_SUMMON_BEFORE_TRIGGER,
     DELETE_MAGIC_TRIGGE,
     DELETE_TRAP_TRIGGER,
     DELETEE_ATTACK_TRIGGER,
     DELETE_EFFECT_TRIGGER,
+    DELETE_SUMMON_BEFORE_TRIGGER
 } from 'reduxs/constant'
 
 
@@ -24,7 +26,8 @@ const initState = {
     magicTriggerList: [],
     trapTriggerList: [],
     attackTriggerList: [],
-    effectTriggerList: []
+    effectTriggerList: [],
+    summonBeforeTriggerList: []
 }
 
 
@@ -83,6 +86,11 @@ export default function Glory(state = initState, action) {
                 ...state,
                 effectTriggerList: state.effectTriggerList.concat(action.content)
             }
+        case PUSH_SUMMON_BEFORE_TRIGGER:
+            return {
+                ...state,
+                summonBeforeTriggerList: state.summonBeforeTriggerList.concat(action.content)
+            }
         case DELETE_MAGIC_TRIGGE:
             return {
                 ...state,
@@ -102,6 +110,11 @@ export default function Glory(state = initState, action) {
             return {
                 ...state,
                 effectTriggerList: state.effectTriggerList.$delete(trigger => trigger === action.content)
+            }
+        case DELETE_SUMMON_BEFORE_TRIGGER:
+            return {
+                ...state,
+                summonBeforeTriggerList: state.summonBeforeTriggerList.$delete(trigger => trigger === action.content)
             }
         default:
             return state

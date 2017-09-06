@@ -11,7 +11,13 @@ import {
 
 
 
-import {TestTrap}    from './trap'
+import {
+    TestTrap,
+    BurstArmorTrap
+} from './trap'
+
+
+
 import {
     TestMagic,
     FireBallMagic,
@@ -37,6 +43,7 @@ export default new Map([
     [BogManMonster.cardCode, BogManMonster],                           //8
     [DemonCallingMonster.cardCode, DemonCallingMonster],                //9
     [LostAngelMonster.cardCode, LostAngelMonster],                      //10
-    [GraveRobberMonster.cardCode, GraveRobberMonster]                    //11
+    [GraveRobberMonster.cardCode, GraveRobberMonster],                    //11
+    [BurstArmorTrap.cardCode, BurstArmorTrap]                          //12
 ])
 

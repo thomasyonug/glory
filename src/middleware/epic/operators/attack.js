@@ -55,12 +55,20 @@ export default (action$, store) =>
 
     })
     .filter(arg => arg.glory === 'attack')
+    //触发 trigger
     .map(arg => {
         const list = store.getState().glory.attackTriggerList
+        let pass = true
         for (let trigger of list) {
-            if (!trigger(arg, store)) { return false }
+            if (!trigger(arg, store)) { 
+                pass = false
+            }
         }
-        return arg
+        if (pass) {
+            return arg
+        } else {
+            return false
+        }
     })
     .filter(arg => arg)
     .do(arg => store.dispatch(new window.Transer({

@@ -43,10 +43,9 @@
 
 ### Trap Hook
 
-| hook timing     | status        
-| ------------- |:-------------:|
-| triggerBefore | X |
-| triggerAfter  | X |
+| hook timing     | status      | hook name | type   |  param            |
+| --------------- |:-------------:| :--------:| :----: |:----------------: |
+| coverAfter      | done          | setTrigger| function | (store, action) |
 
 
 
