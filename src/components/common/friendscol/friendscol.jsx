@@ -9,19 +9,21 @@ import {autobind} from 'core-decorators'
 @connect(
   state => {
     return {
-      allFriends: state.friends.allFriends
-      ,
-      onlineFriends: state.friends.onlineFriends
+      allFriends: state.friends.allFriends,
+      onlineFriends: state.friends.onlineFriends,
+      friendsMsg: state.chat.friendsMsg
     }
   }
 )
 
 @CSSModules(Styles)
 export default class FriendsCol extends Component {
+
   render () {
     const {
       allFriends,
-      onlineFriends
+      onlineFriends,
+      friendsMsg
     } = this.props
 
     const Panel = Collapse.Panel
@@ -35,7 +37,7 @@ export default class FriendsCol extends Component {
               allFriends.map((item, index) =>
                  <div key={index}>
                   {item.username}({onlineFriends.find((i) => i.username == item.username) == undefined ? "离线" : "在线"})
-                  <Icon type="message" />
+                  <Icon type="message" onClick={() => this.friendChat(friendsMsg, item.username)}/>
                   <Icon type="user-delete" styleName="delBtn" onClick={() => this.delFriend(item.username)}/>
                 </div>
               )
@@ -81,5 +83,9 @@ export default class FriendsCol extends Component {
     })
     .catch(() => {
     })
+  }
+
+  friendChat (msgs, username) {
+    this.$dialogPrivateMsg(msgs, username)
   }
 }
