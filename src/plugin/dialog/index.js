@@ -64,3 +64,79 @@ export const $dialogLoading = (loading, callback) =>
                 </Spin>
             )
         }, () => {}, {simple: true})
+
+export const $dialogPrivateMsg = (function(msgs, username){
+    class PrivateMsg extends React.Component {
+
+        constructor (props) {
+            super(props)
+            this.state = {
+                msg: ''
+            }
+            Object.assign(this, {})
+        }
+
+        render () {
+        
+            const {
+                enterHandle,
+                changeHandle,
+                send,
+                state
+            } = this
+
+            return (
+                <div styleName="chatInfoShow">
+                    <div styleName="chatInfoShowMain" ref={scrollWrapper => this.scrollWrapper = scrollWrapper} >
+                        
+                    </div>
+                    <div styleName="sendChatInfo">
+                        <div styleName="per80">
+                            <input 
+                                type="text" 
+                                placeholder="msg here" 
+                                styleName="input" 
+                                value={state.msg}
+                                onKeyDown={(e) => this.enterHandle(e)}
+                                onChange={(e) => this.changeHandle(e)}/>
+                        </div>
+                        <div styleName="per20">
+                            <button onClick={this.send(username)}>发送</button>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+        componentDidUpdate () {
+            this.scrollWrapper.scrollTop = this.scrollWrapper.scrollHeight 
+        }
+
+        changeHandle = e => {
+            this.setState({
+                msg: e.target.value
+            })
+        }
+
+        send = (username) => {
+            this.$ws.chatApi.friendMsg(this.state.msg, username)
+            this.clearMsg()
+        }
+
+        clearMsg () {
+            this.setState({
+                msg: ''
+            })
+        }
+
+        enterHandle = e => {
+            if (e.keyCode === 13) {
+                this.send()
+            }
+        }
+    }
+
+    return () => $dialog((dialogContext) => {
+        return <PrivateMsg></PrivateMsg>
+    }, () => {}, {simple: true})
+})()

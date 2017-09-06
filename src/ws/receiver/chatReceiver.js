@@ -29,7 +29,7 @@ export class ChatReceiver extends Entity{
         } = content
 
         store.dispatch({
-            type: PUSH_FRIEND_MSG,
+            type: 'PUSH_FRIEND_MSG',
             content: {
                 username,
                 msg

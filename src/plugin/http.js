@@ -35,7 +35,9 @@ export const $http = {
             }
             return data 
         } else if (data.errcode === 1 ) {
-            
+            if(loading){
+               setTimeout(()=> dialogContext.props.resolve(),2000);
+            }
             return data
         } else {
             throw new Error(data)
