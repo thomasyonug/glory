@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import DialogCore from './dialogCore';
 import { Spin } from 'antd';
+import Styles             from './dialogCore.scss'
+import CSSModules         from 'react-css-modules'
 
 
 
@@ -66,6 +68,7 @@ export const $dialogLoading = (loading, callback) =>
         }, () => {}, {simple: true})
 
 export const $dialogPrivateMsg = (function(msgs, username){
+    @CSSModules(Styles)
     class PrivateMsg extends React.Component {
 
         constructor (props) {
@@ -101,7 +104,7 @@ export const $dialogPrivateMsg = (function(msgs, username){
                                 onChange={(e) => this.changeHandle(e)}/>
                         </div>
                         <div styleName="per20">
-                            <button onClick={this.send(username)}>发送</button>
+                            <button onClick={(username) => this.send(username)}>发送</button>
                         </div>
                     </div>
                 </div>
