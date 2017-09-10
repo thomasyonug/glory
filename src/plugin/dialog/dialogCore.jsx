@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules'
-import styles from './dialogCore.css'
+import styles from './dialogCore.scss'
 import {func, bool} from 'prop-types';
 
 

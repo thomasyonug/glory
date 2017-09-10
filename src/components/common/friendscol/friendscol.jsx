@@ -25,7 +25,6 @@ export default class FriendsCol extends Component {
       onlineFriends,
       friendsMsg
     } = this.props
-
     const Panel = Collapse.Panel
 
     return (
@@ -37,8 +36,8 @@ export default class FriendsCol extends Component {
               allFriends.map((item, index) =>
                  <div key={index}>
                   {item.username}({onlineFriends.find((i) => i.username == item.username) == undefined ? "离线" : "在线"})
-                  <Icon type="message" onClick={() => this.friendChat(friendsMsg, item.username)}/>
-                  <Icon type="user-delete" styleName="delBtn" onClick={() => this.delFriend(item.username)}/>
+                  <Icon type="message" onClick={event => this.friendChat(friendsMsg, item.username)}/>
+                  <Icon type="user-delete" styleName="delBtn" onClick={event => this.delFriend(item.username)}/>
                 </div>
               )
             }
@@ -76,7 +75,7 @@ export default class FriendsCol extends Component {
       }) 
   }
 
-  delFriend (username) {
+  delFriend = (username) => {
     this.$dialogConfirm(<div>确认删除此好友？</div>)
     .then(() => {
         this.$ws.FriendsApi.deleteFriend(username)
@@ -85,7 +84,9 @@ export default class FriendsCol extends Component {
     })
   }
 
-  friendChat (msgs, username) {
+  friendChat = (msgs, username) => {
+    console.log(msgs)
+    console.log(username)
     this.$dialogPrivateMsg(msgs, username)
   }
 }

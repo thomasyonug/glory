@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import DialogCore from './dialogCore';
 import { Spin } from 'antd';
+import Styles from './dialogCore.scss'
+import CSSModules from 'react-css-modules'
+import {autobind} from 'core-decorators'
 
 
 
@@ -65,7 +68,8 @@ export const $dialogLoading = (loading, callback) =>
             )
         }, () => {}, {simple: true})
 
-export const $dialogPrivateMsg = (function(msgs, username){
+export const $dialogPrivateMsg = (function(){
+    @CSSModules(Styles)
     class PrivateMsg extends React.Component {
 
         constructor (props) {
@@ -82,13 +86,22 @@ export const $dialogPrivateMsg = (function(msgs, username){
                 enterHandle,
                 changeHandle,
                 send,
-                state
+                state,
+                msgs,
+                username
             } = this
 
             return (
                 <div styleName="chatInfoShow">
                     <div styleName="chatInfoShowMain" ref={scrollWrapper => this.scrollWrapper = scrollWrapper} >
-                        
+                        {/* {
+                            msgs.map((msgItem,index) => 
+                                <div key={index}>
+                                    <span>{msgItem.from}:</span>     
+                                    <span>{msgItem.text}</span>     
+                                </div> 
+                            )
+                        } */}
                     </div>
                     <div styleName="sendChatInfo">
                         <div styleName="per80">
@@ -101,13 +114,14 @@ export const $dialogPrivateMsg = (function(msgs, username){
                                 onChange={(e) => this.changeHandle(e)}/>
                         </div>
                         <div styleName="per20">
-                            <button onClick={this.send(username)}>发送</button>
+                            <button onClick={event => this.send("admin")}>发送</button>
                         </div>
                     </div>
                 </div>
             )
         }
 
+        @autobind
         componentDidUpdate () {
             this.scrollWrapper.scrollTop = this.scrollWrapper.scrollHeight 
         }
@@ -119,6 +133,7 @@ export const $dialogPrivateMsg = (function(msgs, username){
         }
 
         send = (username) => {
+            console.log(`username2: ${username}`)
             this.$ws.chatApi.friendMsg(this.state.msg, username)
             this.clearMsg()
         }
@@ -136,7 +151,7 @@ export const $dialogPrivateMsg = (function(msgs, username){
         }
     }
 
-    return () => $dialog((dialogContext) => {
-        return <PrivateMsg></PrivateMsg>
+    return (msgs, username) => $dialog((dialogContext) => {
+        return <PrivateMsg msgs={msgs} username={username}></PrivateMsg>
     }, () => {}, {simple: true})
 })()

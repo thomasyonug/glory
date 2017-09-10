@@ -40,6 +40,9 @@ export const $http = {
             }
             return data
         } else {
+            if(loading){
+               setTimeout(()=> dialogContext.props.resolve(),2000);
+            }
             throw new Error(data)
         }
         
