@@ -57,10 +57,10 @@ export default (action$, store) =>
     .filter(arg => arg.glory === 'attack')
     //触发 trigger
     .map(arg => {
-        const list = store.getState().glory.attackTriggerList
+        const list = store.getState().glory.attackBeforeTriggerList
         let pass = true
         for (let trigger of list) {
-            if (!trigger(arg, store)) { 
+            if (!trigger(arg, store)) {
                 pass = false
             }
         }

@@ -23,8 +23,7 @@ export const coverAfter = (action$, store) =>
 
 
 export const coverAfterE = (action$, store) => 
-    action$.ofType('get_card_from_e_hand_to_e_battle')
-    .filter(action => action.content?.card?.type === 'MONSTER')
+    action$.ofType('get_card_from_hand_to_trap_e_battle')
     .map(action => {
         action.content.card.setTrigger?.(store, action)
 

@@ -178,7 +178,7 @@ function get_card_from_hand_to_trap_e_battle (store, next, action) {
 
     //trigger coverAfter
     next({
-        type: 'get_card_from_e_hand_to_e_battle',
+        type: 'get_card_from_hand_to_trap_e_battle',
         content: {
             card,
             fromIndex,
