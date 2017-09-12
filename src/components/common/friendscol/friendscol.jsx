@@ -10,8 +10,7 @@ import {autobind} from 'core-decorators'
   state => {
     return {
       allFriends: state.friends.allFriends,
-      onlineFriends: state.friends.onlineFriends,
-      friendsMsg: state.chat.friendsMsg
+      onlineFriends: state.friends.onlineFriends
     }
   }
 )
@@ -22,8 +21,7 @@ export default class FriendsCol extends Component {
   render () {
     const {
       allFriends,
-      onlineFriends,
-      friendsMsg
+      onlineFriends
     } = this.props
     const Panel = Collapse.Panel
 
@@ -36,7 +34,7 @@ export default class FriendsCol extends Component {
               allFriends.map((item, index) =>
                  <div key={index}>
                   {item.username}({onlineFriends.find((i) => i.username == item.username) == undefined ? "离线" : "在线"})
-                  <Icon type="message" onClick={event => this.friendChat(friendsMsg, item.username)}/>
+                  <Icon type="message" onClick={event => this.friendChat(item.username)}/>
                   <Icon type="user-delete" styleName="delBtn" onClick={event => this.delFriend(item.username)}/>
                 </div>
               )
@@ -84,9 +82,8 @@ export default class FriendsCol extends Component {
     })
   }
 
-  friendChat = (msgs, username) => {
-    console.log(msgs)
+  friendChat = (username) => {
     console.log(username)
-    this.$dialogPrivateMsg(msgs, username)
+    this.$dialogPrivateMsg(username)
   }
 }

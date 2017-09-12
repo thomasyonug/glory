@@ -18,8 +18,7 @@ import { Button } from 'antd'
 
 @connect(
     state => ({
-        rooms: state.room.rooms,
-        chat: state.chat
+        rooms: state.room.rooms
     }),
     dispatch => ({
         setRooms: content => dispatch(setRoomsActionCreator(content)),
@@ -42,8 +41,7 @@ export default class Search extends Component{
 
     render () {
         const {
-            rooms,
-            chat
+            rooms
         } = this.props
 
 
@@ -78,10 +76,7 @@ export default class Search extends Component{
                 <Button onClick={this.createRoom}>create a room</Button>
                 <Button onClick={this.arrengement}>go to arrenge card group</Button>
 
-                <FriendScol
-                    allFriends={chat.allFriends}
-                    onlineFriends={chat.onlineFriends}
-                ></FriendScol>
+                <FriendScol></FriendScol>
             </div>
         )
     }
