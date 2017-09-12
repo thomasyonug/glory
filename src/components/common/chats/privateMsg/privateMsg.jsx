@@ -10,7 +10,7 @@ import {autobind} from 'core-decorators'
 @connect(
   state => {
     return {
-      friendsMsg: state.chat.friendsMsg
+      friendsMsg: state.chat
     }
   }
 )
@@ -50,6 +50,9 @@ export class PrivateMsg extends Component {
                           </div> 
                       )
                   } */}
+                  {
+                    console.log(friendsMsg)
+                  }
                   
               </div>
               <div styleName="sendChatInfo">

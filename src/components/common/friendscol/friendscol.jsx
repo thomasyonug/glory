@@ -61,7 +61,7 @@ export default class FriendsCol extends Component {
               </div>
           )
       } 
-      this.$dialog(dialogFriendtRender, function(){this.input.focus()})
+      this.$dialog(dialogFriendtRender, function(){})
       .then(state => {
           if (!state.username) {
               return this.addFriend()

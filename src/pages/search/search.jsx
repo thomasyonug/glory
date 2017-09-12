@@ -103,7 +103,7 @@ export default class Search extends Component{
                 </div>
             )
         } 
-        this.$dialog(dialogContentRender, function(){this.input.focus()})
+        this.$dialog(dialogContentRender, function(){})
         .then(state => {
             if (!state.roomName) {
                 return this.createRoom()

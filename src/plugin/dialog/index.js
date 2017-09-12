@@ -6,6 +6,9 @@ import Styles from './dialogCore.scss'
 import CSSModules from 'react-css-modules'
 import {autobind} from 'core-decorators'
 import {PrivateMsg} from 'components/common/chats/privateMsg'
+import {Provider} from 'react-redux'
+import {store} from "@/index"
+
 
 
 
@@ -20,12 +23,14 @@ export const $dialog = (renderFn = () => <div></div>, cb = () => {}, props = {})
     new Promise((resolve, rej) => {
 
         ReactDOM.render(
-            <DialogCore 
-                resolve={curryFn(resolve)}
-                rej={curryFn(rej)}
-                renderFn={renderFn}
-                {...props}
-             />,
+            <Provider store={store}>
+                <DialogCore 
+                    resolve={curryFn(resolve)}
+                    rej={curryFn(rej)}
+                    renderFn={renderFn}
+                    {...props}
+                />
+            </Provider>,
             mount,
             cb
         )
