@@ -53,9 +53,6 @@ export class PrivateMsg extends Component {
                       )
                   } */}
                   {
-                    console.log("username2.5: " + username)
-                  }
-                  {
                    
                     console.log(friendsMsg)
                   }
@@ -72,7 +69,7 @@ export class PrivateMsg extends Component {
                           onChange={(e) => this.changeHandle(e)}/>
                   </div>
                   <div styleName="per20">
-                      <button onClick={event => this.send(username)}>发送</button>
+                      <button onClick={(e) => this.send(username)}>发送</button>
                   </div>
               </div>
           </div>
@@ -91,7 +88,7 @@ export class PrivateMsg extends Component {
   }
 
   send = (username) => {
-    console.log("username3: " + username)
+    var  username = username || this.props.username
     if(username){
       this.$ws.chatApi.friendMsg(this.state.msg, username)
       this.clearMsg()

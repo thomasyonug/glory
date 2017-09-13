@@ -83,7 +83,6 @@ export default class FriendsCol extends Component {
   }
 
   friendChat = (username) => {
-    console.log(username)
     this.$dialogPrivateMsg(username)
   }
 }
