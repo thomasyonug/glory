@@ -76,6 +76,6 @@ export const $dialogPrivateMsg = (function(){
     
     return (username) => $dialog((dialogContext) => {
         console.log('username2: '+ username)
-        return <PrivateMsg username={username}></PrivateMsg>
+        return <PrivateMsg username={username} dialogContext={dialogContext}></PrivateMsg>
     }, () => {}, {simple: true})
 })()

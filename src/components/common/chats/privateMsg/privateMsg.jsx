@@ -36,11 +36,13 @@ export class PrivateMsg extends Component {
 
       const {
           username,
-          friendsMsg
+          friendsMsg,
+          dialogContext
       } = this.props
 
       return (
           <div styleName="chatInfoShow">
+              <button onClick={e => this.closeModel(dialogContext)}>X</button>
               <div styleName="chatInfoShowMain" ref={scrollWrapper => this.scrollWrapper = scrollWrapper} >
                   {/* {
                       msgs.map((msgItem,index) => 
@@ -51,6 +53,10 @@ export class PrivateMsg extends Component {
                       )
                   } */}
                   {
+                    console.log("username2.5: " + username)
+                  }
+                  {
+                   
                     console.log(friendsMsg)
                   }
                   
@@ -85,9 +91,11 @@ export class PrivateMsg extends Component {
   }
 
   send = (username) => {
-      console.log("username3: " + username)
+    console.log("username3: " + username)
+    if(username){
       this.$ws.chatApi.friendMsg(this.state.msg, username)
       this.clearMsg()
+    }
   }
 
   clearMsg () {
@@ -100,5 +108,9 @@ export class PrivateMsg extends Component {
       if (e.keyCode === 13) {
           this.send()
       }
+  }
+
+  closeModel = (dialogContext) => {
+    dialogContext.props.resolve()
   }
 }
