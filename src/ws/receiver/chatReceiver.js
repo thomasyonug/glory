@@ -23,6 +23,7 @@ export class ChatReceiver extends Entity{
     }
 
     friendMsg (content) {
+        var  content = content.content
         const {
             msg,
             username

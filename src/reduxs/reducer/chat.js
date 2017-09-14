@@ -27,13 +27,21 @@ export default function chat(state = initState, action) {
             const {
                 username,
                 msg
-            } = state.content
+            } = action.content
+
+            const {
+                msgs,
+                friendsMsg
+            } = state
+
+            friendsMsg[username] = friendsMsg[username] || []
+
             return {
                 ...state,
                 friendsMsg: {
                     ...friendsMsg,
                     [username]: [
-                        ...state.friendsMsg[username],
+                        ...friendsMsg[username],
                         msg
                     ]
                 }

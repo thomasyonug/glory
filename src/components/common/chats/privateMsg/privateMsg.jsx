@@ -10,7 +10,7 @@ import {autobind} from 'core-decorators'
 @connect(
   state => {
     return {
-      friendsMsg: state.chat
+      friendsMsg: state.chat.friendsMsg 
     }
   }
 )
@@ -20,7 +20,8 @@ export class PrivateMsg extends Component {
   constructor (props) {
       super(props)
       this.state = {
-          msg: ''
+          msg: '',
+          msgs:[]
       }
       Object.assign(this, {})
   }
@@ -44,19 +45,16 @@ export class PrivateMsg extends Component {
           <div styleName="chatInfoShow">
               <button onClick={e => this.closeModel(dialogContext)}>X</button>
               <div styleName="chatInfoShowMain" ref={scrollWrapper => this.scrollWrapper = scrollWrapper} >
-                  {/* {
-                      msgs.map((msgItem,index) => 
-                          <div key={index}>
-                              <span>{msgItem.from}:</span>     
-                              <span>{msgItem.text}</span>     
-                          </div> 
-                      )
-                  } */}
-                  {
-                   
-                    console.log(friendsMsg)
-                  }
-                  
+                {
+                  Object.keys(friendsMsg).map((msgItem) => 
+                    friendsMsg[msgItem].map((item, index) => 
+                      <div key={index}>
+                            <span>{msgItem}：</span>     
+                            <span>{item}</span>     
+                      </div> 
+                    )
+                  )
+                }
               </div>
               <div styleName="sendChatInfo">
                   <div styleName="per80">
