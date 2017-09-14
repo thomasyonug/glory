@@ -5,7 +5,7 @@ import styles from './privateMsg.scss'
 import {connect} from 'react-redux'
 
 import {autobind} from 'core-decorators'
-
+import { Icon, Input, Button } from 'antd'
 
 @connect(
   state => {
@@ -43,14 +43,16 @@ export class PrivateMsg extends Component {
 
       return (
           <div styleName="chatInfoShow">
-              <button onClick={e => this.closeModel(dialogContext)}>X</button>
+              <div styleName="chatInfoHead">
+                <Icon type="close-circle-o" styleName="chatInfoDel" onClick={e => this.closeModel(dialogContext)}/>
+                {username}
+              </div>
               <div styleName="chatInfoShowMain" ref={scrollWrapper => this.scrollWrapper = scrollWrapper} >
                 {
                   Object.keys(friendsMsg).map((msgItem) => 
                     friendsMsg[msgItem].map((item, index) => 
                       <div key={index}>
-                            <span>{msgItem}：</span>     
-                            <span>{item}</span>     
+                            <span styleName="message">{item}</span>     
                       </div> 
                     )
                   )
@@ -58,16 +60,15 @@ export class PrivateMsg extends Component {
               </div>
               <div styleName="sendChatInfo">
                   <div styleName="per80">
-                      <input 
+                      <Input 
+                          placeholder="Please input" 
                           type="text" 
-                          placeholder="msg here" 
-                          styleName="input" 
                           value={state.msg}
                           onKeyDown={(e) => this.enterHandle(e)}
                           onChange={(e) => this.changeHandle(e)}/>
                   </div>
                   <div styleName="per20">
-                      <button onClick={(e) => this.send(username)}>发送</button>
+                      <Button type="primary" onClick={(e) => this.send(username)}>发送</Button>
                   </div>
               </div>
           </div>
