@@ -7,7 +7,7 @@ import {
 
 const initState = {
     msgs: [],
-    friendsMsg: {}
+    friendsMsg: []
 }
 
 
@@ -24,27 +24,12 @@ export default function chat(state = initState, action) {
             }
         
         case PUSH_FRIEND_MSG:
-            const {
-                username,
-                msg
-            } = action.content
-
-            const {
-                msgs,
-                friendsMsg
-            } = state
-
-            friendsMsg[username] = friendsMsg[username] || []
-
             return {
                 ...state,
-                friendsMsg: {
-                    ...friendsMsg,
-                    [username]: [
-                        ...friendsMsg[username],
-                        msg
-                    ]
-                }
+                friendsMsg: [
+                    ...state.friendsMsg,
+                    action.content.content
+                ]
             }
         
         case CLEAR_MSGS:

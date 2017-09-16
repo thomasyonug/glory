@@ -36,7 +36,7 @@ export default class FriendsCol extends Component {
               allFriends.map((item, index) =>
                  <div key={index}>
                   {item.username}({onlineFriends.find((i) => i.username == item.username) == undefined ? "离线" : "在线"})
-                  <Icon type="message" onClick={event => this.friendChat(item.username)}/>{Object.keys(friendsMsg).map((i) => {if(i == item.username){return `(${friendsMsg[i].length})`}})}
+                  <Icon type="message" onClick={event => this.friendChat(item.username)}/>{`(${friendsMsg.filter((i) => i.username == item.username).length || 0})`}
                   <Icon type="user-delete" styleName="delBtn" onClick={event => this.delFriend(item.username)}/>
                 </div>
               )

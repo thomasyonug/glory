@@ -23,18 +23,9 @@ export class ChatReceiver extends Entity{
     }
 
     friendMsg (content) {
-        var  content = content.content
-        const {
-            msg,
-            username
-        } = content
-
         store.dispatch({
             type: 'PUSH_FRIEND_MSG',
-            content: {
-                username,
-                msg
-            }
+            content: content
         })
 
     }

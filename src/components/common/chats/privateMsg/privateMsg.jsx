@@ -49,12 +49,22 @@ export class PrivateMsg extends Component {
               </div>
               <div styleName="chatInfoShowMain" ref={scrollWrapper => this.scrollWrapper = scrollWrapper} >
                 {
-                  Object.keys(friendsMsg).map((msgItem) => 
-                    friendsMsg[msgItem].map((item, index) => 
-                      <div key={index}>
-                            <span styleName="message">{item}</span>     
-                      </div> 
-                    )
+                  friendsMsg.map((msgItem, index) => 
+                    {
+                      if(msgItem.username == username){
+                        return (
+                          <div key={index}>
+                                <span styleName="message">{msgItem.msg}</span>     
+                          </div> 
+                        )
+                      }else{
+                        return (
+                          <div key={index} styleName="rightMessage">
+                                <span>{msgItem.msg}</span>     
+                          </div> 
+                        )
+                      }
+                    }
                   )
                 }
               </div>
